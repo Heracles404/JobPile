@@ -5,6 +5,7 @@
 
 :root{
     --bg-blue: #3889cb;
+    --light: #f8f9fa;
 }
 
 /* Removes Default margins and paddings */
@@ -14,17 +15,18 @@
     overflow-x: hidden;
 }
 
-html, body {
+html {
     height: 100%;
 }
 
-#container {
+body {
+    background-color: var(--light);
     min-height: 100%;
+    position: relative;
 }
 
-#main{
-    overflow-y: auto;
-    padding-bottom: 100px;
+form {
+    position: relative;
 }
 
 .navbar {
@@ -103,25 +105,16 @@ label.input-group-text {
     width: 9.5rem;
 }
 
-/* Content Place Holder */
-.content-placeholder {
-    overflow-y: auto;
-    padding-bottom: 100px;
-    min-height: 90vh;
-}
 
 
 /* Footer */
-footer {
+div.footer {
     background-color: var(--bg-blue);
-    position: relative;
-    min-height: 8vh;
-    margin-top: -8vh;
-    clear: both;
+    position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
-
-
 
 
 /* Smaller Media */

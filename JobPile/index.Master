@@ -25,7 +25,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="bg-light">
+<body>
     <form id="form1" runat="server">
         <div id="container">
             <div id="main">
@@ -115,9 +115,9 @@
         </div>
 
         <!-- Footer -->
-        <footer>
+        <div class="footer">
             Footer!!
-        </footer>
+        </div>
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
