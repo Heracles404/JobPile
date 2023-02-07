@@ -1,0 +1,123 @@
+﻿/* CSS for index.master */
+
+/* Font-raleway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+:root{
+    --bg-blue: #3889cb;
+}
+
+/* Removes Default margins and paddings */
+*{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+html, body{
+    height: 100%;
+    min-height: 100%;
+    width: 100vw;
+}
+
+.navbar {
+    border-bottom: 2px solid var(--bg-blue) !important;
+    box-shadow: var(--bg-blue) 2px 0 5px;
+}
+
+div.container-fluid.nav {
+    margin: 1.25rem 1.75rem !important;
+    padding: 0;
+}
+
+img.nav-icon {
+    width: 100px;
+    height: auto;
+}
+
+.btn {
+    height: 2.5rem;
+    background-color: var(--bg-blue);
+    border: #3889cb;
+    width: 7.5rem;
+    letter-spacing: .25px;
+    font-weight: 500;
+    margin-left: .5rem;
+}
+
+/* Log in & Sign Up Modal */
+.modal-md {
+    width: 30vw !important;
+    height: auto;
+    box-shadow: #0084ffba 0 0 2rem;
+}
+
+img.img-icon {
+    width: 1.75rem;
+    height: auto;
+    margin: 0 0.75rem 0 0.25rem;
+}
+
+.jp-logo {
+    margin: auto;
+    height: 13rem;
+    width: auto;
+}
+
+.jobpile-logo {
+    margin: 1.5rem auto;
+    height: auto;
+    width: 18vw;
+}
+
+.right-input {
+    border-radius: 0 .375rem .375rem 0;
+    border: 1px solid #ced4da;
+}
+
+label.input-group-text { 
+    width: 5rem !important;
+}
+
+.verify {
+    width: 8.5rem;
+    justify-content:center;
+}
+
+#verify.verify {
+    cursor: pointer;
+}
+
+#verify.verify:hover {
+    background-color: #ccced0;
+}
+
+.btn.verify {
+    width: 9.5rem;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    overflow: hidden
+}
+
+
+
+
+/* Smaller Media */
+@media(max-width:700px) {
+    div.container-fluid.nav {
+        margin: .5rem .65rem !important;
+    }
+
+    .modal-md {
+        width: 90vw !important;
+        height: auto;
+        box-shadow: #0084ffba 0 0 2rem;
+    }
+}

@@ -1,0 +1,37 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.content {
+    left: 0;
+    right: 0;
+    margin: 6vh auto;
+    padding-bottom: 8vh;
+}
+
+.img-logo {
+    width: 36vw;
+    height: auto;
+    margin: 0 32vw 1rem;
+}
+
+.search-bar{
+    width: 50vw;
+    margin: 1.25rem auto;
+}
+
+.option {
+    background-color: #fff !important;
+    color: #2a2a2a;
+}
+
+
+/* Smaller Media */
+@media(max-width:700px) {
+    .search-bar {
+        width: 98vw;
+        margin: 1.25rem auto;
+    }
+}
