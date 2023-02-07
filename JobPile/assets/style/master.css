@@ -11,15 +11,20 @@
 *{
     margin: 0;
     padding: 0;
-    position: relative;
     overflow-x: hidden;
 }
 
-
-html, body{
+html, body {
     height: 100%;
+}
+
+#container {
     min-height: 100%;
-    width: 100vw;
+}
+
+#main{
+    overflow-y: auto;
+    padding-bottom: 100px;
 }
 
 .navbar {
@@ -98,12 +103,22 @@ label.input-group-text {
     width: 9.5rem;
 }
 
+/* Content Place Holder */
+.content-placeholder {
+    overflow-y: auto;
+    padding-bottom: 100px;
+    min-height: 90vh;
+}
+
+
 /* Footer */
 footer {
-    position: absolute;
+    background-color: var(--bg-blue);
+    position: relative;
+    min-height: 8vh;
+    margin-top: -8vh;
+    clear: both;
     bottom: 0;
-    margin: 0;
-    overflow: hidden
 }
 
 

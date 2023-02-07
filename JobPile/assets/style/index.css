@@ -4,13 +4,6 @@
     overflow-x: hidden;
 }
 
-.content {
-    left: 0;
-    right: 0;
-    margin: 6vh auto;
-    padding-bottom: 8vh;
-}
-
 .img-logo {
     width: 36vw;
     height: auto;

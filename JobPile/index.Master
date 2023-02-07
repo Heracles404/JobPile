@@ -27,94 +27,96 @@
 </head>
 <body class="bg-light">
     <form id="form1" runat="server">
-        <!-- NavBar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 m-0">
-            <div class="container-fluid nav">
+        <div id="container">
+            <div id="main">
+                <!-- NavBar -->
+                <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 m-0">
+                    <div class="container-fluid nav">
 
-                <!-- Logo -->
-                <a class="navbar-brand m-0 p-0" href="#">
-                    <span class="col-12">
-                        <img src="assets/logo/small-jobpile.png" class="nav-icon" />
-                    </span>
-                </a>
+                        <!-- Logo -->
+                        <a class="navbar-brand m-0 p-0" href="#">
+                            <span class="col-12">
+                                <img src="assets/logo/small-jobpile.png" class="nav-icon" />
+                            </span>
+                        </a>
 
-                <!-- Log-in/signup -->
-                <div class="d-flex" role="search">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login-form">
-                        Log in
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-form">Sign up</button>
+                        <!-- Log-in/signup -->
+                        <div class="d-flex" role="search">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login-form">
+                                Log in
+                            </button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-form">Sign up</button>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Log in Modal -->
+                <div class="modal fade container-fluid" id="login-form" tabindex="-1" aria-labelledby="log-in modal" aria-hidden="true" role="dialog">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">
+                                    <img src="assets/logo/small-jp.png" class="img-icon" />Log In
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body row px-4">
+                                <img src="assets/logo/big-jp.png" class="jp-logo" />
+                                <div class="input-group p-3">
+                                    <asp:Label ID="Label1" CssClass="input-group-text d-flex" runat="server" Text="Email or Username: "></asp:Label>
+                                    <asp:TextBox ID="email" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
+                                </div>
+                                <div class="input-group p-3 pt-0">
+                                    <asp:Label ID="Label2" CssClass="input-group-text px-5 d-flex" runat="server" Text="Pasword: "></asp:Label>
+                                    <asp:TextBox ID="pw" type="password" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary mx-3" Text="Log In" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
 
-        <!-- Log in Modal -->
-        <div class="modal fade container-fluid" id="login-form" tabindex="-1" aria-labelledby="log-in modal" aria-hidden="true" role="dialog">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5">
-                            <img src="assets/logo/small-jp.png" class="img-icon" />Log In
-                        </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body row px-4">
-                        <img src="assets/logo/big-jp.png" class="jp-logo" />
-                        <div class="input-group p-3">
-                            <asp:Label ID="Label1" CssClass="input-group-text d-flex" runat="server" Text="Email or Username: "></asp:Label>
-                            <asp:TextBox ID="email" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
+                <!-- Sign up Modal -->
+                <div class="modal fade container-fluid" id="signup-form" tabindex="-1" aria-labelledby="log-in modal" aria-hidden="true" role="dialog">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">
+                                    <img src="assets/logo/small-jp.png" class="img-icon" />Sign Up
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body row px-4">
+                                <img src="assets/logo/big-jobpile.png" class="jobpile-logo" />
+                                <div class="input-group p-3">
+                                    <asp:Label ID="Label3" CssClass="input-group-text verify" runat="server" Text="E-mail: "></asp:Label>
+                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
+                                </div>
+                                <div class="input-group mb-3 px-3">
+                                    <asp:Button ID="verify" CssClass="input-group-text verify" runat="server" Text="Send OTP"></asp:Button>
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnSignup" runat="server" CssClass="btn btn-primary mx-3 verify" Text="Verify Email" />
+                            </div>
                         </div>
-                        <div class="input-group p-3 pt-0">
-                            <asp:Label ID="Label2" CssClass="input-group-text px-5 d-flex" runat="server" Text="Pasword: "></asp:Label>
-                            <asp:TextBox ID="pw" type="password" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
-                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary mx-3" Text="Log In" />
-                    </div>
+                </div>
+
+
+                <div class="content-placeholder">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
                 </div>
             </div>
         </div>
-
-        <!-- Sign up Modal -->
-        <div class="modal fade container-fluid" id="signup-form" tabindex="-1" aria-labelledby="log-in modal" aria-hidden="true" role="dialog">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5">
-                            <img src="assets/logo/small-jp.png" class="img-icon" />Sign Up
-                        </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body row px-4">
-                        <img src="assets/logo/big-jobpile.png" class="jobpile-logo" />
-                        <div class="input-group p-3">
-                            <asp:Label ID="Label3" CssClass="input-group-text verify" runat="server" Text="E-mail: "></asp:Label>
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
-                        </div>
-                        <div class="input-group mb-3 px-3">
-                            <asp:Button ID="verify" CssClass="input-group-text verify" runat="server" Text="Send OTP"></asp:Button>
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="btnSignup" runat="server" CssClass="btn btn-primary mx-3 verify" Text="Verify Email" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-
-
-
 
         <!-- Footer -->
-        <footer class="navbar-fixed-bottom">
-            <h1>Footer!!!</h1>
+        <footer>
+            Footer!!
         </footer>
 
         <!-- Bootstrap JS -->
