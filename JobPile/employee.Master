@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="employee.master.cs" Inherits="JobPile.employee" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>JobPile</title>
+    <!-- Tab Icon -->
+    <link rel="icon" href="assets/logo/big-jp.png" />
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!-- NavBar -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 m-0">
+                <div class="container-fluid nav">
+
+                    <!-- Logo -->
+                    <a class="navbar-brand m-0 p-0" href="#">
+                        <span class="col-12">
+                            <img src="assets/logo/small-jobpile.png" class="nav-icon" />
+                        </span>
+                    </a>
+
+                    <!-- Log-in/signup -->
+                    <div class="d-flex" role="search">
+                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/EmployeeJobLists" Text="Job Search" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/EmployeeAccounts" Text="Account" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Main" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
+                    </div>
+                </div>
+            </nav>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
