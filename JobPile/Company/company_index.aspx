@@ -15,10 +15,10 @@
         </div>
         <div class="col-8">
             <!--Shows every Job Posts-->
-            <asp:GridView ID="applicantGrid" runat="server" AutoGenerateColumns ="False" CssClass="col-12 text-center rounded-5 mt-4" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="applicantGrid" runat="server" AutoGenerateColumns="False" CssClass="col-12 text-center rounded-5 mt-4" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:BoundField DataField="jptitle" HeaderText="Job Title"/>
+                    <asp:BoundField DataField="jptitle" HeaderText="Job Title" />
                     <asp:BoundField DataField="jpseekers" HeaderText="Number of Applicants" />
                     <asp:BoundField DataField="jpstatus" HeaderText="Status" />
                     <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/JobPosts/{0}" DataNavigateUrlFields="jptitle" />
