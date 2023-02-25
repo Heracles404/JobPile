@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 namespace JobPile
 {
@@ -111,14 +112,10 @@ namespace JobPile
             newconn.Open();
 
             //Pending emp_Email
-            string query = "delete from SeekersPerPost where ID=" + empID;
-            query += " and JobTitle='" + jobTitle + "';";
+            string query = "delete from seekerpostTBL where emp_id=" + empID;
+            query += " and job_title='" + jobTitle + "';";
             OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
             sqlcmd.ExecuteNonQuery();
-            /*
-            string date = datetxt.Text;
-            DateTime interview = DateTime.Parse(date);
-            */
 
             query = "insert into preinterviewTBL values(" + empID;
             query += ",'" + datetxt.Text + "','" + jobTitle + "');";
@@ -129,11 +126,6 @@ namespace JobPile
 
             Response.Write("<script>alert('Approval Successful')</script>");
             datetxt.Text = "";
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/JobPosts");
         }
     }
 }
