@@ -23,11 +23,19 @@ namespace JobPile
             routes.MapPageRoute("CompanyInfo", "CompanyInfo", "~/Company/CompanyInfoPage.aspx");
             routes.MapPageRoute("EditInfoPage", "EditCompanyInfo", "~/Company/EditCompanyInfoPage.aspx");
             routes.MapPageRoute("DynamicPage", "JobPosts/{jptitle}", "~/Company/DynamicPage.aspx");
+<<<<<<< HEAD
             routes.MapPageRoute("CandidatePage", "Candidates/{ID}", "~/Company/DynamicCandidatePage.aspx");
 
             routes.MapPageRoute("EmpJobList", "EmpJobLists", "~/Employee/EmployeeJob.aspx");
             routes.MapPageRoute("EmpAccount", "EmpAccounts", "~/Employee/EmployeeAccount.aspx");
             routes.MapPageRoute("EmpDynamicPage", "EmpPost/{jptitle}", "~/Employee/EmpDynamic.aspx");
+=======
+            routes.MapPageRoute("CandidatePage", "JobPosts/{jptitle}/{ID}", "~/Company/DynamicCandidatePage.aspx");
+
+            routes.MapPageRoute("EmpJobList", "EmployeeJobLists", "~/Employee/EmployeeJob.aspx");
+            routes.MapPageRoute("EmpAccount", "EmployeeAccounts", "~/Employee/EmployeeAccount.aspx");
+            routes.MapPageRoute("EmpDynamicPage", "EmployeePost/{jpID}", "~/Employee/EmpDynamic.aspx");
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             routes.MapPageRoute("EditAccount", "EditEmployeeAccount", "~/Employee/EditEmpAccount.aspx");
 
 

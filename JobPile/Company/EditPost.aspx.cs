@@ -28,6 +28,11 @@ namespace JobPile
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
             sqlcmd.ExecuteNonQuery();
 
+<<<<<<< HEAD
+=======
+            //sqlsmt = "delete "
+
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             Response.Write("<script>alert('Job Post has been deleted!');</script>");
             searchjobtitletxt.Text = "";
 
@@ -50,7 +55,14 @@ namespace JobPile
             if (dataReader.HasRows)
             {
                 dataReader.Read();
+<<<<<<< HEAD
 
+=======
+                //Hide Initial Search
+                searchjobtitletxt.Visible = false;
+                cmdSearch.Visible = false;
+                deletebtn.Visible = false;
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
 
                 //Input Initial values
@@ -136,7 +148,11 @@ namespace JobPile
 
             Response.Write("<script>alert('The job post has been updated!')</script>");
             connection.Close();
+<<<<<<< HEAD
 
+=======
+            /*
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             //Reset fields
             searchjobtitletxt.Text = "";
             jobtitleTXT.Text = "";
@@ -147,7 +163,13 @@ namespace JobPile
             skillsTXT.Text = "";
             DDLExperience.SelectedIndex = -1;
             jobdescTXT.Text = "";
+<<<<<<< HEAD
             DDLStatus.SelectedIndex = -1;
+=======
+            DDLStatus.SelectedIndex = -1;*/
+
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             //Show Initial Search
             cmdSearch.Visible = true;

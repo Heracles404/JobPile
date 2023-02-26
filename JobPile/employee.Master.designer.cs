@@ -33,31 +33,53 @@ namespace JobPile
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+<<<<<<< HEAD
         /// HyperLink1 control.
+=======
+        /// HyperLink4 control.
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
 
         /// <summary>
         /// HyperLink6 control.
+=======
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+
+        /// <summary>
+        /// HyperLink2 control.
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
 
         /// <summary>
         /// HyperLink7 control.
+=======
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+
+        /// <summary>
+        /// HyperLink3 control.
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.HyperLink HyperLink7;
+=======
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
         /// <summary>
         /// ContentPlaceHolder1 control.

@@ -26,18 +26,34 @@ namespace JobPile
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
+<<<<<<< HEAD
             string jobTitle = this.Page.RouteData.Values["jptitle"].ToString();
             
             // Fetch companyID based on email
             string empEmail = Session["Email"].ToString();
             string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+=======
+            string jobID = this.Page.RouteData.Values["jpID"].ToString();
+            /*
+            // Fetch companyID based on email
+            //string empEmail = Session["Email"].ToString();
+            string sqlsmt = "select * from employeeTBL where jptitle = '" + jobTitle + "';";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
 
             DataTable dtID = new DataTable();
             adapter.Fill(dtID);
             int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+<<<<<<< HEAD
 
             string jobInfo = "SELECT * FROM [jobpostTBL] WHERE [jptitle] = @jobTitle and com_id = "+ id + ";";
+=======
+            
+            sqlsmt = "select * from jobpostTBL where " + id + " = SeekersPerPost.ID and";
+            sqlsmt += " SeekersPerPost.comID = jobpostTBL.com_id and SeekersPerPost.JobTitle = jobpostTBL.jptitle and jobpostTBL.jptitle = @jobTitle";
+            */
+            string jobInfo = "SELECT * FROM [jobpostTBL] WHERE [jpID] = @jobID";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
             connstr += Server.MapPath("~/App_Data/jobpileDB.accdb");
@@ -47,7 +63,11 @@ namespace JobPile
                 {
                     using (OleDbDataAdapter sda = new OleDbDataAdapter())
                     {
+<<<<<<< HEAD
                         cmd.Parameters.AddWithValue("@jobTitle", jobTitle);
+=======
+                        cmd.Parameters.AddWithValue("@jobID", jobID);
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                         cmd.Connection = con;
                         sda.SelectCommand = cmd;
                         using (DataTable dt = new DataTable())

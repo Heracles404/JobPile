@@ -27,8 +27,14 @@ namespace JobPile
             conn.Open();
 
             //companyEmail to cemail
+<<<<<<< HEAD
             //Query to get all data based on jobTitle
             string sqlsmt = "SELECT * FROM [companyTBL] WHERE [cemail] = 'active'";
+=======
+            string email = companyEmail;
+            //Query to get all data based on jobTitle
+            string sqlsmt = "SELECT * FROM [companyTBL] WHERE [email] = '" + email + "'";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
 
             OleDbDataReader dataReader = sqlcmd.ExecuteReader();
@@ -37,6 +43,7 @@ namespace JobPile
                 dataReader.Read();
 
                 //Input Initial values
+<<<<<<< HEAD
                 nametxt.Text = dataReader["cname"].ToString();
                 emailtxt.Text = dataReader["cemail"].ToString();
                 websitetxt.Text = dataReader["cwebsite"].ToString();
@@ -44,6 +51,15 @@ namespace JobPile
                 aboutustxt.Text = dataReader["caboutus"].ToString();
                 missiontxt.Text = dataReader["cmission"].ToString();
                 visiontxt.Text = dataReader["cvision"].ToString();
+=======
+                nametxt.Text = dataReader["companyName"].ToString();
+                emailtxt.Text = dataReader["email"].ToString();
+                websitetxt.Text = dataReader["website"].ToString();
+                numtxt.Text = dataReader["contactnum"].ToString();
+                aboutustxt.Text = dataReader["about"].ToString();
+                missiontxt.Text = dataReader["mission"].ToString();
+                visiontxt.Text = dataReader["vision"].ToString();
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             }
 
             conn.Close();
@@ -56,6 +72,7 @@ namespace JobPile
             connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
             OleDbConnection connection = new OleDbConnection(connstr);
             connection.Open();
+<<<<<<< HEAD
 
             //change cemail based on session
             string sqlsmt = "update companyTBL set cname = '" + nametxt.Text;
@@ -63,11 +80,22 @@ namespace JobPile
             sqlsmt += "',cphonenum='" + numtxt.Text + "',caboutus='" + aboutustxt.Text;
             sqlsmt += "',cmission='" + missiontxt.Text + "',cvision='" + visiontxt.Text;
             sqlsmt += "' where cemail = 'active';";
+=======
+            string email = companyEmail;
+
+            //change cemail based on session
+            string sqlsmt = "update companyTBL set companyName = '" + nametxt.Text;
+            sqlsmt += "',website='" + websitetxt.Text;
+            sqlsmt += "',contactnum='" + numtxt.Text + "',about='" + aboutustxt.Text;
+            sqlsmt += "',mission='" + missiontxt.Text + "',vision='" + visiontxt.Text;
+            sqlsmt += "' where email = '" + email + "';";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
             sqlcmd.ExecuteNonQuery();
             connection.Close();
 
+<<<<<<< HEAD
             //Reset fields
             nametxt.Text = "";
             emailtxt.Text = "";
@@ -78,13 +106,21 @@ namespace JobPile
             visiontxt.Text = "";
 
             Response.Redirect("~/CompanyInfo");
+=======
+            Response.Write("<script>alert('Company Info Page updated!')</script>");
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='CompanyInfo'},1000)", true);
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         }
 
         public string companyEmail
         {
             get
             {
+<<<<<<< HEAD
                 string cemail = Session["cemail"].ToString();
+=======
+                string cemail = Session["Email"].ToString();
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 return cemail;
             }
         }

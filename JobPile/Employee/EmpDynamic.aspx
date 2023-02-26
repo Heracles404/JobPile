@@ -26,5 +26,9 @@
     <asp:Label ID="jobDesclbl" runat="server" />
     <br />
     <br />
+<<<<<<< HEAD
     <asp:Button ID="Button1" runat="server" Text="Back"  PostBackUrl="~/EmpJobLists" />
+=======
+    <asp:Button ID="Button1" runat="server" Text="Back"  PostBackUrl="~/EmployeeJobLists" />
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 </asp:Content>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../company.Master" AutoEventWireup="true" CodeBehind="CompanyInfoPage.aspx.cs" Inherits="JobPile.WebForm4" %>
+=======
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/company.Master" AutoEventWireup="true" CodeBehind="CompanyInfoPage.aspx.cs" Inherits="JobPile.WebForm4" %>
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -12,10 +16,17 @@
     <!--Shows information based on passed jobTitle from hyperlink-->
     <div class="row mt-5 pt-3">
         <div class="content container-fluid  col-5">
+<<<<<<< HEAD
             <div class="px-4 py-0 mx-0 mt-3">
                 <div class="input-group">
                     <span class="input-group-text">Company</span>
                     <asp:TextBox ID="cname" CssClass="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+=======
+            <div class="px-4 py-0 mx-0 mt-2">
+                <div class="input-group">
+                    <span class="input-group-text">Company</span>
+                    <asp:TextBox ID="cname" CssClass="form-control fw-semibold" runat="server" ReadOnly="True"></asp:TextBox>
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Email</span>
@@ -44,9 +55,12 @@
                 <asp:Button ID="editinfobtn" runat="server" CssClass="btn info btn-primary" Text="Edit Info Page" PostBackUrl="~/EditCompanyInfo" />
             </div>
         </div>
+<<<<<<< HEAD
         
 
 
+=======
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
     </div>
 
 </asp:Content>

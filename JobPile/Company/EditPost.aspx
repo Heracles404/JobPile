@@ -4,6 +4,7 @@
     <link href="assets/style/com-master.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<<<<<<< HEAD
     <div class="row">
         <div class="content container-fluid  col-5">
             <div class="px-4 py-0 mx-0 mt-3">
@@ -11,6 +12,15 @@
                     <!--Job Title Search-->
                     <span class="input-group-text">Job Title</span>
                     <asp:TextBox ID="searchjobtitletxt" CssClass="form-control" runat="server" AutoPostBack="True"></asp:TextBox>
+=======
+    <div class="row ">
+        <div class="content container-fluid col-5">
+            <div class="px-4 py-0 m-0">
+                <div class="input-group">
+                    <!--Job Title Search-->
+                    <span class="input-group-text">Job Title</span>
+                    <asp:TextBox ID="searchjobtitletxt" AutoPostBack="true" CssClass="form-control" runat="server"></asp:TextBox>
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 </div>
                 <div class="input-group">
                     <asp:Button ID="cmdSearch" runat="server" CssClass="form-control input-group-text btn btn-primary srch" OnClick="cmdSearch_Click" Text="Search" />
@@ -103,7 +113,11 @@
                 <div class="input-group">
                     <!--Save Button-->
                     <asp:Button ID="cmdSave" runat="server" Visible="true" OnClick="cmdSave_Click" CssClass="btn btn-primary form-control" Text="Save" />
+<<<<<<< HEAD
                     <asp:HyperLink ID="Back" runat="server" NavigateUrl="~/JobPosts" Text="Back" CssClass="btn btn-secondary form-control"></asp:HyperLink>
+=======
+                    <asp:Button ID="Button1" runat="server" Text="Back" CausesValidation="False" CssClass="btn btn-secondary form-control" PostBackUrl="~/JobPosts" />
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 </div>
 
 

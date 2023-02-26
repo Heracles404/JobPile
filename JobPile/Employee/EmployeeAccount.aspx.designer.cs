@@ -103,5 +103,35 @@ namespace JobPile
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label biolbl;
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// educationlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label educationlbl;
+
+        /// <summary>
+        /// experiencelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label experiencelbl;
+
+        /// <summary>
+        /// skillslbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label skillslbl;
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
     }
 }

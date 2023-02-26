@@ -175,6 +175,7 @@ C:\Users\coder\Downloads\JobPile (1)\JobPile\JobPile\obj\x64\Debug\JobPile.cspro
 C:\Users\coder\Downloads\JobPile (1)\JobPile\JobPile\obj\x64\Debug\JobPile.csproj.CopyComplete
 C:\Users\coder\Downloads\JobPile (1)\JobPile\JobPile\obj\x64\Debug\JobPile.dll
 C:\Users\coder\Downloads\JobPile (1)\JobPile\JobPile\obj\x64\Debug\JobPile.pdb
+<<<<<<< HEAD
 C:\Users\Bianca\Downloads\JobPile\JobPile\bin\JobPile.dll.config
 C:\Users\Bianca\Downloads\JobPile\JobPile\bin\JobPile.dll
 C:\Users\Bianca\Downloads\JobPile\JobPile\bin\JobPile.pdb
@@ -234,3 +235,5 @@ C:\Users\Bianca\Downloads\JobPile\JobPile\obj\x64\Debug\JobPile.csproj.CoreCompi
 C:\Users\Bianca\Downloads\JobPile\JobPile\obj\x64\Debug\JobPile.csproj.CopyComplete
 C:\Users\Bianca\Downloads\JobPile\JobPile\obj\x64\Debug\JobPile.dll
 C:\Users\Bianca\Downloads\JobPile\JobPile\obj\x64\Debug\JobPile.pdb
+=======
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8

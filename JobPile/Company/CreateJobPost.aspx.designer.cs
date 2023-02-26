@@ -123,13 +123,39 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.Button Postbtn;
 
         /// <summary>
+<<<<<<< HEAD
         /// Back control.
+=======
+        /// Button1 control.
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.HyperLink Back;
+=======
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// rqJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqJobTitle;
+
+        /// <summary>
+        /// regexsalary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexsalary;
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
         /// <summary>
         /// compareshift control.
@@ -150,6 +176,27 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.CompareValidator comparetype;
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// reqlocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqlocation;
+
+        /// <summary>
+        /// reqskills control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqskills;
+
+        /// <summary>
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// compareexperience control.
         /// </summary>
         /// <remarks>
@@ -159,6 +206,18 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.CompareValidator compareexperience;
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// reqjobdesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqjobdesc;
+
+        /// <summary>
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// comparestatus control.
         /// </summary>
         /// <remarks>

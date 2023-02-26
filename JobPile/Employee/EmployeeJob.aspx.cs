@@ -6,7 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+<<<<<<< HEAD
 using System.Net.Mail;
+=======
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
 namespace JobPile
 {
@@ -51,7 +54,11 @@ namespace JobPile
             int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
             //Get the value of column from the DataKeys using the RowIndex.
+<<<<<<< HEAD
             string jobTitle = empGridView.DataKeys[rowIndex].Values[0].ToString();
+=======
+            string jobID = empGridView.DataKeys[rowIndex].Values[0].ToString();
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             int seeknum = Int32.Parse(empGridView.DataKeys[rowIndex].Values[1].ToString());
             seeknum += 1;
 
@@ -62,16 +69,33 @@ namespace JobPile
 
             // Fetch companyID based on email
             string empEmail = Session["Email"].ToString();
+<<<<<<< HEAD
             string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+=======
+            string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "';";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
 
             DataTable dtID = new DataTable();
             adapter.Fill(dtID);
             int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
 
+<<<<<<< HEAD
             //Pending emp_Email
             string query = "insert into SeekersPerPost values (" + id;
             query += ",'" + jobTitle + "');";
+=======
+            sqlsmt = "select * from jobpostTBL where jpID=" + jobID;
+            adapter = new OleDbDataAdapter(sqlsmt, newconn);
+            dtID = new DataTable();
+            adapter.Fill(dtID);
+            string jobTitle = dtID.Rows[0]["jptitle"].ToString();
+            int compID = Int32.Parse(dtID.Rows[0]["com_ID"].ToString());
+
+            //Pending emp_Email
+            string query = "insert into SeekersPerPost values (" + id;
+            query += ",'" + jobTitle + "'," + compID + ");";
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             OleDbCommand sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
 
@@ -80,6 +104,7 @@ namespace JobPile
             sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
 
+<<<<<<< HEAD
 
             // Send application notification
             using (MailMessage mail = new MailMessage())
@@ -102,6 +127,8 @@ namespace JobPile
             }
 
 
+=======
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             Response.Write("<script>alert('Submission Successful')</script>");
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeJobLists'},1000)", true);
             newconn.Close();
@@ -132,6 +159,7 @@ namespace JobPile
             OleDbDataReader dataReader = sqlcmd.ExecuteReader();
             if (dataReader.HasRows)
             {
+<<<<<<< HEAD
 
             }
 
@@ -145,6 +173,22 @@ namespace JobPile
             empGridView.DataBind();
             conn.Close();
 
+=======
+                sqlsmt = "select * from jobpostTBL where jptitle = '" + empsearchtxt.Text + "'";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                empGridView.DataSource = dataTable;
+                empGridView.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('No Job Post Found')</script>");
+                empsearchtxt.Text = "";
+            }
+            
+            conn.Close();
+>>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         }
     }
 }
