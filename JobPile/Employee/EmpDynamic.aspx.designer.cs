@@ -15,76 +15,76 @@ namespace JobPile
     {
 
         /// <summary>
-        /// jobTitlelbl control.
+        /// job control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label jobTitlelbl;
+        protected global::System.Web.UI.WebControls.TextBox job;
 
         /// <summary>
-        /// salarylbl control.
+        /// salary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label salarylbl;
+        protected global::System.Web.UI.WebControls.TextBox salary;
 
         /// <summary>
-        /// shiftlbl control.
+        /// shift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label shiftlbl;
+        protected global::System.Web.UI.WebControls.TextBox shift;
 
         /// <summary>
-        /// typelbl control.
+        /// type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label typelbl;
+        protected global::System.Web.UI.WebControls.TextBox type;
 
         /// <summary>
-        /// locationlbl control.
+        /// location control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label locationlbl;
+        protected global::System.Web.UI.WebControls.TextBox location;
 
         /// <summary>
-        /// skillslbl control.
+        /// skills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label skillslbl;
+        protected global::System.Web.UI.WebControls.TextBox skills;
 
         /// <summary>
-        /// experiencelbl control.
+        /// exp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label experiencelbl;
+        protected global::System.Web.UI.WebControls.TextBox exp;
 
         /// <summary>
-        /// jobDesclbl control.
+        /// jobdesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label jobDesclbl;
+        protected global::System.Web.UI.WebControls.TextBox jobdesc;
 
         /// <summary>
         /// Button1 control.

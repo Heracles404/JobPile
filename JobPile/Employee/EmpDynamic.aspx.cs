@@ -57,14 +57,14 @@ namespace JobPile
                         {
                             //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
-                            jobTitlelbl.Text = dt.Rows[0]["jptitle"].ToString();
-                            salarylbl.Text = dt.Rows[0]["jpsalary"].ToString();
-                            shiftlbl.Text = dt.Rows[0]["jpshift"].ToString();
-                            typelbl.Text = dt.Rows[0]["jptype"].ToString();
-                            locationlbl.Text = dt.Rows[0]["jplocation"].ToString();
-                            skillslbl.Text = dt.Rows[0]["jpskills"].ToString();
-                            experiencelbl.Text = dt.Rows[0]["jpexperience"].ToString();
-                            jobDesclbl.Text = dt.Rows[0]["jpdesc"].ToString();
+                            job.Text = dt.Rows[0]["jptitle"].ToString();
+                            salary.Text = dt.Rows[0]["jpsalary"].ToString();
+                            shift.Text = dt.Rows[0]["jpshift"].ToString();
+                            type.Text = dt.Rows[0]["jptype"].ToString();
+                            location.Text = dt.Rows[0]["jplocation"].ToString();
+                            skills.Text = dt.Rows[0]["jpskills"].ToString();
+                            exp.Text = dt.Rows[0]["jpexperience"].ToString();
+                            jobdesc.Text = dt.Rows[0]["jpdesc"].ToString();
                         }
                     }
                 }
