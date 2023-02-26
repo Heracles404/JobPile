@@ -19,7 +19,7 @@
                     <asp:BoundField DataField="jptitle" HeaderText="Job Title" />
                     <asp:BoundField DataField="jpseekers" HeaderText="Number of Applicants" />
                     <asp:BoundField DataField="jpstatus" HeaderText="Status" />
-                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/JobPosts/{0}" DataNavigateUrlFields="jptitle" />
+                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/JobPosts/{0}" DataNavigateUrlFields="jpID" />
                 </Columns>
             </asp:GridView>
         </div>
