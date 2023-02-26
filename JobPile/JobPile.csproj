@@ -68,45 +68,57 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\jobpileDB.accdb" />
+    <Content Include="assets\style\com-master.css" />
     <Content Include="assets\logo\big-jobpile.png" />
     <Content Include="assets\logo\big-jp.png" />
     <Content Include="assets\logo\small-jobpile.png" />
     <Content Include="assets\logo\small-jp.png" />
+    <Content Include="assets\style\data-table.css" />
     <Content Include="assets\style\index.css" />
     <Content Include="assets\style\master.css" />
+    <Content Include="assets\style\sign-up.css" />
+    <Content Include="com_signup.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="joblisting.aspx" />
-    <Content Include="jobpost.aspx" />
-    <Content Include="Web.config" />
     <Content Include="index.aspx" />
-    <Content Include="WebForm2.aspx" />
+    <Content Include="emp_signup.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Company\company_index.aspx" />
+    <Content Include="Company\CreateJobPost.aspx" />
+    <Content Include="Company\EditPost.aspx" />
+    <Content Include="Company\CompanyInfoPage.aspx" />
+    <Content Include="Company\EditCompanyInfoPage.aspx" />
+    <Content Include="Company\DynamicPage.aspx" />
+    <Content Include="Company\DynamicCandidatePage.aspx" />
+    <Content Include="Employee\EmployeeJob.aspx" />
+    <Content Include="Employee\EmpDynamic.aspx" />
+    <Content Include="Employee\EmployeeAccount.aspx" />
+    <Content Include="Employee\EditEmpAccount.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="company.Master.cs">
+      <DependentUpon>company.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company.Master.designer.cs">
+      <DependentUpon>company.Master</DependentUpon>
+    </Compile>
+    <Compile Include="com_signup.aspx.cs">
+      <DependentUpon>com_signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="com_signup.aspx.designer.cs">
+      <DependentUpon>com_signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employee.Master.cs">
+      <DependentUpon>employee.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employee.Master.designer.cs">
+      <DependentUpon>employee.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="index.Master.cs">
-      <DependentUpon>index.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index.Master.designer.cs">
-      <DependentUpon>index.Master</DependentUpon>
-    </Compile>
-    <Compile Include="joblisting.aspx.cs">
-      <DependentUpon>joblisting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="joblisting.aspx.designer.cs">
-      <DependentUpon>joblisting.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="jobpost.aspx.cs">
-      <DependentUpon>jobpost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="jobpost.aspx.designer.cs">
-      <DependentUpon>jobpost.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,16 +126,95 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="emp_signup.aspx.cs">
+      <DependentUpon>emp_signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="emp_signup.aspx.designer.cs">
+      <DependentUpon>emp_signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\company_index.aspx.cs">
+      <DependentUpon>company_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\company_index.aspx.designer.cs">
+      <DependentUpon>company_index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\CreateJobPost.aspx.cs">
+      <DependentUpon>CreateJobPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\CreateJobPost.aspx.designer.cs">
+      <DependentUpon>CreateJobPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\CompanyInfoPage.aspx.cs">
+      <DependentUpon>CompanyInfoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\CompanyInfoPage.aspx.designer.cs">
+      <DependentUpon>CompanyInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\EditCompanyInfoPage.aspx.cs">
+      <DependentUpon>EditCompanyInfoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\EditCompanyInfoPage.aspx.designer.cs">
+      <DependentUpon>EditCompanyInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\DynamicPage.aspx.cs">
+      <DependentUpon>DynamicPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\DynamicPage.aspx.designer.cs">
+      <DependentUpon>DynamicPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\DynamicCandidatePage.aspx.cs">
+      <DependentUpon>DynamicCandidatePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\DynamicCandidatePage.aspx.designer.cs">
+      <DependentUpon>DynamicCandidatePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EmployeeJob.aspx.cs">
+      <DependentUpon>EmployeeJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EmployeeJob.aspx.designer.cs">
+      <DependentUpon>EmployeeJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EmpDynamic.aspx.cs">
+      <DependentUpon>EmpDynamic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EmpDynamic.aspx.designer.cs">
+      <DependentUpon>EmpDynamic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EmployeeAccount.aspx.cs">
+      <DependentUpon>EmployeeAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EmployeeAccount.aspx.designer.cs">
+      <DependentUpon>EmployeeAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EditEmpAccount.aspx.cs">
+      <DependentUpon>EditEmpAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EditEmpAccount.aspx.designer.cs">
+      <DependentUpon>EditEmpAccount.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.Master" />
+    <Content Include="company.Master" />
+    <Content Include="employee.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -138,6 +229,44 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

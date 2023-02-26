@@ -1,0 +1,51 @@
+﻿/* Font-raleway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+:root {
+    --bg-blue: #3889cb;
+    --light: #f8f9fa;
+}
+
+/* Removes Default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--light);
+}
+
+span {
+    width: 10rem;
+    align-items: center;
+}
+
+.logo {
+    padding: 12rem 3rem;
+}
+
+.input-group {
+    margin: 0 .45rem .45rem;
+    min-height: 2.8rem;
+}
+
+.input-group.big{
+    min-height: 5.75rem;
+}
+
+.input-group-text {
+    text-align: center;
+    display: grid;
+    background-color: #0881ec2b;
+    color: #095a9d;
+}
+
+#register, #cancel {
+    width: 10.2rem;
+    height: 2.5rem;
+}
+
+.row.emp {
+    width: 98%;
+    margin-right: 2.5rem;
+    margin-top: 2.5rem;
+}
