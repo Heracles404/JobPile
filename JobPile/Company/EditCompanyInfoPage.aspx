@@ -18,6 +18,16 @@
                     <asp:TextBox ID="emailtxt" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                 </div>
                 <div class="input-group p-2 m-0">
+                    <span class="input-group-text">Password</span>
+                    <!--Password-->
+                    <asp:TextBox ID="pw" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
+                </div>
+                <div class="input-group p-2 m-0">
+                    <span class="input-group-text">Re-password</span>
+                    <!--Re-Password-->
+                    <asp:TextBox ID="repw" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
+                </div>
+                <div class="input-group p-2 m-0">
                     <span class="input-group-text">Website</span>
                     <!--Website Textbox-->
                     <asp:TextBox ID="websitetxt" CssClass="form-control" runat="server"></asp:TextBox>

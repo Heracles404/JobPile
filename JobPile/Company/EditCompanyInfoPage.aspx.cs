@@ -53,25 +53,32 @@ namespace JobPile
 
         protected void cmdSave_Click(object sender, EventArgs e)
         {
-            string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
-            connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
-            OleDbConnection connection = new OleDbConnection(connstr);
-            connection.Open();
-            string email = companyEmail;
+            if(pw.Text == repw.Text)
+            {
+                string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
+                connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
+                OleDbConnection connection = new OleDbConnection(connstr);
+                connection.Open();
+                string email = companyEmail;
 
-            //change cemail based on session
-            string sqlsmt = "update companyTBL set companyName = '" + nametxt.Text;
-            sqlsmt += "',website='" + websitetxt.Text;
-            sqlsmt += "',contactnum='" + numtxt.Text + "',about='" + aboutustxt.Text;
-            sqlsmt += "',mission='" + missiontxt.Text + "',vision='" + visiontxt.Text;
-            sqlsmt += "' where email = '" + email + "';";
+                //change cemail based on session
+                string sqlsmt = "update companyTBL set companyName = '" + nametxt.Text;
+                sqlsmt += "',website='" + websitetxt.Text;
+                sqlsmt += "',contactnum='" + numtxt.Text + "',about='" + aboutustxt.Text;
+                sqlsmt += "',mission='" + missiontxt.Text + "',vision='" + visiontxt.Text;
+                sqlsmt += "' where email = '" + email + "';";
 
-            OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
-            sqlcmd.ExecuteNonQuery();
-            connection.Close();
+                OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
+                sqlcmd.ExecuteNonQuery();
+                connection.Close();
 
-            Response.Write("<script>alert('Company Info Page updated!')</script>");
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='CompanyInfo'},1000)", true);
+                Response.Write("<script>alert('Company Info Page updated!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='CompanyInfo'},1000)", true);
+            }
+            else
+            {
+                Response.Write("<script>alert('Passwords do not match')</script>");
+            }
         }
 
         public string companyEmail

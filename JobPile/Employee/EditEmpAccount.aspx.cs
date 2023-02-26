@@ -41,7 +41,6 @@ namespace JobPile
                 lname.Text = dataReader["lastname"].ToString();
                 uname.Text = dataReader["username"].ToString();
                 pw.Text = dataReader["pass"].ToString();
-                repw.Text = dataReader["pass"].ToString();
                 num.Text = dataReader["mobile"].ToString();
                 age.Text = dataReader["age"].ToString();
                 bday.Text = dataReader["birthday"].ToString();
@@ -62,37 +61,44 @@ namespace JobPile
 
         protected void cmdSave_Click(object sender, EventArgs e)
         {
-            string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
-            connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
-            OleDbConnection connection = new OleDbConnection(connstr);
-            connection.Open();
-            string email = employeeEmail;
+            if (repw.Text == pw.Text)
+            {
+                string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
+                connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
+                OleDbConnection connection = new OleDbConnection(connstr);
+                connection.Open();
+                string email = employeeEmail;
 
-            string sqlsmt = "update employeeTBL set firstname='" + fname.Text;
-            sqlsmt += "',lastname='" + lname.Text;
-            sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
-            sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
-            sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
-            sqlsmt += "',bio='" + bio.Text;
-            sqlsmt += "' where email = '" + email + "';";
+                string sqlsmt = "update employeeTBL set firstname='" + fname.Text;
+                sqlsmt += "',lastname='" + lname.Text;
+                sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
+                sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
+                sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
+                sqlsmt += "',bio='" + bio.Text;
+                sqlsmt += "' where email = '" + email + "';";
 
-            OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
-            sqlcmd.ExecuteNonQuery();
-            connection.Close();
+                OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
+                sqlcmd.ExecuteNonQuery();
+                connection.Close();
 
-            //Reset fields
-            fname.Text = "";
-            lname.Text = "";
-            uname.Text = "";
-            pw.Text = "";
-            num.Text = "";
-            age.Text = "";
-            bday.Text = "";
-            gender.Text = "";
-            bio.Text = "";
-            skills.Text = "";
+                //Reset fields
+                fname.Text = "";
+                lname.Text = "";
+                uname.Text = "";
+                pw.Text = "";
+                num.Text = "";
+                age.Text = "";
+                bday.Text = "";
+                gender.Text = "";
+                bio.Text = "";
+                skills.Text = "";
 
-            Response.Redirect("~/EmployeeAccounts");
+                Response.Redirect("~/EmployeeAccounts");
+            }
+            else
+            {
+                Response.Write("<script>alert('Passwords do not match.')</script>");
+            }
         }
     }
 }
