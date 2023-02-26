@@ -37,15 +37,17 @@ namespace JobPile
 
                 //Input Initial values
 
-                efirsttxt.Text = dataReader["firstname"].ToString();
-                elasttxt.Text = dataReader["lastname"].ToString();
-                usertxt.Text = dataReader["username"].ToString();
-                passtxt.Text = dataReader["pass"].ToString();
-                mobiletxt.Text = dataReader["mobile"].ToString();
-                agetxt.Text = dataReader["age"].ToString();
-                birthdaytxt.Text = dataReader["birthday"].ToString();
-                gendertxt.Text = dataReader["gender"].ToString();
-                biotxt.Text = dataReader["bio"].ToString();
+                fname.Text = dataReader["firstname"].ToString();
+                lname.Text = dataReader["lastname"].ToString();
+                uname.Text = dataReader["username"].ToString();
+                pw.Text = dataReader["pass"].ToString();
+                repw.Text = dataReader["pass"].ToString();
+                num.Text = dataReader["mobile"].ToString();
+                age.Text = dataReader["age"].ToString();
+                bday.Text = dataReader["birthday"].ToString();
+                gender.Text = dataReader["gender"].ToString();
+                bio.Text = dataReader["bio"].ToString();
+                skills.Text = dataReader["skills"].ToString();
             }
         }
 
@@ -66,12 +68,12 @@ namespace JobPile
             connection.Open();
             string email = employeeEmail;
 
-            string sqlsmt = "update employeeTBL set firstname='" + efirsttxt.Text;
-            sqlsmt += "',lastname='" + elasttxt.Text;
-            sqlsmt += "',username='" + usertxt.Text + "', pass='" + passtxt.Text;
-            sqlsmt += "',mobile='" + mobiletxt.Text + "',age=" + agetxt.Text;
-            sqlsmt += ",birthday='" + birthdaytxt.Text + "',gender='" + gendertxt.Text;
-            sqlsmt += "',bio='" + biotxt.Text;
+            string sqlsmt = "update employeeTBL set firstname='" + fname.Text;
+            sqlsmt += "',lastname='" + lname.Text;
+            sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
+            sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
+            sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
+            sqlsmt += "',bio='" + bio.Text;
             sqlsmt += "' where email = '" + email + "';";
 
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
@@ -79,15 +81,16 @@ namespace JobPile
             connection.Close();
 
             //Reset fields
-            efirstlbl.Text = "";
-            elastlbl.Text = "";
-            userlbl.Text = "";
-            passlbl.Text = "";
-            mobilelbl.Text = "";
-            agelbl.Text = "";
-            birthdaylbl.Text = "";
-            genderlbl.Text = "";
-            biolbl.Text = "";
+            fname.Text = "";
+            lname.Text = "";
+            uname.Text = "";
+            pw.Text = "";
+            num.Text = "";
+            age.Text = "";
+            bday.Text = "";
+            gender.Text = "";
+            bio.Text = "";
+            skills.Text = "";
 
             Response.Redirect("~/EmployeeAccounts");
         }

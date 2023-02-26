@@ -57,19 +57,21 @@ span {
     color: #095a9d;
 }
 
-.srch {
-    width: .25rem !important;
+.search-bar {
+    width: 20rem !important;
+}
+
+.search {
+    height: 3rem;
+    width: 8rem;
 }
 
 .skills {
     border: none;
 }
-<<<<<<< HEAD
 
 .approve {
     border-radius: 3px;
     width: 95%;
     height: 2.3rem;
 }
-=======
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8

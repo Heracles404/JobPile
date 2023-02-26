@@ -1,45 +1,74 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/employee.Master" AutoEventWireup="true" CodeBehind="EditEmpAccount.aspx.cs" Inherits="JobPile.WebForm11" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .edit{
+            width: 10rem;
+            margin-left: 0;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
-    First Name:
-    <asp:Label ID="efirstlbl" runat="server" />
-    <asp:TextBox ID="efirsttxt" runat="server"></asp:TextBox>
-    <br />
-    Last Name:
-    <asp:Label ID="elastlbl" runat="server" />
-    <asp:TextBox ID="elasttxt" runat="server"></asp:TextBox>
-    <br />
-    Username:
-    <asp:Label ID="userlbl" runat="server" />
-    <asp:TextBox ID="usertxt" runat="server"></asp:TextBox>
-    <br />
-    Password:
-    <asp:Label ID="passlbl" runat="server" />
-    <asp:TextBox ID="passtxt" runat="server"></asp:TextBox>
-    <br />
-    Mobile Number:
-    <asp:Label ID="mobilelbl" runat="server" />
-    <asp:TextBox ID="mobiletxt" runat="server"></asp:TextBox>
-    <br />
-    Age:
-    <asp:Label ID="agelbl" runat="server" />
-    <asp:TextBox ID="agetxt" runat="server"></asp:TextBox>
-    <br />
-    Birthday:
-    <asp:Label ID="birthdaylbl" runat="server" />
-    <asp:TextBox ID="birthdaytxt" runat="server"></asp:TextBox>
-    <br />
-    Gender:
-    <asp:Label ID="genderlbl" runat="server" />
-    <asp:TextBox ID="gendertxt" runat="server"></asp:TextBox>
-    <br />
-    Biography:
-    <asp:Label ID="biolbl" runat="server" />
-    <asp:TextBox ID="biotxt" runat="server"></asp:TextBox>
-    <br />
-    <asp:Button ID="cmdSave" runat="server" OnClick="cmdSave_Click" Text="Save" />
+    <div class="row emp py-5 px-3">
+        <div class="content container-fluid col-4">
+            <div class="personal-info">
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">First Name</span>
+                    <asp:TextBox ID="fname" CssClass="form-control fw-semibold" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Last Name</span>
+                    <asp:TextBox ID="lname" CssClass="form-control fw-semibold" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Username</span>
+                    <asp:TextBox ID="uname" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Password</span>
+                    <asp:TextBox ID="pw" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Re-password</span>
+                    <asp:TextBox ID="repw" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Mobile Number</span>
+                    <asp:TextBox ID="num" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Age</span>
+                    <asp:TextBox ID="age" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Birthday</span>
+                    <asp:TextBox ID="bday" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Gender</span>
+                    <asp:TextBox ID="gender" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Biography</span>
+                    <asp:TextBox ID="bio" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Education</span>
+                    <asp:TextBox ID="educ" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Experience</span>
+                    <asp:TextBox ID="exp" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Skills</span>
+                    <asp:TextBox ID="skills" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <asp:Button ID="editaccbtn" CssClass="btn btn-primary px-3 edit" runat="server" Text="Save Changes" OnClick="cmdSave_Click"/>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </asp:Content>

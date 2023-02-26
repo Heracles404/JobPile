@@ -1,37 +1,53 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/employee.Master" AutoEventWireup="true" CodeBehind="EmployeeAccount.aspx.cs" Inherits="JobPile.WebForm10" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .edit{
+            width: 15rem;
+            margin-left: 0;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <h3><asp:Label ID ="efirstlbl" runat="server"/> &nbsp <asp:Label ID ="elastlbl" runat="server"/></h3>
-    <asp:Button ID="editaccbtn" runat="server" Text="Edit Account Information" PostBackUrl="~/EditEmployeeAccount"/>
-    <br />
-    Username:
-    <asp:Label ID="userlbl" runat="server" />
-    <br />
-    Password:
-    <asp:Label ID="passlbl" runat="server" />
-    <br />
-    Mobile Number:
-    <asp:Label ID="mobilelbl" runat="server" />
-    <br />
-    Age:
-    <asp:Label ID="agelbl" runat="server" />
-    <br />
-    Birthday:
-    <asp:Label ID="birthdaylbl" runat="server" />
-    <br />
-    Gender:
-    <asp:Label ID="genderlbl" runat="server" />
-    <br />
-    Biography:
-    <asp:Label ID="biolbl" runat="server" />
-    <br />
-    Education:
-    <asp:Label ID="educationlbl" runat="server" />
-    <br />
-    Experience:
-    <asp:Label ID="experiencelbl" runat="server" />
-    <br />
-    Skills:
-    <asp:Label ID="skillslbl" runat="server" />
+    <div class="row emp py-5 px-3">
+        <div class="content container-fluid col-4">
+            <div class="personal-info">
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Name</span>
+                    <asp:TextBox ID="nametxt" CssClass="form-control fw-semibold" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Username</span>
+                    <asp:TextBox ID="uname" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Mobile Number</span>
+                    <asp:TextBox ID="num" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Age</span>
+                    <asp:TextBox ID="age" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Birthday</span>
+                    <asp:TextBox ID="bday" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Gender</span>
+                    <asp:TextBox ID="gender" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Biography</span>
+                    <asp:TextBox ID="bio" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Skills</span>
+                    <asp:TextBox ID="skills" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <asp:Button ID="editaccbtn" CssClass="btn btn-primary mx-0 px-3 edit" runat="server" Text="Edit Account Information" PostBackUrl="~/EditEmployeeAccount" />
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

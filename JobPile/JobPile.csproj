@@ -68,11 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\jobpileDB.accdb" />
-    <Content Include="assets\style\com-master.css" />
     <Content Include="assets\logo\big-jobpile.png" />
     <Content Include="assets\logo\big-jp.png" />
     <Content Include="assets\logo\small-jobpile.png" />
     <Content Include="assets\logo\small-jp.png" />
+    <Content Include="assets\style\emp_master.css" />
+    <Content Include="assets\style\com-master.css" />
+    <Content Include="assets\style\data-table.css" />
     <Content Include="assets\style\index.css" />
     <Content Include="assets\style\master.css" />
     <Content Include="assets\style\sign-up.css" />

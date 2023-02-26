@@ -33,18 +33,15 @@ namespace JobPile
                         {
                             //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
-                            efirstlbl.Text = dt.Rows[0]["firstname"].ToString();
-                            elastlbl.Text = dt.Rows[0]["lastname"].ToString();
-                            userlbl.Text = dt.Rows[0]["username"].ToString();
-                            passlbl.Text = dt.Rows[0]["pass"].ToString();
-                            mobilelbl.Text = dt.Rows[0]["mobile"].ToString();
-                            agelbl.Text = dt.Rows[0]["age"].ToString();
-                            birthdaylbl.Text = dt.Rows[0]["birthday"].ToString();
-                            genderlbl.Text = dt.Rows[0]["gender"].ToString();
-                            biolbl.Text = dt.Rows[0]["bio"].ToString();
-                            educationlbl.Text = dt.Rows[0]["education"].ToString();
-                            experiencelbl.Text = dt.Rows[0]["experience"].ToString();
-                            skillslbl.Text = dt.Rows[0]["skills"].ToString();
+                            nametxt.Text = dt.Rows[0]["firstname"].ToString();
+                            nametxt.Text += " " + dt.Rows[0]["lastname"].ToString();
+                            uname.Text = dt.Rows[0]["username"].ToString();
+                            num.Text = dt.Rows[0]["mobile"].ToString();
+                            age.Text = dt.Rows[0]["age"].ToString();
+                            bday.Text = dt.Rows[0]["birthday"].ToString();
+                            gender.Text = dt.Rows[0]["gender"].ToString();
+                            bio.Text = dt.Rows[0]["bio"].ToString();
+                            skills.Text = dt.Rows[0]["skills"].ToString();
                         }
                     }
                 }

@@ -15,174 +15,129 @@ namespace JobPile
     {
 
         /// <summary>
-        /// efirstlbl control.
+        /// fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label efirstlbl;
+        protected global::System.Web.UI.WebControls.TextBox fname;
 
         /// <summary>
-        /// efirsttxt control.
+        /// lname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox efirsttxt;
+        protected global::System.Web.UI.WebControls.TextBox lname;
 
         /// <summary>
-        /// elastlbl control.
+        /// uname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label elastlbl;
+        protected global::System.Web.UI.WebControls.TextBox uname;
 
         /// <summary>
-        /// elasttxt control.
+        /// pw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox elasttxt;
+        protected global::System.Web.UI.WebControls.TextBox pw;
 
         /// <summary>
-        /// userlbl control.
+        /// repw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userlbl;
+        protected global::System.Web.UI.WebControls.TextBox repw;
 
         /// <summary>
-        /// usertxt control.
+        /// num control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usertxt;
+        protected global::System.Web.UI.WebControls.TextBox num;
 
         /// <summary>
-        /// passlbl control.
+        /// age control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label passlbl;
+        protected global::System.Web.UI.WebControls.TextBox age;
 
         /// <summary>
-        /// passtxt control.
+        /// bday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passtxt;
+        protected global::System.Web.UI.WebControls.TextBox bday;
 
         /// <summary>
-        /// mobilelbl control.
+        /// gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label mobilelbl;
+        protected global::System.Web.UI.WebControls.TextBox gender;
 
         /// <summary>
-        /// mobiletxt control.
+        /// bio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox mobiletxt;
+        protected global::System.Web.UI.WebControls.TextBox bio;
 
         /// <summary>
-        /// agelbl control.
+        /// educ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label agelbl;
+        protected global::System.Web.UI.WebControls.TextBox educ;
 
         /// <summary>
-        /// agetxt control.
+        /// exp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox agetxt;
+        protected global::System.Web.UI.WebControls.TextBox exp;
 
         /// <summary>
-        /// birthdaylbl control.
+        /// skills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label birthdaylbl;
+        protected global::System.Web.UI.WebControls.TextBox skills;
 
         /// <summary>
-        /// birthdaytxt control.
+        /// editaccbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox birthdaytxt;
-
-        /// <summary>
-        /// genderlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label genderlbl;
-
-        /// <summary>
-        /// gendertxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gendertxt;
-
-        /// <summary>
-        /// biolbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label biolbl;
-
-        /// <summary>
-        /// biotxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox biotxt;
-
-        /// <summary>
-        /// cmdSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdSave;
+        protected global::System.Web.UI.WebControls.Button editaccbtn;
     }
 }
