@@ -32,7 +32,7 @@
     <div class="row">
         <div class="mx-auto col-7">
             <h2 class="overflow-hidden">Listings:</h2>
-            <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="empGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="jptitle,jpseekers" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="empGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="jpID,jpseekers,com_id,jptitle" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="jptitle" HeaderText="Job Title" />
@@ -43,7 +43,7 @@
                     <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jpID"/>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button Text="Apply" CssClass="btn apply btn-primary" runat="server" OnClick="empGridView_Button_Click" OnClientClick="this.disabled=true;" />
+                            <asp:Button Text="Apply" CssClass="btn apply btn-primary" runat="server" OnClick="empGridView_Button_Click" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

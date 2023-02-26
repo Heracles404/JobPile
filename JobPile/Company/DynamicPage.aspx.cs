@@ -86,27 +86,43 @@ namespace JobPile
             int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
             //Get the value of column from the DataKeys using the RowIndex.
-
             string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
             int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
+            string jobID = this.Page.RouteData.Values["jpID"].ToString();
 
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
             OleDbConnection newconn = new OleDbConnection(constr);
             newconn.Open();
 
+            // Fetch companyID based on email
+            string empEmail = Session["Email"].ToString();
+            string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
+
+            DataTable dtID = new DataTable();
+            adapter.Fill(dtID);
+            int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+
             //Pending emp_Email
             string query = "delete from SeekersPerPost where ID=" + empID;
-            query += " and JobTitle='" + jobTitle + "';";
+            query += " and JobTitle='" + jobTitle + "' and comID = " + id;
             OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
             sqlcmd.ExecuteNonQuery();
-            /*
-            string date = datetxt.Text;
-            DateTime interview = DateTime.Parse(date);
-            */
 
-            query = "insert into preinterviewTBL values(" + empID;
-            query += ",'" + datetxt.Text + "','" + jobTitle + "');";
+            query = "select * from jobpostTBL where jpID = " + jobID;
+            adapter = new OleDbDataAdapter(query,newconn);
+            dtID = new DataTable();
+            adapter.Fill(dtID);
+            int seeknum = Int32.Parse(dtID.Rows[0]["jpseekers"].ToString());
+            seeknum -= 1;
+
+            query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = " + jobID;
+            sqlcmd = new OleDbCommand(query, newconn);
+            sqlcmd.ExecuteNonQuery();
+
+            query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID) values(" + empID;
+            query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ");";
             sqlcmd = new OleDbCommand(query, newconn);
             sqlcmd.ExecuteNonQuery();
 
