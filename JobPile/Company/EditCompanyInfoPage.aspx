@@ -4,7 +4,7 @@
     <meta http-equiv="refresh" content="10: url=~/CompanyInfo"? />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row emp py-3 px-3">
+    <div class="row emp py-5 px-3">
         <div class="content container-fluid col-4">
             <div class="personal-info">
                 <div class="input-group p-2 m-0">

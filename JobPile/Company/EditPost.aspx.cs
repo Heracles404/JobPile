@@ -52,11 +52,6 @@ namespace JobPile
             if (dataReader.HasRows)
             {
                 dataReader.Read();
-                //Hide Initial Search
-                searchjobtitletxt.Visible = false;
-                cmdSearch.Visible = false;
-                deletebtn.Visible = false;
-
 
                 //Input Initial values
                 jobtitleTXT.Text = dataReader["jptitle"].ToString();
@@ -141,7 +136,7 @@ namespace JobPile
 
             Response.Write("<script>alert('The job post has been updated!')</script>");
             connection.Close();
-            /*
+
             //Reset fields
             searchjobtitletxt.Text = "";
             jobtitleTXT.Text = "";
@@ -152,7 +147,10 @@ namespace JobPile
             skillsTXT.Text = "";
             DDLExperience.SelectedIndex = -1;
             jobdescTXT.Text = "";
-            DDLStatus.SelectedIndex = -1;*/
+
+            DDLStatus.SelectedIndex = -1;
+
+            DDLStatus.SelectedIndex = -1;
 
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
 

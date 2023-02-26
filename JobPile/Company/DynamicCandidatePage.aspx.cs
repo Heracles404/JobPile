@@ -40,16 +40,16 @@ namespace JobPile
                         sda.SelectCommand = cmd;
                         using (DataTable dt = new DataTable())
                         {
-                            //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
                             string name = dt.Rows[0]["firstname"].ToString() + " " + dt.Rows[0]["lastname"].ToString();
-                            namelbl.Text = name;
-                            agelbl.Text = dt.Rows[0]["age"].ToString();
-                            birthdaylbl.Text = dt.Rows[0]["birthday"].ToString();
-                            genderlbl.Text = dt.Rows[0]["gender"].ToString();
-                            skillslbl.Text = dt.Rows[0]["skills"].ToString();
-                            experiencelbl.Text = dt.Rows[0]["experience"].ToString();
-                            biolbl.Text = dt.Rows[0]["bio"].ToString();
+
+                            nameTXT.Text = name;
+                            age.Text = dt.Rows[0]["age"].ToString();
+                            bday.Text = dt.Rows[0]["birthday"].ToString();
+                            gender.Text = dt.Rows[0]["gender"].ToString();
+                            skills.Text = dt.Rows[0]["skills"].ToString();
+                            exp.Text = dt.Rows[0]["experience"].ToString();
+                            bio.Text = dt.Rows[0]["bio"].ToString();
                         }
                     }
                 }

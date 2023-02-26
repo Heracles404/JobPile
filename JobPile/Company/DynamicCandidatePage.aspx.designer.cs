@@ -15,67 +15,67 @@ namespace JobPile
     {
 
         /// <summary>
-        /// namelbl control.
+        /// nameTXT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label namelbl;
+        protected global::System.Web.UI.WebControls.TextBox nameTXT;
 
         /// <summary>
-        /// agelbl control.
+        /// age control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label agelbl;
+        protected global::System.Web.UI.WebControls.TextBox age;
 
         /// <summary>
-        /// birthdaylbl control.
+        /// bday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label birthdaylbl;
+        protected global::System.Web.UI.WebControls.TextBox bday;
 
         /// <summary>
-        /// genderlbl control.
+        /// gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label genderlbl;
+        protected global::System.Web.UI.WebControls.TextBox gender;
 
         /// <summary>
-        /// skillslbl control.
+        /// skills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label skillslbl;
+        protected global::System.Web.UI.WebControls.TextBox skills;
 
         /// <summary>
-        /// experiencelbl control.
+        /// exp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label experiencelbl;
+        protected global::System.Web.UI.WebControls.TextBox exp;
 
         /// <summary>
-        /// biolbl control.
+        /// bio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label biolbl;
+        protected global::System.Web.UI.WebControls.TextBox bio;
 
         /// <summary>
         /// Button1 control.

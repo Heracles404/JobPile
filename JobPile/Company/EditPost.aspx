@@ -4,9 +4,9 @@
     <link href="assets/style/com-master.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row ">
-        <div class="content container-fluid col-5">
-            <div class="px-4 py-0 m-0">
+    <div class="row">
+        <div class="content container-fluid  col-5">
+            <div class="px-4 py-0 mx-0 mt-3">
                 <div class="input-group">
                     <!--Job Title Search-->
                     <span class="input-group-text">Job Title</span>

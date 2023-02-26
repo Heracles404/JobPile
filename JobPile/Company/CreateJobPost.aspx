@@ -4,19 +4,20 @@
     <link href="assets/style/com-master.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row ">
+       <div class="row mt-4">
+    <div class="row">
         <div class="content container-fluid col-5">
             <div class="px-4 py-0 m-0">
                 <div class="input-group">
                     <!--Job Title Textbox-->
                     <span class="input-group-text">Job Title</span>
-                    <asp:TextBox ID="jobtitleTXT" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="jobtitleTXT" CssClass="form-control" runat="server" Required="true"></asp:TextBox>
                 </div>
 
                 <div class="input-group">
                     <!--Salary Textbox-->
                     <span class="input-group-text">Salary</span>
-                    <asp:TextBox ID="salaryTXT" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="salaryTXT" CssClass="form-control" runat="server" required="true" TextMode="number"></asp:TextBox>
                 </div>
 
                 <div class="input-group">
@@ -42,13 +43,13 @@
                 <div class="input-group">
                     <!--Location Textbox-->
                     <span class="input-group-text">Location</span>
-                    <asp:TextBox ID="locationTXT" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="locationTXT" CssClass="form-control" runat="server" required="true"></asp:TextBox>
                 </div>
 
                 <div class="input-group">
                     <!--Skills Textbox-->
                     <span class="input-group-text">Skills</span>
-                    <asp:TextBox ID="skillsTXT" runat="server" CssClass="form-control" OnTextChanged="skillsTXT_TextChanged" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="skillsTXT" runat="server" CssClass="form-control" required="true" OnTextChanged="skillsTXT_TextChanged" AutoPostBack="true"></asp:TextBox>
                     <asp:Button ID="resourcebtn" runat="server" Text="Resourceful" CssClass="px-2 skills btn-light" OnClick="resourcebtn_Click" CausesValidation="False" />
                     <asp:Button ID="efficientbtn" runat="server" Text="Efficient" CssClass="px-2 skills btn-light" OnClick="efficientbtn_Click" CausesValidation="False" />
                 </div>
@@ -69,7 +70,7 @@
                     <span class="input-group-text">Job Description</span>
 
                     <!--Job Description Textbox-->
-                    <asp:TextBox ID="jobdescTXT" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="jobdescTXT" runat="server" required="true" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                 </div>
 
                 <div class="input-group">
@@ -84,7 +85,33 @@
                 <div class="input-group">
                     <!--Post Button-->
                     <asp:Button ID="Postbtn" runat="server" Text="Post Job" OnClick="Postbtn_Click" CssClass="btn btn-primary form-control" />
-                    <asp:Button ID="Button1" runat="server" Text="Back" CausesValidation="False" CssClass="btn btn-secondary form-control" PostBackUrl="~/JobPosts" />
+                    <asp:HyperLink ID="Back" runat="server" NavigateUrl="~/JobPosts" Text="Back" CssClass="btn btn-secondary form-control"></asp:HyperLink>
+                </div>
+                <div class="m-0 p-0">
+                    <!-- Validators -->
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:CompareValidator ControlToValidate="DDLShift" ID="compareshift" CssClass="text-danger" ErrorMessage="Please select a shift!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <asp:CompareValidator ControlToValidate="DDLType" ID="comparetype" CssClass="text-danger" ErrorMessage="Please select a type!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CompareValidator ControlToValidate="DDLExperience" CssClass="text-danger" ID="compareexperience" ErrorMessage="Please select an experience range!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CompareValidator ControlToValidate="DDLStatus" CssClass="text-danger" ID="comparestatus" ErrorMessage="Please select a status!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="input-group">
                     <!-- Validators -->
@@ -93,25 +120,24 @@
                     <asp:RegularExpressionValidator ID="regexsalary" runat="server" ErrorMessage="Numbers only and must have more than 3 digits!" ControlToValidate="salaryTXT" ValidationExpression="^[0-9]{3,10}$">
                     </asp:RegularExpressionValidator>
                     <br />
-                    <asp:CompareValidator ControlToValidate="DDLShift" ID="compareshift" ErrorMessage="Please select a shift!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                    <asp:CompareValidator ControlToValidate="DDLShift" ID="CompareValidator1" ErrorMessage="Please select a shift!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
                     <br />
-                    <asp:CompareValidator ControlToValidate="DDLType" ID="comparetype" ErrorMessage="Please select a type!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                    <asp:CompareValidator ControlToValidate="DDLType" ID="CompareValidator2" ErrorMessage="Please select a type!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
                     <br />
                     <asp:RequiredFieldValidator ID="reqlocation" runat="server" ErrorMessage="*" ControlToValidate="locationTXT"></asp:RequiredFieldValidator>
                     <br />
                     <asp:RequiredFieldValidator ID="reqskills" runat="server" ErrorMessage="*" ControlToValidate="skillsTXT"></asp:RequiredFieldValidator>
                     <br />
-                    <asp:CompareValidator ControlToValidate="DDLExperience" ID="compareexperience" ErrorMessage="Please select an experience range!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                    <asp:CompareValidator ControlToValidate="DDLExperience" ID="CompareValidator3" ErrorMessage="Please select an experience range!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
                     <br />
                     <asp:RequiredFieldValidator ID="reqjobdesc" runat="server" ErrorMessage="*" ControlToValidate="jobdescTXT"></asp:RequiredFieldValidator>
                     <br />
-                    <asp:CompareValidator ControlToValidate="DDLStatus" ID="comparestatus" ErrorMessage="Please select a status!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
+                    <asp:CompareValidator ControlToValidate="DDLStatus" ID="CompareValidator4" ErrorMessage="Please select a status!" runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="-1" Type="Integer" />
                     <br />
                 </div>
 
             </div>
         </div>
     </div>
-
 
 </asp:Content>
