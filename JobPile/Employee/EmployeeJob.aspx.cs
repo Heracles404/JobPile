@@ -28,13 +28,6 @@ namespace JobPile
             // Fetch companyID based on email
             string empEmail = Session["Email"].ToString();
             string sqlsmt = "select * from jobpostTBL;";
-            /*OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
-
-            DataTable dtID = new DataTable();
-            adapter.Fill(dtID);
-            int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
-
-            string query = "select * from jobpostTBL where com_id = " + id + ";";*/
             OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
 
             DataTable dataTable = new DataTable();
@@ -50,9 +43,11 @@ namespace JobPile
             int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
             //Get the value of column from the DataKeys using the RowIndex.
-            string jobID = empGridView.DataKeys[rowIndex].Values[0].ToString();
+            int jobID = Int32.Parse(empGridView.DataKeys[rowIndex].Values[0].ToString());
             int seeknum = Int32.Parse(empGridView.DataKeys[rowIndex].Values[1].ToString());
             seeknum += 1;
+            int compID = Int32.Parse(empGridView.DataKeys[rowIndex].Values[2].ToString());
+            string jobTitle = empGridView.DataKeys[rowIndex].Values[3].ToString();
 
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
@@ -63,17 +58,9 @@ namespace JobPile
             string empEmail = Session["Email"].ToString();
             string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "';";
             OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
-
             DataTable dtID = new DataTable();
             adapter.Fill(dtID);
             int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
-
-            sqlsmt = "select * from jobpostTBL where jpID=" + jobID;
-            adapter = new OleDbDataAdapter(sqlsmt, newconn);
-            dtID = new DataTable();
-            adapter.Fill(dtID);
-            string jobTitle = dtID.Rows[0]["jptitle"].ToString();
-            int compID = Int32.Parse(dtID.Rows[0]["com_ID"].ToString());
 
             //Pending emp_Email
             string query = "insert into SeekersPerPost values (" + id;
@@ -81,13 +68,12 @@ namespace JobPile
             OleDbCommand sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
 
-            query = "update jobpostTBL set jpseekers = " + seeknum + " where jptitle = '";
-            query += jobTitle + "'";
+            query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = ";
+            query += jobID;
             sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
 
             Response.Write("<script>alert('Submission Successful')</script>");
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeJobLists'},1000)", true);
             newconn.Close();
         }
 
