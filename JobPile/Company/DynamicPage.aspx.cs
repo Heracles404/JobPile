@@ -22,7 +22,7 @@ namespace JobPile
         private void PopulatePage()
         {
             //Store jobTitle data from HyperLink
-            string jobTitle = this.Page.RouteData.Values["jptitle"].ToString();
+            string jobID = this.Page.RouteData.Values["jpID"].ToString();
 
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
@@ -41,8 +41,8 @@ namespace JobPile
             conn.Close();*/
 
             //Used in Gridview to show every record
-            string jobInfo = "SELECT * FROM jobpostTBL WHERE jptitle = '" + jobTitle + "';";
-            
+            string jobInfo = "SELECT * FROM jobpostTBL WHERE jpID = " + jobID + ";";
+
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
             connstr += Server.MapPath("~/App_Data/JobpileDB.accdb");
             using (OleDbConnection con = new OleDbConnection(connstr))
@@ -57,7 +57,8 @@ namespace JobPile
                         {
                             //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
-                            jobTitlelbl.Text = dt.Rows[0]["jptitle"].ToString();
+                            string jobTitle = dt.Rows[0]["jptitle"].ToString();
+                            jobTitlelbl.Text = jobTitle;
                             salarylbl.Text = dt.Rows[0]["jpsalary"].ToString();
                             shiftlbl.Text = dt.Rows[0]["jpshift"].ToString();
                             typelbl.Text = dt.Rows[0]["jptype"].ToString();
@@ -65,25 +66,21 @@ namespace JobPile
                             skillslbl.Text = dt.Rows[0]["jpskills"].ToString();
                             experiencelbl.Text = dt.Rows[0]["jpexperience"].ToString();
                             jobDesclbl.Text = dt.Rows[0]["jpdesc"].ToString();
+
+                            /*
+                            string query = "select employeeTBL.ID, firstname+' '+lastname as [Candidate], ";
+                            query += "SeekersPerPost.JobTitle  from employeeTBL, SeekersPerPost ";
+                            query += "where employeeTBL.ID = SeekersPerPost.ID and SeekersPerPost.JobTitle = '" + jobTitle + "';";
+                            OleDbDataAdapter newadapter = new OleDbDataAdapter(query, con);
+
+                            DataTable dataTable = new DataTable();
+                            newadapter.Fill(dataTable);
+                            GridView1.DataSource = dataTable;
+                            GridView1.DataBind();*/
                         }
                     }
                 }
             }
-
-            OleDbConnection newconn = new OleDbConnection(connstr);
-            newconn.Open();
-
-            string query = "select employeeTBL.ID, firstname+' '+lastname as [Candidate], SeekersPerPost.JobTitle  from employeeTBL, SeekersPerPost ";
-            query += "where employeeTBL.ID = SeekersPerPost.ID and SeekersPerPost.JobTitle = '" + jobTitle + "';";
-            OleDbDataAdapter newadapter = new OleDbDataAdapter(query, newconn);
-
-            DataTable dataTable = new DataTable();
-            newadapter.Fill(dataTable);
-            GridView1.DataSource = dataTable;
-            GridView1.DataBind();
-
-
-            newconn.Close();
         }
 
         // Temporary Store Email for server transfer
