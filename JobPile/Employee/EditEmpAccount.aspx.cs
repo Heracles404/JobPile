@@ -26,12 +26,8 @@ namespace JobPile
 
             //companyEmail to cemail
             //Query to get all data based on jobTitle
-<<<<<<< HEAD
-            string sqlsmt = "SELECT * FROM [employeeTBL] WHERE [emp_email] = 'active'";
-=======
             string email = employeeEmail;
             string sqlsmt = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "'";
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
 
             OleDbDataReader dataReader = sqlcmd.ExecuteReader();
@@ -41,17 +37,6 @@ namespace JobPile
 
                 //Input Initial values
 
-<<<<<<< HEAD
-                efirstlbl.Text = dataReader["emp_first"].ToString();
-                elastlbl.Text = dataReader["emp_last"].ToString();
-                userlbl.Text = dataReader["emp_user"].ToString();
-                passlbl.Text = dataReader["emp_pass"].ToString();
-                mobilelbl.Text = dataReader["emp_mobile"].ToString();
-                agelbl.Text = dataReader["emp_age"].ToString();
-                birthdaylbl.Text = dataReader["emp_birthday"].ToString();
-                genderlbl.Text = dataReader["emp_gender"].ToString();
-                biolbl.Text = dataReader["emp_bio"].ToString();
-=======
                 efirsttxt.Text = dataReader["firstname"].ToString();
                 elasttxt.Text = dataReader["lastname"].ToString();
                 usertxt.Text = dataReader["username"].ToString();
@@ -61,7 +46,6 @@ namespace JobPile
                 birthdaytxt.Text = dataReader["birthday"].ToString();
                 gendertxt.Text = dataReader["gender"].ToString();
                 biotxt.Text = dataReader["bio"].ToString();
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             }
         }
 
@@ -69,11 +53,7 @@ namespace JobPile
         {
             get
             {
-<<<<<<< HEAD
-                string cemail = Session["emp_email"].ToString();
-=======
                 string cemail = Session["Email"].ToString();
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 return cemail;
             }
         }
@@ -84,16 +64,6 @@ namespace JobPile
             connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
             OleDbConnection connection = new OleDbConnection(connstr);
             connection.Open();
-<<<<<<< HEAD
-
-            string sqlsmt = "update employeeTBL set emp_first='" + efirstlbl.Text;
-            sqlsmt += "',emp_last='" + elastlbl.Text;
-            sqlsmt += "',emp_user='" + userlbl.Text + "', emp_pass='" + passlbl.Text;
-            sqlsmt += "',emp_mobile='" + mobilelbl.Text + "',emp_age='" + agelbl.Text;
-            sqlsmt += "',emp_birthday='" + birthdaylbl.Text + "',emp_gender='" + genderlbl.Text;
-            sqlsmt += "',emp_bio='" + biolbl.Text;
-            sqlsmt += "' where emp_email = 'active';";
-=======
             string email = employeeEmail;
 
             string sqlsmt = "update employeeTBL set firstname='" + efirsttxt.Text;
@@ -103,7 +73,6 @@ namespace JobPile
             sqlsmt += ",birthday='" + birthdaytxt.Text + "',gender='" + gendertxt.Text;
             sqlsmt += "',bio='" + biotxt.Text;
             sqlsmt += "' where email = '" + email + "';";
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
             sqlcmd.ExecuteNonQuery();
@@ -120,11 +89,7 @@ namespace JobPile
             genderlbl.Text = "";
             biolbl.Text = "";
 
-<<<<<<< HEAD
-            Response.Redirect("~/EmpAccounts");
-=======
             Response.Redirect("~/EmployeeAccounts");
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         }
     }
 }

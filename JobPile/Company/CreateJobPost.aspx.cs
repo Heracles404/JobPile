@@ -38,33 +38,20 @@ namespace JobPile
             connection.Open();
 
             //companyID use as com_id
-<<<<<<< HEAD
-            //Insert Job Post Data
-            string sqlcmd = "insert into jobpostTBL(jptitle,jpsalary,jpshift,jptype,jplocation,";
-            sqlcmd += "jpskills,jpexperience,jpDesc,jpstatus,com_id) values ('" + jobtitleTXT.Text;
-=======
             int compID = companyID;
             //Insert Job Post Data
             string sqlcmd = "insert into jobpostTBL(jptitle,jpsalary,jpshift,jptype,jplocation,";
             sqlcmd += "jpskills,jpexperience,jpDesc,jpstatus,jpseekers,com_id) values ('" + jobtitleTXT.Text;
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             sqlcmd += "'," + Double.Parse(salaryTXT.Text) + ",'" + DDLShift.SelectedItem;
             sqlcmd += "','" + DDLType.SelectedItem + "','" + locationTXT.Text;
             sqlcmd += "','" + skillsTXT.Text + "','" + DDLExperience.SelectedItem;
             sqlcmd += "','" + jobdescTXT.Text + "','" + DDLStatus.SelectedItem;
-<<<<<<< HEAD
-            sqlcmd += "',1);";
-=======
             sqlcmd += "',0,"+ compID +");";
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             OleDbCommand sqlcommand = new OleDbCommand(sqlcmd, connection);
             sqlcommand.ExecuteNonQuery();
 
-<<<<<<< HEAD
-=======
             /*
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             //Check if job title has seeker(candidate)
             sqlcmd = "select count(SeekersPerPost.JobTitle) as [seekers] from SeekersPerPost ";
             sqlcmd += "group by SeekersPerPost.JobTitle having ((SeekersPerPost.[JobTitle]) = '" + jobtitleTXT.Text + "');";
@@ -79,31 +66,12 @@ namespace JobPile
                 sqlcmd += " where jptitle = '" + jobtitleTXT.Text + "';";
                 sqlcommand = new OleDbCommand(sqlcmd, connection);
                 sqlcommand.ExecuteNonQuery();
-<<<<<<< HEAD
-            }
-=======
             }*/
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
             Response.Write("<script>alert('The job has been posted!')</script>");
             connection.Close();
 
-<<<<<<< HEAD
-            //Reset fields
-            jobtitleTXT.Text = "";
-            salaryTXT.Text = "";
-            DDLShift.SelectedIndex = -1;
-            DDLType.SelectedIndex = -1;
-            locationTXT.Text = "";
-            skillsTXT.Text = "";
-            DDLExperience.SelectedIndex = -1;
-            jobdescTXT.Text = "";
-            DDLStatus.SelectedIndex = -1;
-
-            Response.Redirect("~/JobPosts");
-=======
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         }
 
         protected void skillsTXT_TextChanged(object sender, EventArgs e)
@@ -149,10 +117,7 @@ namespace JobPile
 
                 DataTable dtID = new DataTable();
                 adapter.Fill(dtID);
-<<<<<<< HEAD
-=======
                 /*
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 string id = dtID.Rows[0]["ID"].ToString();
 
                 //Used in Gridview to show every record
@@ -160,16 +125,10 @@ namespace JobPile
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
                 OleDbDataReader datareader = sqlcmd.ExecuteReader();
 
-<<<<<<< HEAD
-                datareader.Read();
-                conn.Close();
-                return Int32.Parse(datareader["com_id"].ToString());
-=======
                 datareader.Read();*/
                 conn.Close();
 
                 return Int32.Parse(dtID.Rows[0]["ID"].ToString());
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
             }
         }
     }

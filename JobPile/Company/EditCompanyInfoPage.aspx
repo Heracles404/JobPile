@@ -1,10 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/company.Master" AutoEventWireup="true" CodeBehind="EditCompanyInfoPage.aspx.cs" Inherits="JobPile.WebForm5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<<<<<<< HEAD
-=======
     <meta http-equiv="refresh" content="10: url=~/CompanyInfo"? />
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row emp py-3 px-3">

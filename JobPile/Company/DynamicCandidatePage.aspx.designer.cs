@@ -15,117 +15,67 @@ namespace JobPile
     {
 
         /// <summary>
-<<<<<<< HEAD
-        /// nameTXT control.
-=======
         /// namelbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox nameTXT;
-
-        /// <summary>
-        /// age control.
-=======
         protected global::System.Web.UI.WebControls.Label namelbl;
 
         /// <summary>
         /// agelbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox age;
-
-        /// <summary>
-        /// bday control.
-=======
         protected global::System.Web.UI.WebControls.Label agelbl;
 
         /// <summary>
         /// birthdaylbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox bday;
-
-        /// <summary>
-        /// gender control.
-=======
         protected global::System.Web.UI.WebControls.Label birthdaylbl;
 
         /// <summary>
         /// genderlbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox gender;
-
-        /// <summary>
-        /// skills control.
-=======
         protected global::System.Web.UI.WebControls.Label genderlbl;
 
         /// <summary>
         /// skillslbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox skills;
-
-        /// <summary>
-        /// exp control.
-=======
         protected global::System.Web.UI.WebControls.Label skillslbl;
 
         /// <summary>
         /// experiencelbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox exp;
-
-        /// <summary>
-        /// bio control.
-=======
         protected global::System.Web.UI.WebControls.Label experiencelbl;
 
         /// <summary>
         /// biolbl control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox bio;
-=======
         protected global::System.Web.UI.WebControls.Label biolbl;
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
 
         /// <summary>
         /// Button1 control.

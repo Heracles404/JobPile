@@ -150,20 +150,12 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.Button cmdSave;
 
         /// <summary>
-<<<<<<< HEAD
-        /// Back control.
-=======
         /// Button1 control.
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.HyperLink Back;
-=======
         protected global::System.Web.UI.WebControls.Button Button1;
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
     }
 }

@@ -73,7 +73,6 @@
     <Content Include="assets\logo\big-jp.png" />
     <Content Include="assets\logo\small-jobpile.png" />
     <Content Include="assets\logo\small-jp.png" />
-    <Content Include="assets\style\data-table.css" />
     <Content Include="assets\style\index.css" />
     <Content Include="assets\style\master.css" />
     <Content Include="assets\style\sign-up.css" />

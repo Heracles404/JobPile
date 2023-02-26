@@ -51,11 +51,7 @@ namespace JobPile
                 {
                     Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
                     Session["Email"] = email.Text;
-<<<<<<< HEAD
-                    Response.Redirect("~/EmpJobLists");
-=======
                     Response.Redirect("~/EmployeeJobLists");
->>>>>>> defcc4714ee1b51c41a61c765718ca7e0f50bea8
                 }
                 else
                 {

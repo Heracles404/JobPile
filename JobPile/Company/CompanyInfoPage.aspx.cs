@@ -32,13 +32,13 @@ namespace JobPile
                         {
                             //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
-                            cname.Text = dt.Rows[0]["companyName"].ToString();
-                            emailTXT.Text = dt.Rows[0]["email"].ToString();
-                            website.Text = dt.Rows[0]["website"].ToString();
-                            contact.Text = dt.Rows[0]["contactnum"].ToString();
-                            about.Text = dt.Rows[0]["about"].ToString();
-                            mission.Text = dt.Rows[0]["mission"].ToString();
-                            vision.Text = dt.Rows[0]["vision"].ToString();
+                            cnamelbl.Text = dt.Rows[0]["companyName"].ToString();
+                            emaillbl.Text = dt.Rows[0]["email"].ToString();
+                            websitelbl.Text = dt.Rows[0]["website"].ToString();
+                            numlbl.Text = dt.Rows[0]["contactnum"].ToString();
+                            aboutuslbl.Text = dt.Rows[0]["about"].ToString();
+                            missionlbl.Text = dt.Rows[0]["mission"].ToString();
+                            visionlbl.Text = dt.Rows[0]["vision"].ToString();
                         }
                     }
                 }

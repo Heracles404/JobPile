@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net.Mail;
 
 namespace JobPile
 {
@@ -112,10 +111,14 @@ namespace JobPile
             newconn.Open();
 
             //Pending emp_Email
-            string query = "delete from seekerpostTBL where emp_id=" + empID;
-            query += " and job_title='" + jobTitle + "';";
+            string query = "delete from SeekersPerPost where ID=" + empID;
+            query += " and JobTitle='" + jobTitle + "';";
             OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
             sqlcmd.ExecuteNonQuery();
+            /*
+            string date = datetxt.Text;
+            DateTime interview = DateTime.Parse(date);
+            */
 
             query = "insert into preinterviewTBL values(" + empID;
             query += ",'" + datetxt.Text + "','" + jobTitle + "');";
@@ -124,29 +127,13 @@ namespace JobPile
 
             GridView1.DataBind();
 
-
-            // Send approval notification
-            using (MailMessage mail = new MailMessage())
-            {
-                // Some Changes in Here
-                string applicant = "Change this to applicant email";
-                string com_mail = "Change this to company email"; 
-
-                mail.From = new MailAddress("jobPileMCL@gmail.com");
-                mail.To.Add(applicant);
-                mail.Subject = "JobPile OTP - DO NOT REPLY";
-                mail.Body = "Congratulations! You have been approved for an interview on " + datetxt.Text + ". \nPlease Contact " + com_mail + " for more details.";
-                mail.IsBodyHtml = true; using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    smtp.Credentials = new System.Net.NetworkCredential("jobPileMCL@gmail.com", "hmmxzaoxdpbvrbhv");
-                    smtp.EnableSsl = true;
-                    smtp.Send(mail);
-                }
-            }
-
-
             Response.Write("<script>alert('Approval Successful')</script>");
             datetxt.Text = "";
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/JobPosts");
         }
     }
 }
