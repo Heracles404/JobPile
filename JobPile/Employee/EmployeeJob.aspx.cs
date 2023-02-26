@@ -110,7 +110,10 @@ namespace JobPile
 
             //Int32.Parse(Session["companyid"].ToString()) to com_id
             //Used in Gridview to show every record
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             string sqlsmt = "select * from jobpostTBL where jptitle = '" + empsearchtxt.Text + "'";
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt,conn);
 
