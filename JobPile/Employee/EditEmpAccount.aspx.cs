@@ -75,6 +75,7 @@ namespace JobPile
                 sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
                 sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
                 sqlsmt += "',bio='" + bio.Text;
+                sqlsmt += "',skills='" + skills.Text;
                 sqlsmt += "' where email = '" + email + "';";
 
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
