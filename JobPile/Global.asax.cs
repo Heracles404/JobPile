@@ -23,7 +23,7 @@ namespace JobPile
             routes.MapPageRoute("CompanyInfo", "CompanyInfo", "~/Company/CompanyInfoPage.aspx");
             routes.MapPageRoute("EditInfoPage", "EditCompanyInfo", "~/Company/EditCompanyInfoPage.aspx");
             routes.MapPageRoute("DynamicPage", "JobPosts/{jpID}", "~/Company/DynamicPage.aspx");
-            routes.MapPageRoute("CandidatePage", "JobPost/{ID}", "~/Company/DynamicCandidatePage.aspx");
+            routes.MapPageRoute("CandidatePage", "Candidates/{ID}", "~/Company/DynamicCandidatePage.aspx");
 
             routes.MapPageRoute("EmpJobList", "EmployeeJobLists", "~/Employee/EmployeeJob.aspx");
             routes.MapPageRoute("EmpAccount", "EmployeeAccounts", "~/Employee/EmployeeAccount.aspx");

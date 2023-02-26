@@ -58,8 +58,7 @@ namespace JobPile
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Store emp_id data from HyperLink
-            int emp_id = Int32.Parse(this.Page.RouteData.Values["ID"].ToString());
+            Response.Redirect("~/JobPosts");
         }
     }
 }

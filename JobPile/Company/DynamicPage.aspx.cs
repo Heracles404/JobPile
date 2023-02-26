@@ -29,17 +29,6 @@ namespace JobPile
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
-            /*
-            // Fetch companyID based on email
-            string user = Session["Email"].ToString();
-            string jobInfo = "select * from companyTBL where email = '" + user + "';";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(jobInfo, conn);
-
-            DataTable dtID = new DataTable();
-            adapter.Fill(dtID);
-            int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
-            conn.Close();*/
-
             //Used in Gridview to show every record
             string jobInfo = "SELECT * FROM jobpostTBL WHERE jpID = " + jobID + ";";
 
