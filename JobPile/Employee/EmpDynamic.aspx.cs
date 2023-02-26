@@ -27,7 +27,6 @@ namespace JobPile
             conn.Open();
 
             string jobID = this.Page.RouteData.Values["jpID"].ToString();
-            
             /*
             // Fetch companyID based on email
             //string empEmail = Session["Email"].ToString();
@@ -41,7 +40,6 @@ namespace JobPile
             sqlsmt = "select * from jobpostTBL where " + id + " = SeekersPerPost.ID and";
             sqlsmt += " SeekersPerPost.comID = jobpostTBL.com_id and SeekersPerPost.JobTitle = jobpostTBL.jptitle and jobpostTBL.jptitle = @jobTitle";
             */
-
             string jobInfo = "SELECT * FROM [jobpostTBL] WHERE [jpID] = @jobID";
 
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
@@ -52,7 +50,7 @@ namespace JobPile
                 {
                     using (OleDbDataAdapter sda = new OleDbDataAdapter())
                     {
-                        cmd.Parameters.AddWithValue("@jobID",jobID);
+                        cmd.Parameters.AddWithValue("@jobID", jobID);
                         cmd.Connection = con;
                         sda.SelectCommand = cmd;
                         using (DataTable dt = new DataTable())
