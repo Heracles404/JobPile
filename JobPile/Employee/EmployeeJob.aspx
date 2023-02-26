@@ -40,7 +40,7 @@
                     <asp:BoundField DataField="jpshift" HeaderText="Time" />
                     <asp:BoundField DataField="jplocation" HeaderText="Location" />
                     <asp:BoundField DataField="jpsalary" HeaderText="Salary" />
-                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmpPost/{0}" DataNavigateUrlFields="jptitle" />
+                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jptitle" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Button Text="Apply" CssClass="btn apply btn-primary" runat="server" OnClick="empGridView_Button_Click" OnClientClick="this.disabled=true;" />

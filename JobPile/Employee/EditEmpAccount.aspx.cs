@@ -93,7 +93,8 @@ namespace JobPile
                 bio.Text = "";
                 skills.Text = "";
 
-                Response.Redirect("~/EmployeeAccounts");
+                Response.Write("<script>alert('Submission Successful')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},1000)", true);
             }
             else
             {
