@@ -46,7 +46,12 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Gender</span>
-                    <asp:TextBox ID="gender" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="gender" CssClass="form-control" runat="server">
+                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="-1"></asp:ListItem>
+                        <asp:ListItem Text="M" Value="M"></asp:ListItem>
+                        <asp:ListItem Text="F" Value="F"></asp:ListItem>
+                        <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Biography</span>
