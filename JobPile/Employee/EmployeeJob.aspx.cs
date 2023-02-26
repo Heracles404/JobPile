@@ -110,13 +110,13 @@ namespace JobPile
 
             //Int32.Parse(Session["companyid"].ToString()) to com_id
             //Used in Gridview to show every record
-            string sqlsmt = "select * from jobpostTBL where jptitle >= '" + empsearchtxt.Text + "'";
+            string sqlsmt = "select * from jobpostTBL where jptitle = '" + empsearchtxt.Text + "'";
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt,conn);
 
             OleDbDataReader dataReader = sqlcmd.ExecuteReader();
             if (dataReader.HasRows)
             {
-                sqlsmt = "select * from jobpostTBL where jptitle >= '" + empsearchtxt.Text + "'";
+                sqlsmt = "select * from jobpostTBL where jptitle = '" + empsearchtxt.Text + "'";
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
