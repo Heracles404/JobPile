@@ -39,15 +39,15 @@
         <Columns>
             <asp:BoundField DataField="Candidate" HeaderText="Candidate"/>
             <asp:BoundField DataField="ID" HeaderText="Employee ID"/>
-            <asp:HyperLinkField Text="Employee Info" DataNavigateUrlFormatString = "~JobPosts/{jptitle}/{ID}" DataNavigateUrlFields = "ID,JobTitle" /> 
-             <asp:TemplateField>
-                  <ItemTemplate>
-                      <asp:Button ID="approvebtn" runat="server" Text="Approve"  onclick="approve_Click" />
-                  </ItemTemplate>
-              </asp:TemplateField>
+            <asp:HyperLinkField Text="Employee Info" DataNavigateUrlFormatString = "~/JobPost/{0}" DataNavigateUrlFields = "ID" /> 
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Button ID="approvebtn" runat="server" Text="Approve"  onclick="approve_Click" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <br />
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Back" PostBackUrl="~/JobPosts"/>
+    <asp:Button ID="Button1" runat="server" Text="Back" onclick="Button1_Click"/>
 </asp:Content>
