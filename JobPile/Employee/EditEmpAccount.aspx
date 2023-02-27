@@ -2,16 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .edit{
+        .edit {
             width: 10rem;
             margin-left: 0;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row emp py-5 px-3">
+    <div class="row emp py-4 px-3">
         <div class="content container-fluid col-4">
             <div class="personal-info">
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Resumé Link:</span>
+                    <asp:TextBox ID="resume" CssClass="form-control fw-semibold" runat="server"></asp:TextBox>
+                </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">First Name</span>
                     <asp:TextBox ID="fname" CssClass="form-control fw-semibold" runat="server"></asp:TextBox>
@@ -46,7 +50,7 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Gender</span>
-                        <asp:DropDownList ID="gender" CssClass="form-control" runat="server">
+                    <asp:DropDownList ID="gender" CssClass="form-control" runat="server">
                         <asp:ListItem Enabled="true" Text="Select Requirement" Value="None"></asp:ListItem>
                         <asp:ListItem Text="M" Value="M"></asp:ListItem>
                         <asp:ListItem Text="F" Value="F"></asp:ListItem>
@@ -56,32 +60,14 @@
                     <span class="input-group-text">Biography</span>
                     <asp:TextBox ID="bio" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
-                </div>
-                <div class="input-group px-2 py-1 m-0">
-                    <span class="input-group-text">Education</span>
-                        <asp:DropDownList ID="educa" CssClass="form-control" runat="server">
-                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="None"></asp:ListItem>
-                        <asp:ListItem Text="Undergraduate" Value="Undergraduate"></asp:ListItem>
-                        <asp:ListItem Text="Secondary Education" Value="Secondary Education"></asp:ListItem>
-                        <asp:ListItem Text="Higher Education" Value="Higher Education"></asp:ListItem>
-                    </asp:DropDownList>
-                <div class="input-group px-2 py-1 m-0">
-                    <span class="input-group-text">Degree</span>
-                    <asp:TextBox ID="degr" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
-                <div class="input-group px-2 py-1 m-0">
-                    <span class="input-group-text">Experience</span>
-                    <asp:TextBox ID="exp" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Skills</span>
                     <asp:TextBox ID="skills" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
-                    <asp:Button ID="editaccbtn" CssClass="btn btn-primary px-3 edit" runat="server" Text="Save Changes" OnClick="cmdSave_Click"/>
+                    <asp:Button ID="editaccbtn" CssClass="btn btn-primary px-3 edit" runat="server" Text="Save Changes" OnClick="cmdSave_Click" />
                 </div>
             </div>
         </div>
     </div>
-
 </asp:Content>

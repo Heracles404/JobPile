@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin-dom\company.aspx" />
     <Content Include="App_Data\jobpileDB.accdb" />
     <Content Include="assets\logo\big-jobpile.png" />
     <Content Include="assets\logo\big-jp.png" />
@@ -98,13 +97,6 @@
     <Content Include="Company\PendingInterview.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin-dom\company.aspx.cs">
-      <DependentUpon>company.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin-dom\company.aspx.designer.cs">
-      <DependentUpon>company.aspx</DependentUpon>
-    </Compile>
     <Compile Include="company.Master.cs">
       <DependentUpon>company.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -241,6 +233,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin-dom\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

@@ -69,6 +69,10 @@
                         <asp:TextBox ID="bioTxt" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                     </div>
                     <div class="input-group">
+                        <span class="input-group-text">Resumé Link</span>
+                        <asp:TextBox ID="resume" runat="server" CssClass="form-control" Required="True"></asp:TextBox>
+                    </div>
+                    <div class="input-group">
                         <asp:Button ID="register" CssClass="btn btn-primary form-control" OnClick="Register" runat="server" Text="Register" />
                         <asp:Button ID="cancel" CssClass="btn btn-secondary form-control" runat="server" Text="Cancel" />
                     </div>

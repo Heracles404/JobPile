@@ -46,7 +46,6 @@ namespace JobPile
                 bday.Text = dataReader["birthday"].ToString();
                 gender.Text = dataReader["gender"].ToString();
                 bio.Text = dataReader["bio"].ToString();
-                exp.Text = dataReader["experience"].ToString();
                 skills.Text = dataReader["skills"].ToString();
             }
         }
@@ -76,10 +75,8 @@ namespace JobPile
                 sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
                 sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
                 sqlsmt += "',bio='" + bio.Text;
-                sqlsmt += "',education='" + educa.Text;
-                sqlsmt += "',degree='" + degr.Text;
-                sqlsmt += "',experience='" + exp.Text;
                 sqlsmt += "',skills='" + skills.Text;
+                sqlsmt += "',resume='" + resume.Text;
                 sqlsmt += "' where email = '" + email + "';";
 
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
@@ -97,13 +94,10 @@ namespace JobPile
                 gender.Text = "";
                 bio.Text = "";
                 bio.Text = "";
-                educa.Text = "";
-                degr.Text = "";
-                exp.Text = "";
                 skills.Text = "";
 
                 Response.Write("<script>alert('Changes Saved.')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},1000)", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},3600)", true);
             }
             else
             {

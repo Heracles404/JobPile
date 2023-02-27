@@ -15,6 +15,15 @@ namespace JobPile
     {
 
         /// <summary>
+        /// resume control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox resume;
+
+        /// <summary>
         /// fname control.
         /// </summary>
         /// <remarks>
@@ -103,33 +112,6 @@ namespace JobPile
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox bio;
-
-        /// <summary>
-        /// educa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList educa;
-
-        /// <summary>
-        /// degr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox degr;
-
-        /// <summary>
-        /// exp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox exp;
 
         /// <summary>
         /// skills control.
