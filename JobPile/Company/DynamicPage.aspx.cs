@@ -22,8 +22,13 @@ namespace JobPile
 
         private void PopulatePage()
         {
-            //Store jobTitle data from HyperLink
-            string jobID = this.Page.RouteData.Values["jpID"].ToString();
+            //Store jobID data from HyperLink
+            string temp = this.Page.RouteData.Values["jpID"].ToString();
+            string tempid = temp.Replace("{", "").Replace("}", "");
+            int jobID = Int32.Parse(tempid);
+
+            Session["jpID"] = jobID;
+
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
             OleDbConnection conn = new OleDbConnection(constr);
@@ -58,10 +63,6 @@ namespace JobPile
                     }
                 }
             }
-            //SELECT jobpostTBL.jptitle, employeeTBL.firstname
-            //FROM(jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = 1;
-
-
             string query = "select employeeTBL.ID, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
             query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
             query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
@@ -71,15 +72,6 @@ namespace JobPile
             newadapter.Fill(dataTable);
             GridView1.DataSource = dataTable;
             GridView1.DataBind();
-        }
-
-        // Temporary Store Email for server transfer
-        public string emailSrc
-        {
-            get
-            {
-                return Session["Email"].ToString();
-            }
         }
 
         protected void approve_Click(object sender, EventArgs e)

@@ -58,7 +58,8 @@ namespace JobPile
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/JobPosts");
+            int jpID  = Int32.Parse(Session["jpID"].ToString());
+            Response.Redirect("~/JobPosts/{" + jpID+ "}");
         }
     }
 }
