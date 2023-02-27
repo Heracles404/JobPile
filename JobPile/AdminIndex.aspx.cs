@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
 using System.Data.OleDb;
 using System.Data;
-=======
->>>>>>> Stashed changes
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +13,6 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
             if (!IsPostBack)
             {
                 GridData();
@@ -99,7 +95,6 @@ namespace JobPile
             Response.Write("<script>alert('Account Deleted')</script>");
         }
 
-
         protected void jobseekers_Click(object sender, EventArgs e)
         {
             GridView1.Visible = false;
@@ -132,9 +127,6 @@ namespace JobPile
             adapter.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
-=======
-
->>>>>>> Stashed changes
         }
     }
 }

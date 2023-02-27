@@ -96,6 +96,8 @@
     <Content Include="Employee\EmployeeAccount.aspx" />
     <Content Include="Employee\EditEmpAccount.aspx" />
     <Content Include="Company\PendingInterview.aspx" />
+    <Content Include="AdminEmpList.aspx" />
+    <Content Include="AdminCompList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminIndex.aspx.cs">
@@ -227,6 +229,20 @@
     </Compile>
     <Compile Include="Company\PendingInterview.aspx.designer.cs">
       <DependentUpon>PendingInterview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEmpList.aspx.cs">
+      <DependentUpon>AdminEmpList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminEmpList.aspx.designer.cs">
+      <DependentUpon>AdminEmpList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCompList.aspx.cs">
+      <DependentUpon>AdminCompList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCompList.aspx.designer.cs">
+      <DependentUpon>AdminCompList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-<<<<<<< Updated upstream
             <asp:Button ID="jobseekers" runat="server" CssClass="btn info btn-primary" Text="Show Job Seeker List" OnClick="jobseekers_Click" />
             <asp:Button ID="company" runat="server" CssClass="btn info btn-primary" Text="Show Company List" OnClick="company_Click" />
             <asp:GridView ID="applicantGrid" runat="server" AutoGenerateColumns="False" DataKeynames="ID" CssClass="col-12 text-center rounded-5 mt-4" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -60,9 +59,6 @@
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
-=======
-            Hello
->>>>>>> Stashed changes
         </div>
     </form>
 </body>
