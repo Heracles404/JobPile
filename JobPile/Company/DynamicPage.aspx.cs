@@ -82,7 +82,9 @@ namespace JobPile
             //Get the value of column from the DataKeys using the RowIndex.
             string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
             int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
-            string jobID = this.Page.RouteData.Values["jpID"].ToString();
+            string temp = this.Page.RouteData.Values["jpID"].ToString();
+            string tempid = temp.Replace("{", "").Replace("}", "");
+            int jobID = Int32.Parse(tempid);
 
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");

@@ -26,37 +26,34 @@ namespace JobPile
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
-
-            // Fetch companyID based on email
-            string empEmail = Session["Email"].ToString();
-            string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
-
-            DataTable dtID = new DataTable();
-            adapter.Fill(dtID);
-            int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
-
-
-            //Used in Gridview to show every record
-            sqlsmt = "SELECT * FROM jobpostTBL WHERE com_id = " + id + ";";
-            adapter = new OleDbDataAdapter(sqlsmt, conn);
-
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            applicantGrid.DataSource = dataTable;
-            applicantGrid.DataBind();
-            conn.Close();
-        }
-
-
-        // Temporary Store Email for server transfer
-        public string emailSrc
-        {
-            get
+            try
             {
+                // Fetch companyID based on email
                 string empEmail = Session["Email"].ToString();
-                return empEmail;
+                string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
+
+                DataTable dtID = new DataTable();
+                adapter.Fill(dtID);
+                int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+
+
+                //Used in Gridview to show every record
+                sqlsmt = "SELECT * FROM jobpostTBL WHERE com_id = " + id + ";";
+                adapter = new OleDbDataAdapter(sqlsmt, conn);
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                applicantGrid.DataSource = dataTable;
+                applicantGrid.DataBind();
             }
+            catch
+            {
+                Response.Write("<script>alert('Invalid Email!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},1000)", true);
+            }
+            
+            conn.Close();
         }
     }
 }

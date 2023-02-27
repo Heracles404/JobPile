@@ -233,6 +233,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin-dom\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
