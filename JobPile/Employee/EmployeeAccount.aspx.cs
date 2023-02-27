@@ -41,6 +41,8 @@ namespace JobPile
                             bday.Text = dt.Rows[0]["birthday"].ToString();
                             gender.Text = dt.Rows[0]["gender"].ToString();
                             bio.Text = dt.Rows[0]["bio"].ToString();
+                            educ.Text = dt.Rows[0]["education"].ToString();
+                            degr.Text = dt.Rows[0]["degree"].ToString();
                             exp.Text = dt.Rows[0]["experience"].ToString();
                             skills.Text = dt.Rows[0]["skills"].ToString();
                         }

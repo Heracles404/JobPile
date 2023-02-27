@@ -41,6 +41,14 @@
                     <asp:TextBox ID="bio" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Education</span>
+                    <asp:TextBox ID="educ" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Degree</span>
+                    <asp:TextBox ID="degr" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Experience</span>
                     <asp:TextBox ID="exp" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                 </div>
