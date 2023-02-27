@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Reflection;
+using System.Net.Mail;
 
 namespace JobPile
 {
@@ -63,7 +64,7 @@ namespace JobPile
                     }
                 }
             }
-            string query = "select employeeTBL.ID, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
+            string query = "select employeeTBL.ID, employeeTBL.resumelink, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
             query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
             query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
             OleDbDataAdapter newadapter = new OleDbDataAdapter(query, conn);
@@ -84,6 +85,7 @@ namespace JobPile
                 //Get the value of column from the DataKeys using the RowIndex.
                 string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
                 int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
+                string resumelink = GridView1.DataKeys[rowIndex].Values[2].ToString();
                 string temp = this.Page.RouteData.Values["jpID"].ToString();
                 string tempid = temp.Replace("{", "").Replace("}", "");
                 int jobID = Int32.Parse(tempid);
@@ -94,8 +96,8 @@ namespace JobPile
                 newconn.Open();
 
                 // Fetch companyID based on email
-                string empEmail = Session["Email"].ToString();
-                string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+                string compEmail = Session["Email"].ToString();
+                string sqlsmt = "select * from companyTBL where email = '" + compEmail + "';";
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
 
                 DataTable dtID = new DataTable();
