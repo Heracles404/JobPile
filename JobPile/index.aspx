@@ -136,7 +136,7 @@
                             <asp:ListItem Value="2">People</asp:ListItem>
                         </asp:DropDownList>
                         <asp:TextBox runat="server" ID="txtSearch" type="text" class="form-control col-sm-11" />
-                        <asp:Button runat="server" ID="search" type="button" class="btn btn-outline-primary text-white col-sm-8" Text="Search" />
+                        <Button ID="search" type="button" class="btn btn-outline-primary text-white col-sm-8" data-bs-toggle="modal" data-bs-target="#login-form">Search</Button>
                     </div>
                 </div>
             </div>
