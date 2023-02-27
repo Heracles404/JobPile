@@ -44,7 +44,7 @@ namespace JobPile
             conn.Open();
 
             //Search if jobTitle in JobPosts
-            string sqlsmt = "select * from jobpostTBL where jptitle ='";
+            string sqlsmt = "select * from jobpostTBL where jptitle = '";
             sqlsmt += searchjobtitletxt.Text + "'";
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
 

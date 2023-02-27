@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.DynamicData;
 
 namespace JobPile
 {
@@ -27,6 +28,8 @@ namespace JobPile
 
             // Fetch companyID based on email
             string empEmail = Session["Email"].ToString();
+
+
             string sqlsmt = "select * from jobpostTBL;";
             OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
 
@@ -64,7 +67,7 @@ namespace JobPile
 
             //Pending emp_Email
             string query = "insert into SeekersPerPost values (" + id;
-            query += ",'" + jobTitle + "'," + compID + ");";
+            query += "," + jobID + ");";
             OleDbCommand sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
 
@@ -72,6 +75,13 @@ namespace JobPile
             query += jobID;
             sqlcmd = new OleDbCommand(query,newconn);
             sqlcmd.ExecuteNonQuery();
+
+            query = "select * from jobpostTBL where not (jpID = " + jobID + ")";
+            adapter = new OleDbDataAdapter(query, newconn);
+            dtID = new DataTable();
+            adapter.Fill(dtID);
+            empGridView.DataSource = dtID;
+            empGridView.DataBind();
 
             Response.Write("<script>alert('Submission Successful')</script>");
             newconn.Close();

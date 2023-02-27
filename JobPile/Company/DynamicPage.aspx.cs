@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Reflection;
 
 namespace JobPile
 {
@@ -23,7 +24,6 @@ namespace JobPile
         {
             //Store jobTitle data from HyperLink
             string jobID = this.Page.RouteData.Values["jpID"].ToString();
-            string jobTitle;
             string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
             constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
             OleDbConnection conn = new OleDbConnection(constr);
@@ -46,8 +46,7 @@ namespace JobPile
                         {
                             //Stores query results in data table and set each fields in labels
                             sda.Fill(dt);
-                            jobTitle = dt.Rows[0]["jptitle"].ToString();
-                            jobTitlelbl.Text = jobTitle;
+                            jobTitlelbl.Text = dt.Rows[0]["jptitle"].ToString();
                             salarylbl.Text = dt.Rows[0]["jpsalary"].ToString();
                             shiftlbl.Text = dt.Rows[0]["jpshift"].ToString();
                             typelbl.Text = dt.Rows[0]["jptype"].ToString();
@@ -59,10 +58,13 @@ namespace JobPile
                     }
                 }
             }
+            //SELECT jobpostTBL.jptitle, employeeTBL.firstname
+            //FROM(jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = 1;
 
-            string query = "select employeeTBL.ID, firstname+' '+lastname as [Candidate], ";
-            query += "SeekersPerPost.JobTitle  from employeeTBL, SeekersPerPost ";
-            query += "where employeeTBL.ID = SeekersPerPost.ID and SeekersPerPost.JobTitle = '" + jobTitle + "';";
+
+            string query = "select employeeTBL.ID, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
+            query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
+            query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
             OleDbDataAdapter newadapter = new OleDbDataAdapter(query, conn);
 
             DataTable dataTable = new DataTable();
@@ -105,8 +107,8 @@ namespace JobPile
             int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
 
             //Pending emp_Email
-            string query = "delete from SeekersPerPost where ID=" + empID;
-            query += " and JobTitle='" + jobTitle + "' and comID = " + id;
+            string query = "delete from SeekersPerPost where empID=" + empID;
+            query += " and jpID=" + jobID;
             OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
             sqlcmd.ExecuteNonQuery();
 
