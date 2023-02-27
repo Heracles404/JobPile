@@ -94,6 +94,7 @@
     <Content Include="Employee\EmpDynamic.aspx" />
     <Content Include="Employee\EmployeeAccount.aspx" />
     <Content Include="Employee\EditEmpAccount.aspx" />
+    <Content Include="Company\PendingInterview.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="company.Master.cs">
@@ -211,6 +212,13 @@
     </Compile>
     <Compile Include="Employee\EditEmpAccount.aspx.designer.cs">
       <DependentUpon>EditEmpAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\PendingInterview.aspx.cs">
+      <DependentUpon>PendingInterview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company\PendingInterview.aspx.designer.cs">
+      <DependentUpon>PendingInterview.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

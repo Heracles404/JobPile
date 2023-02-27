@@ -10,6 +10,8 @@
 
             <!--Edit Job Post Button-->
             <asp:Button ID="Button2" CssClass="postBTN btn btn-primary button-content my-0" runat="server" Text="Edit a Job Post" PostBackUrl="~/EditPosts" />
+
+            <asp:Button ID="Button3" CssClass="postBTN btn btn-primary button-content my-0" runat="server" Text="Pending Interviews" PostBackUrl="~/PendingInterviews" />
             <br />
         </div>
         <div class="col-8">

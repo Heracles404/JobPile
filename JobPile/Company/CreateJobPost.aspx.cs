@@ -117,15 +117,6 @@ namespace JobPile
 
                 DataTable dtID = new DataTable();
                 adapter.Fill(dtID);
-                /*
-                string id = dtID.Rows[0]["ID"].ToString();
-
-                //Used in Gridview to show every record
-                sqlsmt = "select com_id from companyTBL where com_id = '" + id + "';";
-                OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
-                OleDbDataReader datareader = sqlcmd.ExecuteReader();
-
-                datareader.Read();*/
                 conn.Close();
 
                 return Int32.Parse(dtID.Rows[0]["ID"].ToString());
