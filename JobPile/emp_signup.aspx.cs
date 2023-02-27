@@ -21,7 +21,7 @@ namespace JobPile
             catch (NullReferenceException ex)
             {
                 Response.Write("<script>alert('Please log in or sign up.')</script>");
-                Response.Redirect("~/index.aspx");
+                Response.Redirect("~/Main");
             }
         }
         protected void Register(object sender, EventArgs e)

@@ -42,7 +42,7 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Birthday</span>
-                    <asp:TextBox ID="bday" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="bday" TextMode="Date" runat="server" CssClass="mx-2 py-1 px-3 rounded-1"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Gender</span>
@@ -50,7 +50,6 @@
                         <asp:ListItem Enabled="true" Text="Select Requirement" Value="-1"></asp:ListItem>
                         <asp:ListItem Text="M" Value="M"></asp:ListItem>
                         <asp:ListItem Text="F" Value="F"></asp:ListItem>
-                        <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
