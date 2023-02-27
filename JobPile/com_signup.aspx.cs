@@ -20,7 +20,7 @@ namespace JobPile
             catch (NullReferenceException ex)
             {
                 Response.Write("<script>alert('Please log in or sign up.')</script>");
-                Response.Redirect("~/index.aspx");
+                Response.Redirect("~/Main");
             }
         }
 
@@ -78,7 +78,7 @@ namespace JobPile
                 website.Text = "";
 
                 // Session["Email"] = email.Text;
-                Response.Redirect("company_index.aspx");
+                Response.Redirect("~/JobPosts");
             }
 
         }
