@@ -47,7 +47,7 @@
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Gender</span>
                         <asp:DropDownList ID="gender" CssClass="form-control" runat="server">
-                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="-1"></asp:ListItem>
+                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="None"></asp:ListItem>
                         <asp:ListItem Text="M" Value="M"></asp:ListItem>
                         <asp:ListItem Text="F" Value="F"></asp:ListItem>
                     </asp:DropDownList>
@@ -56,9 +56,18 @@
                     <span class="input-group-text">Biography</span>
                     <asp:TextBox ID="bio" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
+                </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Education</span>
-                    <asp:TextBox ID="educ" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="educa" CssClass="form-control" runat="server">
+                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="None"></asp:ListItem>
+                        <asp:ListItem Text="Undergraduate" Value="Undergraduate"></asp:ListItem>
+                        <asp:ListItem Text="Secondary Education" Value="Secondary Education"></asp:ListItem>
+                        <asp:ListItem Text="Higher Education" Value="Higher Education"></asp:ListItem>
+                    </asp:DropDownList>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Degree</span>
+                    <asp:TextBox ID="degr" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Experience</span>
