@@ -1,3 +1,10 @@
 
 *.accdb
 *.laccdb
+.vs/JobPile/v17/.suo
+.vs/JobPile/v17/.suo
+.vs/JobPile/v17/.suo
+JobPile/bin/JobPile.dll
+JobPile/bin/JobPile.pdb
+JobPile/obj/x64/Debug/JobPile.dll
+JobPile/obj/x64/Debug/JobPile.pdb

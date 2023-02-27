@@ -73,7 +73,7 @@ namespace JobPile
                 connection.Close();
 
                 Response.Write("<script>alert('Company Info Page updated!')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='CompanyInfo'},1000)", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='CompanyInfo'},3600)", true);
             }
             else
             {
