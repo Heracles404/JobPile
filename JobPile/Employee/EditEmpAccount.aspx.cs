@@ -46,6 +46,7 @@ namespace JobPile
                 bday.Text = dataReader["birthday"].ToString();
                 gender.Text = dataReader["gender"].ToString();
                 bio.Text = dataReader["bio"].ToString();
+                exp.Text = dataReader["experience"].ToString();
                 skills.Text = dataReader["skills"].ToString();
             }
         }
@@ -75,6 +76,7 @@ namespace JobPile
                 sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
                 sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
                 sqlsmt += "',bio='" + bio.Text;
+                sqlsmt += "',experience='" + exp.Text;
                 sqlsmt += "',skills='" + skills.Text;
                 sqlsmt += "' where email = '" + email + "';";
 
@@ -92,6 +94,8 @@ namespace JobPile
                 bday.Text = "";
                 gender.Text = "";
                 bio.Text = "";
+                bio.Text = "";
+                exp.Text = "";
                 skills.Text = "";
 
                 Response.Write("<script>alert('Changes Saved.')</script>");
