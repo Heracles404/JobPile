@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< Updated upstream
 using System.Data.OleDb;
 using System.Data;
+=======
+>>>>>>> Stashed changes
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +16,7 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             if (!IsPostBack)
             {
                 GridData();
@@ -128,6 +132,9 @@ namespace JobPile
             adapter.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
+=======
+
+>>>>>>> Stashed changes
         }
     }
 }
