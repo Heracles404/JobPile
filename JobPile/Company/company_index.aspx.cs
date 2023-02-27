@@ -49,8 +49,8 @@ namespace JobPile
             }
             catch
             {
-                Response.Write("<script>alert('Invalid Email!')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},1000)", true);
+                Response.Write("<script>alert('Timeout! \nLogin Again!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
             }
             
             conn.Close();
