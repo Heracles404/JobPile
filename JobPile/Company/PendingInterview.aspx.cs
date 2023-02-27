@@ -21,23 +21,31 @@ namespace JobPile
 
         private void PopulatePage()
         {
-            string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
-            constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
-            OleDbConnection conn = new OleDbConnection(constr);
-            conn.Open();
+            try
+            {
+                string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+                constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+                OleDbConnection conn = new OleDbConnection(constr);
+                conn.Open();
 
-            /*SELECT employeeTBL.firstname + " " + employeeTBL.lastname as [Candidate], preInterviewTBL.jobtitle, preInterviewTBL.interviewDate
-            FROM employeeTBL RIGHT JOIN preInterviewTBL ON employeeTBL.ID = preInterviewTBL.empID
-            WHERE(((preInterviewTBL.compID) = 1));*/
-            string query = "SELECT employeeTBL.firstname + ' ' + employeeTBL.lastname as [Candidate], ";
-            query += "preInterviewTBL.jobtitle, preInterviewTBL.interviewDate, preInterviewTBL.interviewID FROM employeeTBL RIGHT JOIN preInterviewTBL ";
-            query += "ON employeeTBL.ID = preInterviewTBL.empID WHERE preInterviewTBL.compID = " + companyID;
-            query += " order by preInterviewTBL.interviewDate asc";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            applicantGrid.DataSource= dt;
-            applicantGrid.DataBind();
+                /*SELECT employeeTBL.firstname + " " + employeeTBL.lastname as [Candidate], preInterviewTBL.jobtitle, preInterviewTBL.interviewDate
+                FROM employeeTBL RIGHT JOIN preInterviewTBL ON employeeTBL.ID = preInterviewTBL.empID
+                WHERE(((preInterviewTBL.compID) = 1));*/
+                string query = "SELECT employeeTBL.firstname + ' ' + employeeTBL.lastname as [Candidate], ";
+                query += "preInterviewTBL.jobtitle, preInterviewTBL.interviewDate, preInterviewTBL.interviewID FROM employeeTBL RIGHT JOIN preInterviewTBL ";
+                query += "ON employeeTBL.ID = preInterviewTBL.empID WHERE preInterviewTBL.compID = " + companyID;
+                query += " order by preInterviewTBL.interviewDate asc";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                applicantGrid.DataSource = dt;
+                applicantGrid.DataBind();
+            }
+            catch
+            {
+                Response.Write("<script>alert('Timeout! \nPlease Login Again!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+            }
         }
 
         protected void applicantGrid_Button_Click(object sender, EventArgs e)

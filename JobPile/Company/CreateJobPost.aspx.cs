@@ -71,7 +71,7 @@ namespace JobPile
             Response.Write("<script>alert('The job has been posted!')</script>");
             connection.Close();
 
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},3600)", true);
         }
 
         protected void skillsTXT_TextChanged(object sender, EventArgs e)
