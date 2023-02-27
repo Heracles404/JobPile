@@ -38,7 +38,7 @@
                     <div class="d-flex" role="search">
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/JobPosts" Text="Job Posts" CssClass="btn btn-primary"></asp:HyperLink>
                         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/CompanyInfo" Text="Account" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/index.aspx" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Main" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
                     </div>
                 </div>
             </nav>

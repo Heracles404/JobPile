@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.DynamicData;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
 
 namespace JobPile
 {
@@ -51,7 +52,8 @@ namespace JobPile
 
         protected void empGridView_Button_Click(object sender, EventArgs e)
         {
-            try { 
+            try 
+            { 
                 //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
@@ -69,11 +71,12 @@ namespace JobPile
 
                 // Fetch companyID based on email
                 string empEmail = Session["Email"].ToString();
-                string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "';";
+                string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "' or username = '" + empEmail +"';";
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
                 DataTable dtID = new DataTable();
                 adapter.Fill(dtID);
                 int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+                string resumelink = dtID.Rows[0]["resumelink"].ToString();
 
                 //Pending emp_Email
                 string query = "insert into SeekersPerPost values (" + id;
@@ -86,6 +89,31 @@ namespace JobPile
                 sqlcmd = new OleDbCommand(query,newconn);
                 sqlcmd.ExecuteNonQuery();
 
+                query = "select email from companyTBL where ID = " + compID;
+                adapter = new OleDbDataAdapter(query, newconn);
+                dtID= new DataTable();
+                adapter.Fill(dtID);
+                string compEmail = dtID.Rows[0]["email"].ToString();
+
+                string com_mail = compEmail;
+                string job = jobTitle;
+                string resume = resumelink;
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("jobPileMCL@gmail.com");
+                    mail.To.Add(com_mail);
+                    mail.Subject = "Received an Application";
+                    mail.Body = "Your job post " + job + " received an application. \n Resumé:  " + resume;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new System.Net.NetworkCredential("jobPileMCL@gmail.com", "hmmxzaoxdpbvrbhv");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+
                 query = "select * from jobpostTBL where not (jpID = " + jobID + ")";
                 adapter = new OleDbDataAdapter(query, newconn);
                 dtID = new DataTable();
@@ -95,13 +123,13 @@ namespace JobPile
 
                 Response.Write("<script>alert('Submission Successful')</script>");
                 newconn.Close();
-        }
+            }
             catch
             {
                 Response.Write("<script>alert('Timeout! \nPlease Login Again!')</script>");
                 ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+            }
         }
-    }
 
         public string emp_Email
         {
