@@ -76,56 +76,65 @@ namespace JobPile
 
         protected void approve_Click(object sender, EventArgs e)
         {
-            //Determine the RowIndex of the Row whose Button was clicked.
-            int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
+            try
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
-            //Get the value of column from the DataKeys using the RowIndex.
-            string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
-            int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
-            string temp = this.Page.RouteData.Values["jpID"].ToString();
-            string tempid = temp.Replace("{", "").Replace("}", "");
-            int jobID = Int32.Parse(tempid);
+                //Get the value of column from the DataKeys using the RowIndex.
+                string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
+                int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
+                string temp = this.Page.RouteData.Values["jpID"].ToString();
+                string tempid = temp.Replace("{", "").Replace("}", "");
+                int jobID = Int32.Parse(tempid);
 
-            string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
-            constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
-            OleDbConnection newconn = new OleDbConnection(constr);
-            newconn.Open();
+                string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+                constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+                OleDbConnection newconn = new OleDbConnection(constr);
+                newconn.Open();
 
-            // Fetch companyID based on email
-            string empEmail = Session["Email"].ToString();
-            string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
+                // Fetch companyID based on email
+                string empEmail = Session["Email"].ToString();
+                string sqlsmt = "select * from companyTBL where email = '" + empEmail + "';";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
 
-            DataTable dtID = new DataTable();
-            adapter.Fill(dtID);
-            int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+                DataTable dtID = new DataTable();
+                adapter.Fill(dtID);
+                int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
 
-            //Pending emp_Email
-            string query = "delete from SeekersPerPost where empID=" + empID;
-            query += " and jpID=" + jobID;
-            OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
-            sqlcmd.ExecuteNonQuery();
+                //Pending emp_Email
+                string query = "delete from SeekersPerPost where empID=" + empID;
+                query += " and jpID=" + jobID;
+                OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
 
-            query = "select * from jobpostTBL where jpID = " + jobID;
-            adapter = new OleDbDataAdapter(query,newconn);
-            dtID = new DataTable();
-            adapter.Fill(dtID);
-            int seeknum = Int32.Parse(dtID.Rows[0]["jpseekers"].ToString());
-            seeknum -= 1;
+                query = "select * from jobpostTBL where jpID = " + jobID;
+                adapter = new OleDbDataAdapter(query, newconn);
+                dtID = new DataTable();
+                adapter.Fill(dtID);
+                int seeknum = Int32.Parse(dtID.Rows[0]["jpseekers"].ToString());
+                seeknum -= 1;
 
-            query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = " + jobID;
-            sqlcmd = new OleDbCommand(query, newconn);
-            sqlcmd.ExecuteNonQuery();
+                query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = " + jobID;
+                sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
 
-            query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID) values(" + empID;
-            query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ");";
-            sqlcmd = new OleDbCommand(query, newconn);
-            sqlcmd.ExecuteNonQuery();
+                query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID) values(" + empID;
+                query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ");";
+                sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
 
-            GridView1.DataBind();
+                GridView1.DataBind();
 
-            Response.Write("<script>alert('Approval Successful')</script>");
-            datetxt.Text = "";
+                Response.Write("<script>alert('Approval Successful')</script>");
+                datetxt.Text = "";
+
+            }
+            catch
+            {
+                Response.Write("<script>alert('Timeout! \nLogin Again!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
