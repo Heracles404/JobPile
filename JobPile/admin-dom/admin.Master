@@ -37,10 +37,10 @@
 
                     <!-- Log-in/signup -->
                     <div class="d-flex" role="search">
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="applicants.aspx" Text="Applicants" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="companies.aspx" Text="Company" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="adminlist.aspx" Text="Admins" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="admin-login.aspx" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ApplicantsList" Text="Applicants" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/CompaniesList" Text="Company" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AdminLists" Text="Admins" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
                     </div>
                 </div>
             </nav>

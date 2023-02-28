@@ -37,7 +37,7 @@ namespace JobPile.admin_dom
             if (dtUser.Rows.Count > 0) 
             {
                 Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
-                Response.Redirect("applicants.aspx");
+                Response.Redirect("~/ApplicantsList");
             }
             else
             {
