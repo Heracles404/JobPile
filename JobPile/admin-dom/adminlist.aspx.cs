@@ -1,4 +1,6 @@
-﻿using System;
+﻿//.cs file
+
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data;
@@ -31,6 +33,8 @@ namespace JobPile.admin_dom
             adapter.Fill(dt);
             adminGrid.DataSource = dt;
             adminGrid.DataBind();
+
+
         }
 
         protected void admindelete_Click(object sender, EventArgs e)
@@ -58,6 +62,72 @@ namespace JobPile.admin_dom
             adminGrid.DataBind();
 
             Response.Write("<script>alert('Account Deleted')</script>");
+        }
+
+        protected void newAdmin_Click(object sender, EventArgs e)
+        {
+            if(username.Text.Trim() == "")
+            {
+                Response.Write("<script>alert('Username is required.')</script>");
+                pw.Text = "";
+                repw.Text = "";
+            }
+            else
+            {
+                if (pw.Text == repw.Text)
+                {
+                    string uname = username.Text;
+                    string pass = pw.Text;
+
+                    string constr = "Provider=Microsoft.ACE.OLEDB.12.0;";
+                    constr += "Data Source=" + Server.MapPath("~/App_Data/jobpileDB.accdb");
+                    OleDbConnection conn = new OleDbConnection(constr);
+
+                    conn.Open();
+
+                    // Check if Number is not yet registered
+                    string cont = "SELECT * FROM adminTBL WHERE username = '" + uname + "';";
+                    OleDbDataAdapter sqlcont = new OleDbDataAdapter(cont, conn);
+                    DataTable dtcont = new DataTable();
+                    sqlcont.Fill(dtcont);
+
+                    if (dtcont.Rows.Count > 0)
+                    {
+                        Response.Write("<script>alert('Username is already taken.')</script>");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string cmd = "INSERT INTO adminTBL (username, pass) VALUES";
+                            cmd += "('" + uname + "','" + pass + "');";
+
+                            OleDbCommand sql = new OleDbCommand(cmd, conn);
+
+                            sql.ExecuteNonQuery();
+
+                            Response.Write("<script>alert('New admin has been created.')</script>");
+                        }
+                        catch
+                        {
+                            Response.Write("<script>alert('Please check your input and try again.')</script>");
+                        }
+
+                        conn.Close();
+
+                        username.Text = "";
+                        pw.Text = "";
+                        repw.Text = "";
+                    }
+                }
+                else
+                {
+                    pw.Text = "";
+                    repw.Text = "";
+                    Response.Write("<script>alert('Passwords do not match.')</script>");
+                    errLbl.Visible = true;
+                }
+            }
         }
     }
 }

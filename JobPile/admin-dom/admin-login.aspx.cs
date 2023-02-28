@@ -28,7 +28,7 @@ namespace JobPile.admin_dom
             OleDbConnection conn = new OleDbConnection(constr);
 
             // Log In Syntax - Check Username
-            string username = "SELECT * FROM adminTBL WHERE username = '" + user + "' AND password = '" + pass + "';";
+            string username = "SELECT * FROM adminTBL WHERE username = '" + user + "' AND pass = '" + pass + "';";
             OleDbCommand sqlcmd = new OleDbCommand(username, conn);
             OleDbDataAdapter sqladapt = new OleDbDataAdapter(sqlcmd);
             DataTable dtUser = new DataTable();
