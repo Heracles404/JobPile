@@ -13,6 +13,10 @@
         <div class="content container-fluid col-4">
             <div class="personal-info">
                 <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Resumé Link</span>
+                    <asp:TextBox ID="resume" CssClass="form-control fw-semibold" ReadOnly="true" runat="server"></asp:TextBox>
+                </div>
+                <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Name</span>
                     <asp:TextBox ID="nametxt" CssClass="form-control fw-semibold" ReadOnly="true" runat="server"></asp:TextBox>
                 </div>

@@ -34,6 +34,7 @@ namespace JobPile
             string fname = firstname.Text;
             string bday = birthday.Text;
             string gender = genderChoose.SelectedValue;
+            string res = resume.Text;
 
 
             DateTime birth = DateTime.Parse(bday);
@@ -71,8 +72,8 @@ namespace JobPile
             }else
             {
                 conn.Open();
-                string cmd = "INSERT INTO employeeTBL (email, username, mobile, pass, lastname, firstname, age, birthday, gender, bio) VALUES";
-                cmd += "('" + mail + "','" + user + "','" + num + "','" + pw + "','" + lname + "','" + fname + "','" + ageIn + "','" + bday + "','" + gender + "','" + about +"');";
+                string cmd = "INSERT INTO employeeTBL (email, username, mobile, pass, lastname, firstname, age, birthday, gender, bio, resume) VALUES";
+                cmd += "('" + mail + "','" + user + "','" + num + "','" + pw + "','" + lname + "','" + fname + "','" + ageIn + "','" + bday + "','" + gender + "','" + about + "','" + res + "');";
 
                 OleDbCommand sql = new OleDbCommand(cmd, conn);
 

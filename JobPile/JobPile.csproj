@@ -67,7 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdminIndex.aspx" />
+    <Content Include="admin-dom\admin-login.aspx" />
+    <Content Include="admin-dom\companylist.aspx" />
+    <Content Include="admin-dom\applicants.aspx" />
+    <Content Include="admin-dom\adminlist.aspx" />
     <Content Include="App_Data\jobpileDB.accdb" />
     <Content Include="assets\logo\big-jobpile.png" />
     <Content Include="assets\logo\big-jp.png" />
@@ -100,12 +103,40 @@
     <Content Include="AdminCompList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminIndex.aspx.cs">
-      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    <Compile Include="admin-dom\admin-login.aspx.cs">
+      <DependentUpon>admin-login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminIndex.aspx.designer.cs">
-      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    <Compile Include="admin-dom\admin-login.aspx.designer.cs">
+      <DependentUpon>admin-login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-dom\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-dom\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin-dom\companylist.aspx.cs">
+      <DependentUpon>companylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-dom\companylist.aspx.designer.cs">
+      <DependentUpon>companylist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-dom\applicants.aspx.cs">
+      <DependentUpon>applicants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-dom\applicants.aspx.designer.cs">
+      <DependentUpon>applicants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-dom\adminlist.aspx.cs">
+      <DependentUpon>adminlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-dom\adminlist.aspx.designer.cs">
+      <DependentUpon>adminlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="company.Master.cs">
       <DependentUpon>company.Master</DependentUpon>
@@ -248,6 +279,7 @@
   <ItemGroup>
     <Content Include="company.Master" />
     <Content Include="employee.Master" />
+    <Content Include="admin-dom\admin.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -257,7 +289,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin-dom\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
