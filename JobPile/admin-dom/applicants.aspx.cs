@@ -50,13 +50,29 @@ namespace JobPile.admin_dom
             OleDbCommand cmd = new OleDbCommand(query, conn);
             cmd.ExecuteNonQuery();
 
-            query = "delete from preInterviewTBL where ID=" + empID;
-            cmd = new OleDbCommand(query, conn);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                query = "delete from preInterviewTBL where ID=" + empID;
+                cmd = new OleDbCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
 
-            query = "delete from SeekersPerPost where ID=" + empID;
-            cmd = new OleDbCommand(query, conn);
-            cmd.ExecuteNonQuery();
+            }
+
+            try
+            {
+                query = "delete from SeekersPerPost where ID=" + empID;
+                cmd = new OleDbCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+
+
 
             query = "select ID, firstname+' '+lastname as [Candidates], email, username from employeeTBL";
             OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
