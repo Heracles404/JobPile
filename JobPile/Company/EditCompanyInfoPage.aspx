@@ -48,7 +48,7 @@
                     <asp:TextBox ID="missiontxt" runat="server" CssClass="form-control big" TextMode="MultiLine"></asp:TextBox>
                 </div>
                 <div class="input-group p-2 m-0">
-                    <span class="input-group-text">VIsion</span>
+                    <span class="input-group-text">Vision</span>
                     <!--Mission Textbox-->
                     <asp:TextBox ID="visiontxt" runat="server" CssClass="form-control big" TextMode="MultiLine"></asp:TextBox>
                 </div>
