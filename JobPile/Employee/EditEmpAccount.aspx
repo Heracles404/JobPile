@@ -38,11 +38,11 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Mobile Number</span>
-                    <asp:TextBox ID="num" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="num" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Age</span>
-                    <asp:TextBox ID="age" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="age" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Birthday</span>
