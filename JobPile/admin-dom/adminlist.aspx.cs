@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections;
+using System.Data.Common;
 
 namespace JobPile.admin_dom
 {
@@ -27,14 +29,36 @@ namespace JobPile.admin_dom
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
-            string query = "select ID, username from adminTBL";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            adminGrid.DataSource = dt;
-            adminGrid.DataBind();
+            string jobInfo = "SELECT ID, username from adminTBL ";
 
+            string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
+            connstr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+            using (OleDbConnection con = new OleDbConnection(connstr))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(jobInfo))
+                {
+                    using (OleDbDataAdapter sda = new OleDbDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            //Stores query results in data table and set each fields in labels
+                            sda.Fill(dt);
+                            username.Text = dt.Rows[0]["username"].ToString();
 
+                        }
+                                    string query = "select ID, username from adminTBL";
+                        OleDbDataAdapter newadapter = new OleDbDataAdapter(query, conn);
+
+                        DataTable dataTable = new DataTable();
+                        newadapter.Fill(dataTable);
+                        adminGrid.DataSource = dataTable;
+                        adminGrid.DataBind();
+                    }
+                }
+
+            }
         }
 
         protected void admindelete_Click(object sender, EventArgs e)
@@ -118,6 +142,14 @@ namespace JobPile.admin_dom
                         username.Text = "";
                         pw.Text = "";
                         repw.Text = "";
+
+                        string query = "select ID, username from adminTBL";
+                        OleDbDataAdapter newadapter = new OleDbDataAdapter(query, conn);
+
+                        DataTable dataTable = new DataTable();
+                        newadapter.Fill(dataTable);
+                        adminGrid.DataSource = dataTable;
+                        adminGrid.DataBind();
                     }
                 }
                 else

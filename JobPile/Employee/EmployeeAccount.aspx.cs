@@ -45,7 +45,7 @@ namespace JobPile
                             degr.Text = dt.Rows[0]["degree"].ToString();
                             exp.Text = dt.Rows[0]["experience"].ToString();
                             skills.Text = dt.Rows[0]["skills"].ToString();
-                            resume.Text = dt.Rows[0]["resume"].ToString();
+                            resume.Text = dt.Rows[0]["resumelink"].ToString();
                         }
                     }
                 }

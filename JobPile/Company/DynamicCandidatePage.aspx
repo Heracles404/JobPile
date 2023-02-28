@@ -40,6 +40,10 @@
                     <span class="input-group-text">Biography</span>
                     <asp:TextBox ID="bio" CssClass="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                 </div>
+                <div class="input-group px-2 py-1 m-0">
+                    <span class="input-group-text">Resumé Link:</span>
+                    <asp:TextBox ID="resume" CssClass="form-control fw-semibold" runat="server"></asp:TextBox>
+                </div>
                 <div class="input-group">
                     <asp:Button ID="Button1" CssClass="btn btn-primary m-0 back" runat="server" Text="Back" OnClick="Button1_Click" />
                 </div>

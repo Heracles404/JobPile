@@ -126,6 +126,14 @@ namespace JobPile
                 sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
 
+                query = "select employeeTBL.ID, employeeTBL.resumelink, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
+                query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
+                query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
+                OleDbDataAdapter newadapter = new OleDbDataAdapter(query, newconn);
+
+                DataTable dataTable = new DataTable();
+                newadapter.Fill(dataTable);
+                GridView1.DataSource = dataTable;
                 GridView1.DataBind();
 
                 Response.Write("<script>alert('Approval Successful')</script>");

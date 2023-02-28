@@ -76,7 +76,7 @@ namespace JobPile
                 sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
                 sqlsmt += "',bio='" + bio.Text;
                 sqlsmt += "',skills='" + skills.Text;
-                sqlsmt += "',resume='" + resume.Text;
+                sqlsmt += "',resumelink='" + resume.Text;
                 sqlsmt += "' where email = '" + email + "';";
 
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
@@ -95,9 +95,10 @@ namespace JobPile
                 bio.Text = "";
                 bio.Text = "";
                 skills.Text = "";
+                resume.Text = "";
 
                 Response.Write("<script>alert('Changes Saved.')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},3600)", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},1000)", true);
             }
             else
             {

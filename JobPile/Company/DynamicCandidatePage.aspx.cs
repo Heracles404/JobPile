@@ -53,6 +53,7 @@ namespace JobPile
                                 skills.Text = dt.Rows[0]["skills"].ToString();
                                 exp.Text = dt.Rows[0]["experience"].ToString();
                                 bio.Text = dt.Rows[0]["bio"].ToString();
+                                resume.Text= dt.Rows[0]["resumelink"].ToString();
                             }
                         }
                     }
@@ -61,7 +62,7 @@ namespace JobPile
             catch
             {
                 Response.Write("<script>alert('Timeout! \nLogin Again!')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},1000)", true);
             }
         }
 

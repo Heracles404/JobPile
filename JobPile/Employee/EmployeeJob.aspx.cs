@@ -46,7 +46,7 @@ namespace JobPile
             catch
             {
                 Response.Write("<script>alert('Timeout! \nPlease Login Again!')</script>");
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},1000)", true);
             }
         }
 
