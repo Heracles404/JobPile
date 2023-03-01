@@ -44,7 +44,7 @@
         <div class="col-8 mx-0 px-0">
             <asp:Label ID="datelbl" Text="Set Date of Interview:" runat="server" /><asp:TextBox ID="datetxt" TextMode="Date" runat="server" CssClass="mx-2 py-1 px-3 rounded-1"></asp:TextBox>
             <!--Shows candidates based on jobTitle-->
-            <asp:GridView ID="GridView1" CssClass="text-center col-12 p-3 my-3"  runat="server" AutoGenerateColumns="False" DataKeyNames="jptitle,ID,resumelink" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView1" CssClass="text-center col-12 p-3 my-3"  runat="server" AutoGenerateColumns="False" DataKeyNames="jptitle,ID,resumelink, email" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Candidate" HeaderText="Candidate" />

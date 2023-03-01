@@ -65,7 +65,7 @@ namespace JobPile
                 }
             }
             string query = "select employeeTBL.ID, employeeTBL.resumelink, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
-            query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
+            query += "jobpostTBL.jptitle, employeeTBL.email from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
             query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
             OleDbDataAdapter newadapter = new OleDbDataAdapter(query, conn);
 
@@ -86,6 +86,8 @@ namespace JobPile
                 string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
                 int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
                 string resumelink = GridView1.DataKeys[rowIndex].Values[2].ToString();
+                string empEmail = GridView1.DataKeys[rowIndex].Values[3].ToString();
+
                 string temp = this.Page.RouteData.Values["jpID"].ToString();
                 string tempid = temp.Replace("{", "").Replace("}", "");
                 int jobID = Int32.Parse(tempid);
@@ -103,6 +105,7 @@ namespace JobPile
                 DataTable dtID = new DataTable();
                 adapter.Fill(dtID);
                 int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+                string companyName = dtID.Rows[0]["companyName"].ToString();
 
                 //Pending emp_Email
                 string query = "delete from SeekersPerPost where empID=" + empID;
@@ -125,6 +128,29 @@ namespace JobPile
                 query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ");";
                 sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
+
+                string emp_mail = empEmail;
+                string job = jobTitle;
+                string resume = resumelink;
+
+                string mess = "You are invited for an interview for " + job + " at " + datetxt.Text;
+                mess += ". \n Please contact " + companyName + " at " + compEmail + " for more details.";
+
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("jobpile.notification@gmail.com");
+                    mail.To.Add(emp_mail);
+                    mail.Subject = "Received an Application";
+                    mail.Body = mess;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new System.Net.NetworkCredential("jobpile.notification@gmail.com", "zcjolxgcjswwdror");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
 
                 query = "select employeeTBL.ID, employeeTBL.resumelink, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
                 query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
