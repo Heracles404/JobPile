@@ -72,6 +72,7 @@ namespace JobPile
                 // Fetch companyID based on email
                 string empEmail = Session["Email"].ToString();
                 string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "' or username = '" + empEmail +"';";
+
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
                 DataTable dtID = new DataTable();
                 adapter.Fill(dtID);

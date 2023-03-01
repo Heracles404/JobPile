@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,7 +27,7 @@ namespace JobPile
 
             //companyEmail to cemail
             //Query to get all data based on jobTitle
-            string email = employeeEmail;
+            string email = Session["Email"].ToString();
             string sqlsmt = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "'";
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
 
@@ -48,15 +49,25 @@ namespace JobPile
                 bio.Text = dataReader["bio"].ToString();
                 skills.Text = dataReader["skills"].ToString();
             }
-        }
-
-        public string employeeEmail
-        {
-            get
+            else
             {
-                string cemail = Session["Email"].ToString();
-                return cemail;
+                sqlsmt = "select * from employeeTBL where username = '" + email + "'";
+                sqlcmd= new OleDbCommand(sqlsmt, conn);
+                dataReader = sqlcmd.ExecuteReader();
+                dataReader.Read();
+
+                fname.Text = dataReader["firstname"].ToString();
+                lname.Text = dataReader["lastname"].ToString();
+                uname.Text = dataReader["username"].ToString();
+                pw.Text = dataReader["pass"].ToString();
+                num.Text = dataReader["mobile"].ToString();
+                age.Text = dataReader["age"].ToString();
+                bday.Text = dataReader["birthday"].ToString();
+                gender.Text = dataReader["gender"].ToString();
+                bio.Text = dataReader["bio"].ToString();
+                skills.Text = dataReader["skills"].ToString();
             }
+            conn.Close();
         }
 
         protected void cmdSave_Click(object sender, EventArgs e)
@@ -67,21 +78,44 @@ namespace JobPile
                 connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
                 OleDbConnection connection = new OleDbConnection(connstr);
                 connection.Open();
-                string email = employeeEmail;
+                string email = Session["Email"].ToString();
 
-                string sqlsmt = "update employeeTBL set firstname='" + fname.Text;
-                sqlsmt += "',lastname='" + lname.Text;
-                sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
-                sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
-                sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
-                sqlsmt += "',bio='" + bio.Text;
-                sqlsmt += "',skills='" + skills.Text;
-                sqlsmt += "',resumelink='" + resume.Text;
-                sqlsmt += "' where email = '" + email + "';";
-
+                string sqlsmt = "select * from employeeTBL where email = '" + email + "'";
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);
-                sqlcmd.ExecuteNonQuery();
-                connection.Close();
+                OleDbDataReader dt = sqlcmd.ExecuteReader();
+
+                if (dt.HasRows)
+                {
+                    sqlsmt = "update employeeTBL set firstname='" + fname.Text;
+                    sqlsmt += "',lastname='" + lname.Text;
+                    sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
+                    sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
+                    sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
+                    sqlsmt += "',bio='" + bio.Text;
+                    sqlsmt += "',skills='" + skills.Text;
+                    sqlsmt += "',resumelink='" + resume.Text;
+                    sqlsmt += "' where email = '" + email + "';";
+
+                    sqlcmd = new OleDbCommand(sqlsmt, connection);
+                    sqlcmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                else
+                {
+                    sqlsmt = "update employeeTBL set firstname='" + fname.Text;
+                    sqlsmt += "',lastname='" + lname.Text;
+                    sqlsmt += "',username='" + uname.Text + "', pass='" + pw.Text;
+                    sqlsmt += "',mobile='" + num.Text + "',age=" + age.Text;
+                    sqlsmt += ",birthday='" + bday.Text + "',gender='" + gender.Text;
+                    sqlsmt += "',bio='" + bio.Text;
+                    sqlsmt += "',skills='" + skills.Text;
+                    sqlsmt += "',resumelink='" + resume.Text;
+                    sqlsmt += "' where username = '" + email + "';";
+
+                    sqlcmd = new OleDbCommand(sqlsmt, connection);
+                    sqlcmd.ExecuteNonQuery();
+                    connection.Close();
+                }
 
                 //Reset fields
                 fname.Text = "";

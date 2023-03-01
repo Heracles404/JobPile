@@ -13,51 +13,69 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //companyEmail to cemail
-            //Query to get all data based on jobTitle
-            string email = employeeEmail;
-
-            string query = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "'";
-
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
             connstr += Server.MapPath("~/App_Data/JobpileDB.accdb");
-            using (OleDbConnection con = new OleDbConnection(connstr))
+            OleDbConnection con = new OleDbConnection(connstr);
+            con.Open();
+            //companyEmail to cemail
+            //Query to get all data based on jobTitle
+            string email = Session["Email"].ToString();
+
+            string query = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "'";
+            OleDbCommand cmd = new OleDbCommand(query, con);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
             {
-                using (OleDbCommand cmd = new OleDbCommand(query))
+                using (con = new OleDbConnection(connstr))
                 {
-                    using (OleDbDataAdapter sda = new OleDbDataAdapter())
+                    using (cmd = new OleDbCommand(query))
                     {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
+                        using (OleDbDataAdapter sda = new OleDbDataAdapter())
                         {
-                            //Stores query results in data table and set each fields in labels
-                            sda.Fill(dt);
-                            nametxt.Text = dt.Rows[0]["firstname"].ToString();
-                            nametxt.Text += " " + dt.Rows[0]["lastname"].ToString();
-                            uname.Text = dt.Rows[0]["username"].ToString();
-                            num.Text = dt.Rows[0]["mobile"].ToString();
-                            age.Text = dt.Rows[0]["age"].ToString();
-                            bday.Text = dt.Rows[0]["birthday"].ToString();
-                            gender.Text = dt.Rows[0]["gender"].ToString();
-                            bio.Text = dt.Rows[0]["bio"].ToString();
-                            educ.Text = dt.Rows[0]["education"].ToString();
-                            degr.Text = dt.Rows[0]["degree"].ToString();
-                            exp.Text = dt.Rows[0]["experience"].ToString();
-                            skills.Text = dt.Rows[0]["skills"].ToString();
-                            resume.Text = dt.Rows[0]["resumelink"].ToString();
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                //Stores query results in data table and set each fields in labels
+                                sda.Fill(dt);
+                                nametxt.Text = dt.Rows[0]["firstname"].ToString();
+                                nametxt.Text += " " + dt.Rows[0]["lastname"].ToString();
+                                uname.Text = dt.Rows[0]["username"].ToString();
+                                num.Text = dt.Rows[0]["mobile"].ToString();
+                                age.Text = dt.Rows[0]["age"].ToString();
+                                bday.Text = dt.Rows[0]["birthday"].ToString();
+                                gender.Text = dt.Rows[0]["gender"].ToString();
+                                bio.Text = dt.Rows[0]["bio"].ToString();
+                                educ.Text = dt.Rows[0]["education"].ToString();
+                                degr.Text = dt.Rows[0]["degree"].ToString();
+                                exp.Text = dt.Rows[0]["experience"].ToString();
+                                skills.Text = dt.Rows[0]["skills"].ToString();
+                                resume.Text = dt.Rows[0]["resumelink"].ToString();
+                            }
                         }
                     }
                 }
             }
-        }
-
-        public string employeeEmail
-        {
-            get
+            else
             {
-                string cemail = Session["Email"].ToString();
-                return cemail;
+                query = "select * from employeeTBL where username = '" + email + "'";
+                cmd = new OleDbCommand(query, con);
+                OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
+                DataTable dt= new DataTable();
+                sda.Fill(dt);
+                nametxt.Text = dt.Rows[0]["firstname"].ToString();
+                nametxt.Text += " " + dt.Rows[0]["lastname"].ToString();
+                uname.Text = dt.Rows[0]["username"].ToString();
+                num.Text = dt.Rows[0]["mobile"].ToString();
+                age.Text = dt.Rows[0]["age"].ToString();
+                bday.Text = dt.Rows[0]["birthday"].ToString();
+                gender.Text = dt.Rows[0]["gender"].ToString();
+                bio.Text = dt.Rows[0]["bio"].ToString();
+                educ.Text = dt.Rows[0]["education"].ToString();
+                degr.Text = dt.Rows[0]["degree"].ToString();
+                exp.Text = dt.Rows[0]["experience"].ToString();
+                skills.Text = dt.Rows[0]["skills"].ToString();
+                resume.Text = dt.Rows[0]["resumelink"].ToString();
             }
         }
     }
