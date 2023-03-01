@@ -72,7 +72,7 @@ namespace JobPile
             }else
             {
                 conn.Open();
-                string cmd = "INSERT INTO employeeTBL (email, username, mobile, pass, lastname, firstname, age, birthday, gender, bio, resume) VALUES";
+                string cmd = "INSERT INTO employeeTBL (email, username, mobile, pass, lastname, firstname, age, birthday, gender, bio, resumelink) VALUES";
                 cmd += "('" + mail + "','" + user + "','" + num + "','" + pw + "','" + lname + "','" + fname + "','" + ageIn + "','" + bday + "','" + gender + "','" + about + "','" + res + "');";
 
                 OleDbCommand sql = new OleDbCommand(cmd, conn);
@@ -88,7 +88,7 @@ namespace JobPile
                 lastname.Text = "";
                 firstname.Text = "";
 
-                Response.Redirect("~/EmpJobLists");
+                Response.Redirect("~/EmployeeJobLists");
             }
         }
     }
