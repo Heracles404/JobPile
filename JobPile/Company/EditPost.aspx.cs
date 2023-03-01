@@ -158,44 +158,5 @@ namespace JobPile
             cmdSearch.Visible = true;
             deletebtn.Visible = true;
         }
-
-        protected void skillsTXT_TextChanged(object sender, EventArgs e)
-        {
-            string FieldSearch = skillsTXT.Text;
-            string Resourceful = "Resourceful";
-            string Efficient = "Efficient";
-
-            //Search if skills in textbox
-            if (FieldSearch.Length > 0)
-            {
-                if (FieldSearch.IndexOf(Resourceful) > -1)
-                {
-                    resourcefulbtn.Visible = false;
-                }
-                else if (FieldSearch.IndexOf(Efficient) > -1)
-                {
-                    efficientbtn.Visible = false;
-                }
-                else
-                {
-                    resourcefulbtn.Visible = true;
-                    efficientbtn.Visible = true;
-                }
-            }
-        }
-
-        protected void resourcebtn_Click(object sender, EventArgs e)
-        {
-            //Adds to skills textbox
-            skillsTXT.Text += "Resourceful, ";
-            resourcefulbtn.Visible = false;
-        }
-
-        protected void efficientbtn_Click(object sender, EventArgs e)
-        {
-            //Adds to skills textbox
-            skillsTXT.Text += "Efficient, ";
-            efficientbtn.Visible = false;
-        }
     }
 }

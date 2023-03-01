@@ -16,20 +16,6 @@ namespace JobPile
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
-        protected void resourcebtn_Click(object sender, EventArgs e)
-        {
-            //Adds skill in textbox
-            skillsTXT.Text += "Resourceful, ";
-            resourcebtn.Visible = false;
-        }
-
-        protected void efficientbtn_Click(object sender, EventArgs e)
-        {
-            //Adds skill in textbox
-            skillsTXT.Text += "Efficient, ";
-            efficientbtn.Visible = false;
-        }
-
         protected void Postbtn_Click(object sender, EventArgs e)
         {
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
@@ -71,34 +57,10 @@ namespace JobPile
             Response.Write("<script>alert('The job has been posted!')</script>");
             connection.Close();
 
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},3600)", true);
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
         }
 
-        protected void skillsTXT_TextChanged(object sender, EventArgs e)
-        {
-            string FieldSearch = skillsTXT.Text;
-            string Resourceful = "Resourceful";
-            string Efficient = "Efficient";
 
-            //To check if skills are in the textbox
-            if (FieldSearch.Length > 0)
-            {
-                if (FieldSearch.IndexOf(Resourceful) > -1)
-                {
-                    resourcebtn.Visible = false;
-                }
-                else if (FieldSearch.IndexOf(Efficient) > -1)
-                {
-                    efficientbtn.Visible = false;
-                }
-                else
-                {
-                    resourcebtn.Visible = true;
-                    efficientbtn.Visible = true;
-                }
-            }
-
-        }
 
         public int companyID
         {

@@ -49,9 +49,7 @@
                 <div class="input-group">
                     <!--Skills Textbox-->
                     <span class="input-group-text">Skills</span>
-                    <asp:TextBox ID="skillsTXT" runat="server" CssClass="form-control" required="true" OnTextChanged="skillsTXT_TextChanged" AutoPostBack="true"></asp:TextBox>
-                    <asp:Button ID="resourcebtn" runat="server" Text="Resourceful" CssClass="px-2 skills btn-light" OnClick="resourcebtn_Click" CausesValidation="False" />
-                    <asp:Button ID="efficientbtn" runat="server" Text="Efficient" CssClass="px-2 skills btn-light" OnClick="efficientbtn_Click" CausesValidation="False" />
+                    <asp:TextBox ID="skillsTXT" runat="server" CssClass="form-control" required="true" AutoPostBack="true"></asp:TextBox>
                 </div>
 
                 <div class="input-group">
