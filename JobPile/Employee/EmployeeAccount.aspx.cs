@@ -17,7 +17,7 @@ namespace JobPile
             //Query to get all data based on jobTitle
             string email = employeeEmail;
 
-            string query = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "'";
+            string query = "SELECT * FROM [employeeTBL] WHERE [email] = '" + email + "' OR [username] = '" + email + "';";
 
             string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
             connstr += Server.MapPath("~/App_Data/JobpileDB.accdb");
