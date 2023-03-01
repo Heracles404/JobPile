@@ -37,8 +37,9 @@ namespace JobPile
             routes.MapPageRoute("Applicants", "ApplicantsList", "~/admin-dom/applicants.aspx");
             routes.MapPageRoute("Companies", "CompaniesList", "~/admin-dom/companylist.aspx");
 
-
             routes.MapPageRoute("MainPage", "Main", "~/index.aspx");
+            routes.MapPageRoute("ComSignup", "CompanySignUp", "~/com_signup.aspx");
+            routes.MapPageRoute("EmpSignup", "ApplicantSignUp", "~/emp_signup.aspx");
         }
     }
 }

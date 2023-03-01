@@ -185,12 +185,12 @@ namespace JobPile
                 if (empChk.Checked)
                 {
                     Session["email"] = txtEmail.Text;
-                    Response.Redirect("email_signup.aspx");
+                    Response.Redirect("~/CompanySignUp");
                 }
                 else
                 {
                     Session["email"] = txtEmail.Text;
-                    Response.Redirect("com_signup.aspx");
+                    Response.Redirect("~/ApplicantSignUp");
                 }
             }
             else
