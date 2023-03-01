@@ -152,7 +152,7 @@ namespace JobPile
 
             DDLStatus.SelectedIndex = -1;
 
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},3600)", true);
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
 
             //Show Initial Search
             cmdSearch.Visible = true;
