@@ -13,6 +13,7 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            pw.Attributes["type"] = "password";
             if (!this.IsPostBack)
             {
                 this.PopulatePage();
