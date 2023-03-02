@@ -54,19 +54,19 @@ namespace JobPile
             {
                 sqlsmt = "select * from employeeTBL where username = '" + email + "'";
                 sqlcmd= new OleDbCommand(sqlsmt, conn);
-                dataReader = sqlcmd.ExecuteReader();
-                dataReader.Read();
+                OleDbDataReader dt = sqlcmd.ExecuteReader();
+                dt.Read();
 
-                fname.Text = dataReader["firstname"].ToString();
-                lname.Text = dataReader["lastname"].ToString();
-                uname.Text = dataReader["username"].ToString();
-                pw.Text = dataReader["pass"].ToString();
-                num.Text = dataReader["mobile"].ToString();
-                age.Text = dataReader["age"].ToString();
-                bday.Text = dataReader["birthday"].ToString();
-                gender.Text = dataReader["gender"].ToString();
-                bio.Text = dataReader["bio"].ToString();
-                skills.Text = dataReader["skills"].ToString();
+                fname.Text = dt["firstname"].ToString();
+                lname.Text = dt["lastname"].ToString();
+                uname.Text = dt["username"].ToString();
+                pw.Text = dt["pass"].ToString();
+                num.Text = dt["mobile"].ToString();
+                age.Text = dt["age"].ToString();
+                bday.Text = dt["birthday"].ToString();
+                gender.Text = dt["gender"].ToString();
+                bio.Text = dt["bio"].ToString();
+                skills.Text = dt["skills"].ToString();
             }
             conn.Close();
         }
@@ -117,20 +117,6 @@ namespace JobPile
                     sqlcmd.ExecuteNonQuery();
                     connection.Close();
                 }
-
-                //Reset fields
-                fname.Text = "";
-                lname.Text = "";
-                uname.Text = "";
-                pw.Text = "";
-                num.Text = "";
-                age.Text = "";
-                bday.Text = "";
-                gender.Text = "";
-                bio.Text = "";
-                bio.Text = "";
-                skills.Text = "";
-                resume.Text = "";
 
                 Response.Write("<script>alert('Changes Saved.')</script>");
                 ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeAccounts'},1000)", true);
