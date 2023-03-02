@@ -31,6 +31,7 @@ namespace JobPile
             routes.MapPageRoute("EmpAccount", "EmployeeAccounts", "~/Employee/EmployeeAccount.aspx");
             routes.MapPageRoute("EmpDynamicPage", "EmployeePost/{jpID}", "~/Employee/EmpDynamic.aspx");
             routes.MapPageRoute("EditAccount", "EditEmployeeAccount", "~/Employee/EditEmpAccount.aspx");
+            routes.MapPageRoute("AppliedJob", "AppliedJobList", "~/Employee/EmployeeAppliedJobList.aspx");
 
             routes.MapPageRoute("AdminLogin", "Admin", "~/admin-dom/admin-login.aspx");
             routes.MapPageRoute("AdminList", "AdminLists", "~/admin-dom/adminlist.aspx");

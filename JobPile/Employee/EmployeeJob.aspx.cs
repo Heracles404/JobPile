@@ -160,7 +160,6 @@ namespace JobPile
                 adapter.Fill(dtID);
                 int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
                 return id;
-
             }
         }
 
@@ -194,6 +193,11 @@ namespace JobPile
             empsearchtxt.Text = "";
 
             conn.Close();
+        }
+        
+        protected void appliedbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AppliedJobList");
         }
     }
 }

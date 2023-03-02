@@ -37,30 +37,11 @@ namespace JobPile
             OleDbCommand sqlcommand = new OleDbCommand(sqlcmd, connection);
             sqlcommand.ExecuteNonQuery();
 
-            /*
-            //Check if job title has seeker(candidate)
-            sqlcmd = "select count(SeekersPerPost.JobTitle) as [seekers] from SeekersPerPost ";
-            sqlcmd += "group by SeekersPerPost.JobTitle having ((SeekersPerPost.[JobTitle]) = '" + jobtitleTXT.Text + "');";
-            sqlcommand = new OleDbCommand(sqlcmd, connection);
-
-            OleDbDataReader dataReader = sqlcommand.ExecuteReader();
-            if (dataReader.HasRows)
-            {
-                //Insert candidate count
-                dataReader.Read();
-                sqlcmd = "update jobPostTBL set jpseekers = " + Int32.Parse(dataReader["seekers"].ToString());
-                sqlcmd += " where jptitle = '" + jobtitleTXT.Text + "';";
-                sqlcommand = new OleDbCommand(sqlcmd, connection);
-                sqlcommand.ExecuteNonQuery();
-            }*/
-
             Response.Write("<script>alert('The job has been posted!')</script>");
             connection.Close();
 
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
         }
-
-
 
         public int companyID
         {
