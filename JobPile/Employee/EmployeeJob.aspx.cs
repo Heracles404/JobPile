@@ -30,11 +30,10 @@ namespace JobPile
                 OleDbConnection conn = new OleDbConnection(constr);
                 conn.Open();
 
-                // Fetch companyID based on email
-                string empEmail = Session["Email"].ToString();
+                int empID = employeeID;
 
-
-                string sqlsmt = "select * from jobpostTBL;";
+                string sqlsmt = "select * from jobpostTBL where jpstatus = 'Active' and jpID not in ";
+                sqlsmt += "(select jpID from SeekersPerPost where empID = " + empID + ")";
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
 
                 DataTable dataTable = new DataTable();
@@ -79,51 +78,62 @@ namespace JobPile
                 int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
                 string resumelink = dtID.Rows[0]["resumelink"].ToString();
 
-                //Pending emp_Email
-                string query = "insert into SeekersPerPost values (" + id;
-                query += "," + jobID + ");";
-                OleDbCommand sqlcmd = new OleDbCommand(query,newconn);
-                sqlcmd.ExecuteNonQuery();
+                string query = "select * from SeekersPerPost where empID = " + id + " and jpID = " + jobID;
+                OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
+                OleDbDataReader reader = sqlcmd.ExecuteReader();
 
-                query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = ";
-                query += jobID;
-                sqlcmd = new OleDbCommand(query,newconn);
-                sqlcmd.ExecuteNonQuery();
-
-                query = "select email from companyTBL where ID = " + compID;
-                adapter = new OleDbDataAdapter(query, newconn);
-                dtID= new DataTable();
-                adapter.Fill(dtID);
-                string compEmail = dtID.Rows[0]["email"].ToString();
-
-                string com_mail = compEmail;
-                string job = jobTitle;
-                string resume = resumelink;
-                using (MailMessage mail = new MailMessage())
+                if (reader.HasRows)
                 {
-                    mail.From = new MailAddress("jobpile.notification@gmail.com");
-                    mail.To.Add(com_mail);
-                    mail.Subject = "Received an Application";
-                    mail.Body = "Your job post " + job + " received an application. \n Resumé:  " + resume;
-                    mail.IsBodyHtml = true;
-
-                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
-                    {
-                        smtp.Credentials = new System.Net.NetworkCredential("jobpile.notification@gmail.com", "zcjolxgcjswwdror");
-                        smtp.EnableSsl = true;
-                        smtp.Send(mail);
-                    }
+                    Response.Write("<script>alert('You cannot apply to the same job post!')</script>");
                 }
+                else
+                {
+                    query = "insert into SeekersPerPost values (" + id;
+                    query += "," + jobID + ");";
+                    sqlcmd = new OleDbCommand(query, newconn);
+                    sqlcmd.ExecuteNonQuery();
 
-                query = "select * from jobpostTBL where not (jpID = " + jobID + ")";
-                adapter = new OleDbDataAdapter(query, newconn);
-                dtID = new DataTable();
-                adapter.Fill(dtID);
-                empGridView.DataSource = dtID;
-                empGridView.DataBind();
+                    query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = ";
+                    query += jobID;
+                    sqlcmd = new OleDbCommand(query, newconn);
+                    sqlcmd.ExecuteNonQuery();
 
-                Response.Write("<script>alert('Submission Successful')</script>");
-                newconn.Close();
+                    query = "select email from companyTBL where ID = " + compID;
+                    adapter = new OleDbDataAdapter(query, newconn);
+                    dtID = new DataTable();
+                    adapter.Fill(dtID);
+                    string compEmail = dtID.Rows[0]["email"].ToString();
+
+                    string com_mail = compEmail;
+                    string job = jobTitle;
+                    string resume = resumelink;
+                    using (MailMessage mail = new MailMessage())
+                    {
+                        mail.From = new MailAddress("jobpile.notification@gmail.com");
+                        mail.To.Add(com_mail);
+                        mail.Subject = "Received an Application";
+                        mail.Body = "Your job post " + job + " received an application. \n Resumé:  " + resume;
+                        mail.IsBodyHtml = true;
+
+                        using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                        {
+                            smtp.Credentials = new System.Net.NetworkCredential("jobpile.notification@gmail.com", "zcjolxgcjswwdror");
+                            smtp.EnableSsl = true;
+                            smtp.Send(mail);
+                        }
+                    }
+
+                    query = "select * from jobpostTBL where jpstatus = 'Active' and jpID not in ";
+                    query += "(select jpID from SeekersPerPost where empID = " + id + ")";
+                    adapter = new OleDbDataAdapter(query, newconn);
+                    dtID = new DataTable();
+                    adapter.Fill(dtID);
+                    empGridView.DataSource = dtID;
+                    empGridView.DataBind();
+
+                    Response.Write("<script>alert('Submission Successful')</script>");
+                    newconn.Close();
+                }
             }
             catch
             {
@@ -132,12 +142,24 @@ namespace JobPile
             }
         }
 
-        public string emp_Email
+        public int employeeID
         {
             get
             {
-                string cemail = Session["Email"].ToString();
-                return cemail;
+                string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+                constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+                OleDbConnection newconn = new OleDbConnection(constr);
+                newconn.Open();
+
+                // Fetch companyID based on email
+                string empEmail = Session["Email"].ToString();
+                string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "' or username = '" + empEmail + "';";
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
+                DataTable dtID = new DataTable();
+                adapter.Fill(dtID);
+                int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+                return id;
 
             }
         }
