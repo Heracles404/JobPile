@@ -29,19 +29,7 @@ namespace JobPile
                 conn.Open();
 
                 string jobID = this.Page.RouteData.Values["jpID"].ToString();
-                /*
-                // Fetch companyID based on email
-                //string empEmail = Session["Email"].ToString();
-                string sqlsmt = "select * from employeeTBL where jptitle = '" + jobTitle + "';";
-                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
-
-                DataTable dtID = new DataTable();
-                adapter.Fill(dtID);
-                int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
-            
-                sqlsmt = "select * from jobpostTBL where " + id + " = SeekersPerPost.ID and";
-                sqlsmt += " SeekersPerPost.comID = jobpostTBL.com_id and SeekersPerPost.JobTitle = jobpostTBL.jptitle and jobpostTBL.jptitle = @jobTitle";
-                */
+                
                 string jobInfo = "SELECT * FROM [jobpostTBL] WHERE [jpID] = @jobID";
 
                 string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
