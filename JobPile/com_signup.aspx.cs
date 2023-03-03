@@ -20,7 +20,7 @@ namespace JobPile
             catch (NullReferenceException ex)
             {
                 Response.Write("<script>alert('Please log in or sign up.')</script>");
-                Response.Redirect("~/Main");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},1000)", true);
             }
         }
 
@@ -38,35 +38,28 @@ namespace JobPile
             string constr = "Provider=Microsoft.ACE.OLEDB.12.0;";
             constr += "Data Source=" + Server.MapPath("~/App_Data/jobpileDB.accdb");
             OleDbConnection conn = new OleDbConnection(constr);
+            conn.Open();
 
-
-            // Check if Company is not yet registered
-            string usernm = "SELECT * FROM companyTBL WHERE companyName = '" + name + "';";
-            OleDbDataAdapter sqluser = new OleDbDataAdapter(usernm, conn);
-            DataTable dtUser = new DataTable();
-            sqluser.Fill(dtUser);
-
-            // Check if Number is not yet registered
-            string cont = "SELECT * FROM companyTBL WHERE companyName = '" + name + "';";
-            OleDbDataAdapter sqlcont = new OleDbDataAdapter(cont, conn);
-            DataTable dtcont = new DataTable();
-            sqlcont.Fill(dtcont);
-
-            if ((dtUser.Rows.Count > 0) && (dtcont.Rows.Count > 0))
+            if (pw != repass.Text)
             {
-                Response.Write("<script>alert('Your company already have an account. Please sign in instead.')</script>");
+                Response.Write("<script>alert('Passwords do not match', 'Warning!')</script>");
             }
             else
             {
-                conn.Open();
                 string cmd = "INSERT INTO companyTBL (companyName, email, contactnum, pass, about, mission, vision, website) VALUES";
                 cmd += "('" + name + "','" + mail + "','" + num + "','" + pw + "','" + bio + "','" + mission + "','" + vision + "','" + site + "');";
-
                 OleDbCommand sql = new OleDbCommand(cmd, conn);
-
                 sql.ExecuteNonQuery();
 
-                conn.Close();
+                cmd = "select ID from companyTBL where email = '" + mail + "'";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                int id = Int32.Parse(dt.Rows[0]["ID"].ToString());
+
+                cmd = "insert into accountsTBL values(" + id + ",'" + mail + "','" + mail + "','comp')";
+                sql = new OleDbCommand(cmd, conn);
+                sql.ExecuteNonQuery();
 
                 email.Text = "";
                 pass.Text = "";
@@ -80,7 +73,7 @@ namespace JobPile
                 // Session["Email"] = email.Text;
                 Response.Redirect("~/JobPosts");
             }
-
+            conn.Close();
         }
     }
 }

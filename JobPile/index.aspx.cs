@@ -29,64 +29,80 @@ namespace JobPile
             constr += Server.MapPath("~/App_Data/jobpileDB.accdb");
             constr += ";Persist Security Info=True";
             OleDbConnection conn = new OleDbConnection(constr);
+            conn.Open();
 
-            // Check if user is a job seeker or employer
-            if (isSeeker.Checked)
+            string query = "select * from accountsTBL where email  = '" + user + "' or username = '" + user + "'";
+            OleDbCommand cmd = new OleDbCommand(query, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                // Log In Syntax - Check Username
-                string username = "SELECT * FROM employeeTBL WHERE username = '" + user + "' AND pass = '" + pass + "';";
-                OleDbCommand sqlcmd = new OleDbCommand(username, conn);
-                OleDbDataAdapter sqladapt = new OleDbDataAdapter(sqlcmd);
-                DataTable dtUser = new DataTable();
-                sqladapt.Fill(dtUser);
+                reader.Read();
+                string usertype = reader["usertype"].ToString();
 
-                // Log In Syntax - Check Email
-                string mail = "SELECT * FROM employeeTBL WHERE email = '" + user + "' AND pass = '" + pass + "';";
-                sqlcmd = new OleDbCommand(mail, conn);
-                sqladapt = new OleDbDataAdapter(sqlcmd);
-                DataTable dtMail = new DataTable();
-                sqladapt.Fill(dtMail);
-
-                if ((dtUser.Rows.Count > 0) || (dtMail.Rows.Count > 0))
+                if(usertype == "emp")
                 {
-                    Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
-                    Session["Email"] = email.Text;
-                    Response.Redirect("~/EmployeeJobLists");
+                    // Log In Syntax - Check Username
+                    string username = "SELECT * FROM employeeTBL WHERE username = '" + user + "' AND pass = '" + pass + "';";
+                    OleDbCommand sqlcmd = new OleDbCommand(username, conn);
+                    OleDbDataAdapter sqladapt = new OleDbDataAdapter(sqlcmd);
+                    DataTable dtUser = new DataTable();
+                    sqladapt.Fill(dtUser);
+
+                    // Log In Syntax - Check Email
+                    string mail = "SELECT * FROM employeeTBL WHERE email = '" + user + "' AND pass = '" + pass + "';";
+                    sqlcmd = new OleDbCommand(mail, conn);
+                    sqladapt = new OleDbDataAdapter(sqlcmd);
+                    DataTable dtMail = new DataTable();
+                    sqladapt.Fill(dtMail);
+
+                    if ((dtUser.Rows.Count > 0) || (dtMail.Rows.Count > 0))
+                    {
+                        Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
+                        Session["Email"] = email.Text;
+                        ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='EmployeeJobLists'},1000)", true);
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Incorrect Password.', 'Warning!')</script>");
+                        errLbl.Visible = true;
+                    }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Seeker account not found.', 'Warning!')</script>");
-                    errLbl.Visible = true;
+                    // Log In Syntax - Check Username
+                    string username = "SELECT * FROM companyTBL WHERE companyName = '" + user + "' AND pass = '" + pass + "';";
+                    OleDbCommand sqlcmd = new OleDbCommand(username, conn);
+                    OleDbDataAdapter sqladapt = new OleDbDataAdapter(sqlcmd);
+                    DataTable dtUser = new DataTable();
+                    sqladapt.Fill(dtUser);
+
+                    // Log In Syntax - Check Email
+                    string mail = "SELECT * FROM companyTBL WHERE email = '" + user + "' AND pass = '" + pass + "';";
+                    sqlcmd = new OleDbCommand(mail, conn);
+                    sqladapt = new OleDbDataAdapter(sqlcmd);
+                    DataTable dtMail = new DataTable();
+                    sqladapt.Fill(dtMail);
+
+                    if ((dtUser.Rows.Count > 0) || (dtMail.Rows.Count > 0))
+                    {
+                        Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
+                        Session["Email"] = email.Text;
+                        ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='JobPosts'},1000)", true);
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Incorrect Password.', 'Warning!')</script>");
+                        errLbl.Visible = true;
+                    }
                 }
             }
             else
             {
-                // Log In Syntax - Check Username
-                string username = "SELECT * FROM companyTBL WHERE companyName = '" + user + "' AND pass = '" + pass + "';";
-                OleDbCommand sqlcmd = new OleDbCommand(username, conn);
-                OleDbDataAdapter sqladapt = new OleDbDataAdapter(sqlcmd);
-                DataTable dtUser = new DataTable();
-                sqladapt.Fill(dtUser);
-
-                // Log In Syntax - Check Email
-                string mail = "SELECT * FROM companyTBL WHERE email = '" + user + "' AND pass = '" + pass + "';";
-                sqlcmd = new OleDbCommand(mail, conn);
-                sqladapt = new OleDbDataAdapter(sqlcmd);
-                DataTable dtMail = new DataTable();
-                sqladapt.Fill(dtMail);
-
-                if ((dtUser.Rows.Count > 0) || (dtMail.Rows.Count > 0))
-                {
-                    Response.Write("<script>alert('Logged in Successfully', 'Welcome!')</script>");
-                    Session["Email"] = email.Text;
-                    Response.Redirect("~/JobPosts");
-                }
-                else
-                {
-                    Response.Write("<script>alert('Company account not found.', 'Warning!')</script>");
-                    errLbl.Visible = true;
-                }
+                Response.Write("<script>alert('Account not found.', 'Warning!')</script>");
+                errLbl.Visible = true;
             }
+            conn.Close();
         }
 
         // Sign Up Process 1 - Confirm email with OTP
@@ -110,22 +126,15 @@ namespace JobPile
             constr += Server.MapPath("~/App_Data/jobpileDB.accdb");
             constr += ";Persist Security Info=True";
             OleDbConnection conn = new OleDbConnection(constr);
+            conn.Open();
 
-            // Check if Email is not yet registered - employeeTBL
-            string eaddr = "SELECT * FROM employeeTBL WHERE email = '" + email + "';";
-            OleDbDataAdapter sqlmail = new OleDbDataAdapter(eaddr, constr);
-            DataTable dtMail = new DataTable();
-            sqlmail.Fill(dtMail);
+            string query = "select * from accountsTBL where email  = '" + email + "' or username = '" + email + "'";
+            OleDbCommand cmd = new OleDbCommand(query, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
 
-            // Check if Email is not yet registered - companyTBL
-            string eadd = "SELECT * FROM companyTBL WHERE email = '" + email + "';";
-            OleDbDataAdapter sqlcom = new OleDbDataAdapter(eadd, constr);
-            DataTable dtcom = new DataTable();
-            sqlcom.Fill(dtcom);
-
-            if ((dtMail.Rows.Count > 0) || (dtcom.Rows.Count > 0))
+            if (reader.HasRows)
             {
-                Response.Write("<script>alert('Email is already registered', 'Warning!')</script>");
+                Response.Write("<script>alert('Email is already registered. Please Log In instead.', 'Warning!')</script>");
             }
             else
             {
@@ -172,11 +181,8 @@ namespace JobPile
                     Response.Write("<script> alert('Email cannot be empty') </script>");
                 }
             }
-
-
-
         }
-
+        
         // Sign Up Process 2 - Verify Email
         public void ver(object sender, EventArgs e)
         {

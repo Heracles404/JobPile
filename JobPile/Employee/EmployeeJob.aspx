@@ -26,7 +26,7 @@
         </div>
     </div>
 
-
+    <asp:CheckBoxList ID="ChkByList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Check_Clicked"></asp:CheckBoxList>
 
     <!-- All Job List -->
     <div class="row">
