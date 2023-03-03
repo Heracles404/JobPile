@@ -72,12 +72,12 @@
                 </div>
 
                 <div class="input-group">
-                    <span class="input-group-text">Status   </span>
+                    <span class="input-group-text">Status</span>
                     <!--Status DropDown-->
                     <asp:DropDownList ID="DDLStatus" CssClass="form-control" runat="server">
-                        <asp:ListItem Enabled="true" Text="Select Requirement" Value="-1"></asp:ListItem>
-                        <asp:ListItem Text="Active" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="On Hold" Value="2"></asp:ListItem>
+                        <asp:ListItem Enabled="true" Text="Active" Value="1"></asp:ListItem>
+                        
+
                     </asp:DropDownList>
                 </div>
                 <div class="input-group">
