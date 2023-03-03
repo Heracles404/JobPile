@@ -37,7 +37,7 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Job Desctiption</span>
-                    <asp:TextBox ID="jobdesc" CssClass="form-control fw-semibold" ReadOnly="true" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="jobdesc" CssClass="form-control fw-semibold" textmode="MultiLine" ReadOnly="true" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <asp:Button ID="Button1" CssClass="btn btn-primary m-0" runat="server" Text="Back" PostBackUrl="~/EmployeeJobLists" />

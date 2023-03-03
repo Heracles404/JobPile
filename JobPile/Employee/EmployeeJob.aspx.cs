@@ -51,8 +51,8 @@ namespace JobPile
 
         protected void empGridView_Button_Click(object sender, EventArgs e)
         {
-            try
-            {
+            try 
+            { 
                 //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
 
@@ -70,7 +70,7 @@ namespace JobPile
 
                 // Fetch companyID based on email
                 string empEmail = Session["Email"].ToString();
-                string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "' or username = '" + empEmail + "';";
+                string sqlsmt = "select * from employeeTBL where email = '" + empEmail + "' or username = '" + empEmail +"';";
 
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
                 DataTable dtID = new DataTable();
@@ -109,7 +109,7 @@ namespace JobPile
                     string resume = resumelink;
                     using (MailMessage mail = new MailMessage())
                     {
-                        mail.From = new MailAddress("jobpilemcl@gmail.com");
+                        mail.From = new MailAddress("jobpile.notification@gmail.com");
                         mail.To.Add(com_mail);
                         mail.Subject = "Received an Application";
                         mail.Body = "Your job post " + job + " received an application. \n Resumé:  " + resume;
@@ -117,7 +117,7 @@ namespace JobPile
 
                         using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                         {
-                            smtp.Credentials = new System.Net.NetworkCredential("jobpilemcl@gmail.com", "xtfgxxqpcsggpnhw");
+                            smtp.Credentials = new System.Net.NetworkCredential("jobpile.notification@gmail.com", "zcjolxgcjswwdror");
                             smtp.EnableSsl = true;
                             smtp.Send(mail);
                         }
@@ -173,7 +173,7 @@ namespace JobPile
             //Int32.Parse(Session["companyid"].ToString()) to com_id
             //Used in Gridview to show every record
             string sqlsmt = "select * from jobpostTBL where jptitle like '%" + empsearchtxt.Text + "%'";
-            OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
+            OleDbCommand sqlcmd = new OleDbCommand(sqlsmt,conn);
 
             OleDbDataReader dataReader = sqlcmd.ExecuteReader();
             if (dataReader.HasRows)
@@ -194,7 +194,7 @@ namespace JobPile
 
             conn.Close();
         }
-
+        
         protected void appliedbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AppliedJobList");
