@@ -50,27 +50,27 @@ namespace JobPile.admin_dom
             OleDbCommand cmd = new OleDbCommand(query, conn);
             cmd.ExecuteNonQuery();
 
-            try
-            {
-                query = "delete from preInterviewTBL where ID=" + empID;
+            //try
+            //{
+                query = "delete from preInterviewTBL where empID=" + empID;
                 cmd = new OleDbCommand(query, conn);
                 cmd.ExecuteNonQuery();
-            }
+            /*}
             catch
             {
 
             }
 
-            try
-            {
-                query = "delete from SeekersPerPost where ID=" + empID;
+            //try
+            //{*/
+                query = "delete from SeekersPerPost where empID=" + empID;
                 cmd = new OleDbCommand(query, conn);
                 cmd.ExecuteNonQuery();
-            }
+            /*}
             catch
             {
 
-            }
+            }*/
 
 
 

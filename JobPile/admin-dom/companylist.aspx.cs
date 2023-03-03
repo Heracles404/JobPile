@@ -47,8 +47,12 @@ namespace JobPile.admin_dom
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
-            string query = "delete from companyTBL where ID=" + compID;
+            string query = "delete from jobpostTBL where com_id = " + compID;
             OleDbCommand cmd = new OleDbCommand(query, conn);
+            cmd.ExecuteNonQuery();
+
+            query = "delete from companyTBL where ID=" + compID;
+            cmd = new OleDbCommand(query, conn);
             cmd.ExecuteNonQuery();
 
             query = "select ID, companyName, email, website from companyTBL";
