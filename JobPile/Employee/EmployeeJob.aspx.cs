@@ -215,12 +215,12 @@ namespace JobPile
 
             int empID = employeeID;
 
-            String fields = "or";
+            String fields = "and";
             foreach (ListItem item in ChkByList.Items)
             {
                 if (item.Selected)
                 {
-                    fields = " and jpfield = '" + item.Value + "' or";
+                    fields += " jpfield = '" + item.Value + "' or";
                 }
             }
 

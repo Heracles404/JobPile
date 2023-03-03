@@ -85,10 +85,12 @@
                                     <asp:TextBox ID="pw" type="password" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
                                 </div>
                                 <div class="form-check mx-0 my-0 py-0 ">
+                                    <!--
                                     <asp:CheckBox ID="isSeeker" CssClass="" runat="server" />
                                     <label class="form-check-label" for="isSeeker">
                                         I am a job seeker
                                     </label>
+                                    -->
                                 </div>
                                 <div class="input-group px-3 pt-0 py-0 my-0">
                                     <asp:Label ID="errLbl" CssClass="input-group-text px-3 py-2 m-0 d-flex alert alert-danger" runat="server" Text="Invalid email or password." Visible="False"></asp:Label>
