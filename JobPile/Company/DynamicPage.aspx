@@ -53,6 +53,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Button ID="approvebtn" runat="server" CssClass="btn btn-primary approve" Text="Approve" OnClick="approve_Click" />
+                            <asp:Button ID="denybtn" runat="server" CssClass="btn btn-primary approve" Text="Deny" OnClick="deny_Click" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
