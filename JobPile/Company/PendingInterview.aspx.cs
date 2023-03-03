@@ -31,6 +31,7 @@ namespace JobPile
                 /*SELECT employeeTBL.firstname + " " + employeeTBL.lastname as [Candidate], preInterviewTBL.jobtitle, preInterviewTBL.interviewDate
                 FROM employeeTBL RIGHT JOIN preInterviewTBL ON employeeTBL.ID = preInterviewTBL.empID
                 WHERE(((preInterviewTBL.compID) = 1));*/
+
                 string query = "SELECT employeeTBL.firstname + ' ' + employeeTBL.lastname as [Candidate], ";
                 query += "preInterviewTBL.jobtitle, preInterviewTBL.interviewDate, preInterviewTBL.interviewID FROM employeeTBL RIGHT JOIN preInterviewTBL ";
                 query += "ON employeeTBL.ID = preInterviewTBL.empID WHERE preInterviewTBL.compID = " + companyID;
