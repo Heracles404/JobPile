@@ -12,6 +12,7 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            pw.Attributes["type"] = "password";
             if (!this.IsPostBack)
             {
                 this.PopulatePage();
@@ -39,6 +40,7 @@ namespace JobPile
 
                 //Input Initial values
                 nametxt.Text = dataReader["companyName"].ToString();
+                pw.Text = dataReader["pass"].ToString();
                 emailtxt.Text = dataReader["email"].ToString();
                 websitetxt.Text = dataReader["website"].ToString();
                 numtxt.Text = dataReader["contactnum"].ToString();
@@ -66,6 +68,7 @@ namespace JobPile
                 sqlsmt += "',website='" + websitetxt.Text;
                 sqlsmt += "',contactnum='" + numtxt.Text + "',about='" + aboutustxt.Text;
                 sqlsmt += "',mission='" + missiontxt.Text + "',vision='" + visiontxt.Text;
+                sqlsmt += "',pass='" + pw.Text;
                 sqlsmt += "' where email = '" + email + "';";
 
                 OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, connection);

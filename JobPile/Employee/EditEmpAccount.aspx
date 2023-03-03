@@ -46,7 +46,7 @@
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Birthday</span>
-                    <asp:TextBox ID="bday" TextMode="Date" runat="server" CssClass="mx-2 py-1 px-3 rounded-1"></asp:TextBox>
+                    <asp:TextBox ID="bday" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="input-group px-2 py-1 m-0">
                     <span class="input-group-text">Gender</span>
