@@ -9,6 +9,8 @@ using System.Web.UI.WebControls;
 using System.Web.DynamicData;
 using System.Drawing.Drawing2D;
 using System.Net.Mail;
+using System.Data.SqlTypes;
+using System.Drawing;
 
 namespace JobPile
 {
@@ -40,6 +42,17 @@ namespace JobPile
                 adapter.Fill(dataTable);
                 empGridView.DataSource = dataTable;
                 empGridView.DataBind();
+
+                sqlsmt = "select jpfield from jobpostTBL group by jpfield";
+                adapter = new OleDbDataAdapter(sqlsmt, conn);
+                dataTable= new DataTable();
+                adapter.Fill(dataTable);
+
+                ChkByList.DataSource = dataTable;
+                ChkByList.DataTextField = "jpfield";
+                ChkByList.DataValueField = "jpfield";
+                ChkByList.DataBind();
+
                 conn.Close();
             }
             catch
@@ -170,7 +183,6 @@ namespace JobPile
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
 
-            //Int32.Parse(Session["companyid"].ToString()) to com_id
             //Used in Gridview to show every record
             string sqlsmt = "select * from jobpostTBL where jptitle like '%" + empsearchtxt.Text + "%'";
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt,conn);
@@ -194,7 +206,38 @@ namespace JobPile
 
             conn.Close();
         }
-        
+        public void Check_Clicked(Object sender, EventArgs e)
+        {
+            string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+            constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+            OleDbConnection conn = new OleDbConnection(constr);
+            conn.Open();
+
+            int empID = employeeID;
+
+            String fields = "or";
+            foreach (ListItem item in ChkByList.Items)
+            {
+                if (item.Selected)
+                {
+                    fields = " and jpfield = '" + item.Value + "' or";
+                }
+            }
+
+            fields = fields.Remove(fields.Length - 2);
+
+            string sqlsmt = "select * from jobpostTBL where jpstatus = 'Active' " + fields + " and jpID not in ";
+            sqlsmt += "(select jpID from SeekersPerPost where empID = " + empID + ")";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, conn);
+
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            empGridView.DataSource = dataTable;
+            empGridView.DataBind();
+
+            conn.Close();
+        }
+
         protected void appliedbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AppliedJobList");
