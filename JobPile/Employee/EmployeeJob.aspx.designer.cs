@@ -33,15 +33,6 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// empGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView empGridView;
-
-        /// <summary>
         /// appliedbtn control.
         /// </summary>
         /// <remarks>
@@ -49,5 +40,14 @@ namespace JobPile
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button appliedbtn;
+
+        /// <summary>
+        /// empGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView empGridView;
     }
 }
