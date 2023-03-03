@@ -14,6 +14,29 @@
     <!-- Custom CSS -->
     <link href="assets/style/index.css" rel="stylesheet" />
     <link href="assets/style/master.css" rel="stylesheet" />
+
+    <style>
+        .button {
+            background-color: #f8f9fa;
+            color: #141414;
+            font-size: 1.25rem;
+            width: 5vw;
+            margin: 0 1rem;
+            padding: .5rem 0;
+            border: none;
+            transition: ease-in-out .5s;
+        }
+
+        .button:hover {
+            background-color: #3884c2;
+            color: #f8f9fa;
+            margin: 0;
+            width: 8.25vw;
+            padding: .5rem 1rem;
+            border-radius: 2px;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -33,10 +56,10 @@
 
                         <!-- Log-in/signup -->
                         <div class="d-flex" role="search">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login-form">
+                            <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#login-form">
                                 Log in
                             </button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupForm">Sign up</button>
+                            <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#signupForm">Sign up</button>
                         </div>
                     </div>
                 </nav>

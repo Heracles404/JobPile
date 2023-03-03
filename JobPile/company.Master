@@ -16,6 +16,29 @@
     <link href="assets/style/master.css" rel="stylesheet" />
     <link href="assets/style/com-master.css" rel="stylesheet" />
 
+
+        <style>
+        .button {
+            background-color: #f8f9fa;
+            color: #141414;
+            font-size: 1.25rem;
+            text-decoration: none;
+            width: 8.25vw;
+            margin: 0;
+            padding: .5rem 0;
+            border: none;
+            transition: linear .4s;
+        }
+
+            .button:hover {
+                background-color: #3884c2;
+                color: #f8f9fa;
+                margin: 0;
+                width: 11vw;
+                border-radius: 2px;
+            }
+    </style>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -36,9 +59,9 @@
 
                     <!-- Log-in/signup -->
                     <div class="d-flex" role="search">
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/JobPosts" Text="Job Posts" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/CompanyInfo" Text="Account" CssClass="btn btn-primary"></asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Main" Text="Logout" CssClass="btn btn-primary"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/JobPosts" Text="Job Posts" CssClass="button text-center"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/CompanyInfo" Text="Account" CssClass="button text-center"></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Main" Text="Logout" CssClass="button text-center"></asp:HyperLink>
                     </div>
                 </div>
             </nav>

@@ -20,7 +20,7 @@
                 <div class="input-group container-fluid">
                     <span class="input-group-text">Job Title / Position</span>
                     <asp:TextBox ID="empsearchtxt" runat="server" CssClass="form-control search-bar"></asp:TextBox>
-                    <asp:Button runat="server" ID="Button1" type="button" class="btn btn-outline-primary text-white search" OnClick="empsearchbtn_Click"  Text="Search" />
+                    <asp:Button runat="server" ID="Button1" type="button" class="btn btn-outline-primary text-white search" OnClick="empsearchbtn_Click" Text="Search" />
                 </div>
             </div>
         </div>
@@ -30,8 +30,16 @@
 
     <!-- All Job List -->
     <div class="row">
-        <div class="mx-auto col-7">
-            <h2 class="overflow-hidden">Listings:</h2>
+        <div class="mx-auto col-6">
+            <div class="row mx-auto mt-3">
+                <div class="col-6 float-start">
+                    <h2 class="overflow-hidden"> Listings:</h2>
+                </div>
+                <div class="col-6 float-end">
+                    <asp:Button ID="appliedbtn" Text="Applied Job Posts" CssClass="btn apply btn-primary float-end" runat="server" OnClick="appliedbtn_Click" />
+                </div>
+            </div>
+
             <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="empGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="jpID,jpseekers,com_id,jptitle" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
@@ -40,7 +48,7 @@
                     <asp:BoundField DataField="jpshift" HeaderText="Time" />
                     <asp:BoundField DataField="jplocation" HeaderText="Location" />
                     <asp:BoundField DataField="jpsalary" HeaderText="Salary" />
-                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jpID"/>
+                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jpID" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Button Text="Apply" CssClass="btn apply btn-primary" runat="server" OnClick="empGridView_Button_Click" />
@@ -60,7 +68,6 @@
             </asp:GridView>
         </div>
     </div>
-    <!--
-    <asp:Button ID="appliedbtn" Text="Applied Job Posts" CssClass="btn apply btn-primary" runat="server" OnClick="appliedbtn_Click" />
-    -->
+
+
 </asp:Content>
