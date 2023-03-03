@@ -58,7 +58,7 @@
                                     <asp:TextBox ID="email" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
                                 </div>
                                 <div class="input-group p-3 pt-0">
-                                    <asp:Label ID="Label2" CssClass="input-group-text px-5 d-flex" runat="server" Text="Pasword: "></asp:Label>
+                                    <asp:Label ID="Label2" CssClass="input-group-text px-5 d-flex" runat="server" Text="Password: "></asp:Label>
                                     <asp:TextBox ID="pw" type="password" runat="server" CssClass="d-flex flex-fill p-2 right-input"></asp:TextBox>
                                 </div>
                                 <div class="form-check mx-0 my-0 py-0 ">

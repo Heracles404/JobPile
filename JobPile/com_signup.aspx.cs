@@ -39,35 +39,41 @@ namespace JobPile
             constr += "Data Source=" + Server.MapPath("~/App_Data/jobpileDB.accdb");
             OleDbConnection conn = new OleDbConnection(constr);
             conn.Open();
-            
-            string cmd = "INSERT INTO companyTBL (companyName, email, contactnum, pass, about, mission, vision, website) VALUES";
-            cmd += "('" + name + "','" + mail + "','" + num + "','" + pw + "','" + bio + "','" + mission + "','" + vision + "','" + site + "');";
-            OleDbCommand sql = new OleDbCommand(cmd, conn);
-            sql.ExecuteNonQuery();
 
-            cmd = "select ID from companyTBL where email = '" + mail + "'";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd, conn);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            int id = Int32.Parse(dt.Rows[0]["ID"].ToString());
+            if (pw != repass.Text)
+            {
+                Response.Write("<script>alert('Passwords do not match', 'Warning!')</script>");
+            }
+            else
+            {
+                string cmd = "INSERT INTO companyTBL (companyName, email, contactnum, pass, about, mission, vision, website) VALUES";
+                cmd += "('" + name + "','" + mail + "','" + num + "','" + pw + "','" + bio + "','" + mission + "','" + vision + "','" + site + "');";
+                OleDbCommand sql = new OleDbCommand(cmd, conn);
+                sql.ExecuteNonQuery();
 
-            cmd = "insert into accountsTBL values(" + id + ",'" + mail + "','" + mail + "','comp')";
-            sql = new OleDbCommand(cmd, conn);
-            sql.ExecuteNonQuery();
+                cmd = "select ID from companyTBL where email = '" + mail + "'";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                int id = Int32.Parse(dt.Rows[0]["ID"].ToString());
 
+                cmd = "insert into accountsTBL values(" + id + ",'" + mail + "','" + mail + "','comp')";
+                sql = new OleDbCommand(cmd, conn);
+                sql.ExecuteNonQuery();
+
+                email.Text = "";
+                pass.Text = "";
+                company.Text = "";
+                contact.Text = "";
+                about.Text = "";
+                missiontxt.Text = "";
+                visiontxt.Text = "";
+                website.Text = "";
+
+                // Session["Email"] = email.Text;
+                Response.Redirect("~/JobPosts");
+            }
             conn.Close();
-
-            email.Text = "";
-            pass.Text = "";
-            company.Text = "";
-            contact.Text = "";
-            about.Text = "";
-            missiontxt.Text = "";
-            visiontxt.Text = "";
-            website.Text = "";
-
-            // Session["Email"] = email.Text;
-            Response.Redirect("~/JobPosts");
         }
     }
 }
