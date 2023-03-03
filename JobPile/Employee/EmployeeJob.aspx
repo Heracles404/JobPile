@@ -60,6 +60,7 @@
             </asp:GridView>
         </div>
     </div>
-
+    <!--
     <asp:Button ID="appliedbtn" Text="Applied Job Posts" CssClass="btn apply btn-primary" runat="server" OnClick="appliedbtn_Click" />
+    -->
 </asp:Content>

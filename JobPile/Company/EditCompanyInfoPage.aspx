@@ -20,7 +20,7 @@
                 <div class="input-group p-2 m-0">
                     <span class="input-group-text">Password</span>
                     <!--Password-->
-                    <asp:TextBox ID="pw" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="pw" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="input-group p-2 m-0">
                     <span class="input-group-text">Re-password</span>

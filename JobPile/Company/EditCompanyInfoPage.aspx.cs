@@ -12,6 +12,7 @@ namespace JobPile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            pw.Attributes["type"] = "Password";
             if (!this.IsPostBack)
             {
                 this.PopulatePage();
@@ -39,6 +40,7 @@ namespace JobPile
 
                 //Input Initial values
                 nametxt.Text = dataReader["companyName"].ToString();
+                pw.Text = dataReader["pass"].ToString();
                 emailtxt.Text = dataReader["email"].ToString();
                 websitetxt.Text = dataReader["website"].ToString();
                 numtxt.Text = dataReader["contactnum"].ToString();

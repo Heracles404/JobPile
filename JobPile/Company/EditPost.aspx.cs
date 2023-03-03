@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Web;
@@ -28,10 +29,30 @@ namespace JobPile
             OleDbCommand sqlcmd = new OleDbCommand(sqlsmt, conn);
             sqlcmd.ExecuteNonQuery();
 
+            int comID = compID;
+
             //sqlsmt = "delete "
+            sqlsmt = "delete from preInterviewTBL where jobtitle = '" + searchjobtitletxt.Text + "' and compID = " + comID;
+            sqlcmd = new OleDbCommand(sqlsmt, conn);
+            sqlcmd.ExecuteNonQuery();
 
             Response.Write("<script>alert('Job Post has been deleted!');</script>");
+
+            //Reset fields
             searchjobtitletxt.Text = "";
+            jobtitleTXT.Text = "";
+            salaryTXT.Text = "";
+            DDLShift.SelectedIndex = -1;
+            DDLType.SelectedIndex = -1;
+            locationTXT.Text = "";
+            skillsTXT.Text = "";
+            DDLExperience.SelectedIndex = -1;
+            jobdescTXT.Text = "";
+
+            DDLStatus.SelectedIndex = -1;
+
+            DDLStatus.SelectedIndex = -1;
+
 
             conn.Close();
         }
@@ -157,6 +178,46 @@ namespace JobPile
             //Show Initial Search
             cmdSearch.Visible = true;
             deletebtn.Visible = true;
+        }
+
+        public int jobID
+        {
+            get
+            {
+                string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
+                connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
+                OleDbConnection connection = new OleDbConnection(connstr);
+                connection.Open();
+
+                int comID = compID;
+
+                string query = "select * from jobpostTBL where jptitle ='" + jobtitleTXT.Text + "' and com_id = " + comID;
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                return Int32.Parse(dt.Rows[0]["jpID"].ToString());
+            }
+        }
+
+        public int compID
+        {
+            get
+            {
+                string connstr = "Provider=Microsoft.ACE.Oledb.12.0;Data Source = ";
+                connstr += Server.MapPath("~/App_Data/JobPileDB.accdb");
+                OleDbConnection connection = new OleDbConnection(connstr);
+                connection.Open();
+
+                string email = Session["Email"].ToString();
+
+                string query = "select * from companyTBL where email = '" + email + "'";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                return Int32.Parse(dt.Rows[0]["ID"].ToString());
+            }
         }
     }
 }
