@@ -160,7 +160,7 @@ namespace JobPile
                     // Send the OTP to email
                     using (MailMessage mail = new MailMessage())
                     {
-                        mail.From = new MailAddress("jobpilemcl@gmail.com");
+                        mail.From = new MailAddress("jobpilemapua@gmail.com");
                         mail.To.Add(email);
                         mail.Subject = "JobPile OTP - DO NOT REPLY";
                         mail.Body = "Your OTP is " + sOTP;
@@ -168,7 +168,7 @@ namespace JobPile
 
                         using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                         {
-                            smtp.Credentials = new System.Net.NetworkCredential("jobpilemcl@gmail.com", "xtfgxxqpcsggpnhw");
+                            smtp.Credentials = new System.Net.NetworkCredential("jobpilemapua@gmail.com", "fvldymczcisjgjpo");
                             smtp.EnableSsl = true;
                             smtp.Send(mail);
 
