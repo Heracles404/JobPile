@@ -112,6 +112,10 @@ namespace JobPile
                 //Pending emp_Email
                 string query = "delete from SeekersPerPost where empID=" + empID;
                 query += " and jpID=" + jobID;
+
+                // string query = "insert into interviewTBL status VALUES('Approved')";
+                // adapter = new OleDbDataAdapter(query, newconn);
+
                 OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
 
