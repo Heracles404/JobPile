@@ -224,7 +224,14 @@ namespace JobPile
                 }
             }
 
-            fields = fields.Remove(fields.Length - 2);
+            if (fields.Length > 3){
+                fields = fields.Remove(fields.Length - 2);
+            }
+            else
+            {
+                fields = fields.Remove(fields.Length - 3);
+            }
+            
 
             string sqlsmt = "select * from jobpostTBL where jpstatus = 'Active' " + fields + " and jpID not in ";
             sqlsmt += "(select jpID from SeekersPerPost where empID = " + empID + ")";
