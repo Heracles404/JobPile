@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Reflection;
 using System.Net.Mail;
+using System.Collections;
+using System.Data.SqlTypes;
 
 namespace JobPile
 {
@@ -110,6 +112,10 @@ namespace JobPile
 
                 string query = "delete from SeekersPerPost where empID=" + empID;
                 query += " and jpID=" + jobID;
+
+                // string query = "insert into interviewTBL status VALUES('Approved')";
+                // adapter = new OleDbDataAdapter(query, newconn);
+
                 OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
 
@@ -245,6 +251,47 @@ namespace JobPile
         }
 
 
+        protected void deny_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+                constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+                OleDbConnection connection = new OleDbConnection(constr);
+                connection.Open();
+
+                string sqlsmt = "insert into interviewTBL status Values ('Denied');";
+                OleDbCommand sqlcommand = new OleDbCommand(sqlsmt, connection);
+                sqlcommand.ExecuteNonQuery();
+
+                connection.Close();
+
+                string mess = "Your application has been denied by " + companyName + "Better luck next time!";
+
+                using (MailMessage mail = new MailMessage())
+                {
+
+                    mail.From = new MailAddress("jobpilemcl@gmail.com");
+                    mail.To.Add(emp_mail);
+                    mail.Subject = "Received an Application";
+                    mail.Body = mess;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new System.Net.NetworkCredential("jobpilemcl@gmail.com", "xtfgxxqpcsggpnhw");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+
+            }
+            catch
+            {
+                Response.Write("<script>alert('Timeout! \nLogin Again!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+            }
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/JobPosts");
