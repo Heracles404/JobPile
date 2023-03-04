@@ -75,6 +75,7 @@ namespace JobPile
             newadapter.Fill(dataTable);
             GridView1.DataSource = dataTable;
             GridView1.DataBind();
+            conn.Close();
         }
 
         protected void approve_Click(object sender, EventArgs e)
@@ -109,7 +110,6 @@ namespace JobPile
                 int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
                 string companyName = dtID.Rows[0]["companyName"].ToString();
 
-                //Pending emp_Email
                 string query = "delete from SeekersPerPost where empID=" + empID;
                 query += " and jpID=" + jobID;
 
@@ -130,8 +130,8 @@ namespace JobPile
                 sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
 
-                query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID) values(" + empID;
-                query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ");";
+                query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID,status) values(" + empID;
+                query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ",'Approved');";
                 sqlcmd = new OleDbCommand(query, newconn);
                 sqlcmd.ExecuteNonQuery();
 
@@ -170,7 +170,7 @@ namespace JobPile
 
                 Response.Write("<script>alert('Approval Successful')</script>");
                 datetxt.Text = "";
-
+                newconn.Close();
             }
             catch
             {
@@ -178,6 +178,78 @@ namespace JobPile
                 ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
             }
         }
+        
+        protected void deny_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
+
+                //Get the value of column from the DataKeys using the RowIndex.
+                string jobTitle = GridView1.DataKeys[rowIndex].Values[0].ToString();
+                int empID = Int32.Parse(GridView1.DataKeys[rowIndex].Values[1].ToString());
+                string temp = this.Page.RouteData.Values["jpID"].ToString();
+                string tempid = temp.Replace("{", "").Replace("}", "");
+                int jobID = Int32.Parse(tempid);
+
+                string constr = "Provider=Microsoft.ACE.OleDb.12.0; Data Source=";
+                constr += Server.MapPath("~/App_Data/JobpileDB.accdb");
+                OleDbConnection newconn = new OleDbConnection(constr);
+                newconn.Open();
+
+                // Fetch companyID based on email
+                string compEmail = Session["Email"].ToString();
+                string sqlsmt = "select * from companyTBL where email = '" + compEmail + "';";
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlsmt, newconn);
+
+                DataTable dtID = new DataTable();
+                adapter.Fill(dtID);
+                int id = Int32.Parse(dtID.Rows[0]["ID"].ToString());
+                string companyName = dtID.Rows[0]["companyName"].ToString();
+
+                string query = "delete from SeekersPerPost where empID=" + empID;
+                query += " and jpID=" + jobID;
+                OleDbCommand sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
+
+                query = "select * from jobpostTBL where jpID = " + jobID;
+                adapter = new OleDbDataAdapter(query, newconn);
+                dtID = new DataTable();
+                adapter.Fill(dtID);
+                int seeknum = Int32.Parse(dtID.Rows[0]["jpseekers"].ToString());
+                seeknum -= 1;
+
+                query = "update jobpostTBL set jpseekers = " + seeknum + " where jpID = " + jobID;
+                sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
+
+                query = "insert into preinterviewTBL(empID,interviewDate,jobtitle,compID,status) values(" + empID;
+                query += ",'" + datetxt.Text + "','" + jobTitle + "'," + id + ",'Denied');";
+                sqlcmd = new OleDbCommand(query, newconn);
+                sqlcmd.ExecuteNonQuery();
+
+                query = "select employeeTBL.ID, employeeTBL.resumelink, employeeTBL.firstname+' '+employeeTBL.lastname as [Candidate], ";
+                query += "jobpostTBL.jptitle from (jobpostTBL INNER JOIN SeekersPerPost ON jobpostTBL.jpID = SeekersPerPost.jpID) INNER JOIN ";
+                query += "employeeTBL ON SeekersPerPost.empID = employeeTBL.ID where jobpostTBL.jpID = " + jobID;
+                OleDbDataAdapter newadapter = new OleDbDataAdapter(query, newconn);
+
+                DataTable dataTable = new DataTable();
+                newadapter.Fill(dataTable);
+                GridView1.DataSource = dataTable;
+                GridView1.DataBind();
+
+                Response.Write("<script>alert('Application Denied')</script>");
+                datetxt.Text = "";
+                newconn.Close();
+            /*}
+            catch
+            {
+                Response.Write("<script>alert('Timeout! \nLogin Again!')</script>");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "", "setTimeout(function(){window.location.href='Main'},3600)", true);
+            }*/
+        }
+
 
         protected void deny_Click(object sender, EventArgs e)
         {

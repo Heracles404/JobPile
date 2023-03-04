@@ -100,6 +100,7 @@
     <Content Include="Employee\EditEmpAccount.aspx" />
     <Content Include="Company\PendingInterview.aspx" />
     <Content Include="Employee\EmployeeAppliedJobList.aspx" />
+    <Content Include="Employee\AppliedHistory.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin-dom\admin-login.aspx.cs">
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="Employee\EmployeeAppliedJobList.aspx.designer.cs">
       <DependentUpon>EmployeeAppliedJobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AppliedHistory.aspx.cs">
+      <DependentUpon>AppliedHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AppliedHistory.aspx.designer.cs">
+      <DependentUpon>AppliedHistory.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

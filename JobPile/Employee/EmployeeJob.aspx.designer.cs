@@ -51,6 +51,15 @@ namespace JobPile
         protected global::System.Web.UI.WebControls.Button appliedbtn;
 
         /// <summary>
+        /// historybtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button historybtn;
+
+        /// <summary>
         /// empGridView control.
         /// </summary>
         /// <remarks>

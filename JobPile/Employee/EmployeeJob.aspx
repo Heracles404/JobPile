@@ -3,8 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .btn.apply {
-            width: 10rem;
+            width: 11rem;
         }
+
 
         td {
             padding: 0;
@@ -26,19 +27,22 @@
         </div>
     </div>
 
-    <asp:CheckBoxList ID="ChkByList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Check_Clicked"></asp:CheckBoxList>
+    <asp:CheckBoxList ID="ChkByList" CssClass="mx-5 my-0" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Check_Clicked"></asp:CheckBoxList>
 
     <!-- All Job List -->
     <div class="row">
         <div class="mx-auto col-6">
-            <div class="row mx-auto mt-3">
+            <div class="row mx-auto mt-0">
                 <div class="col-6 float-start">
-                    <h2 class="overflow-hidden"> Listings:</h2>
+                    <h2 class="overflow-hidden">Listings:</h2>
                 </div>
                 <div class="col-6 float-end">
-                    <asp:Button ID="appliedbtn" Text="Applied Job Posts" CssClass="btn apply btn-primary float-end" runat="server" OnClick="appliedbtn_Click" />
+                    <asp:Button ID="appliedbtn" Text="Current Applications" CssClass="btn apply btn-primary float-end text-center" runat="server" OnClick="appliedbtn_Click" />
+                    <asp:Button ID="historybtn" Text="Applied History" CssClass="btn apply btn-primary float-end" runat="server" OnClick="historybtn_Click" />
+
                 </div>
             </div>
+
 
             <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="empGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="jpID,jpseekers,com_id,jptitle" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -51,7 +55,7 @@
                     <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jpID" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button Text="Apply" CssClass="btn apply btn-primary" runat="server" OnClick="empGridView_Button_Click" />
+                            <asp:Button Text="Apply" CssClass="btn apply btn-primary border-0" runat="server" OnClick="empGridView_Button_Click" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

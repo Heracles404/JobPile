@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/employee.Master" AutoEventWireup="true" CodeBehind="EmployeeAppliedJobList.aspx.cs" Inherits="JobPile.WebForm13" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/employee.Master" AutoEventWireup="true" CodeBehind="AppliedHistory.aspx.cs" Inherits="JobPile.WebForm14" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,20 +8,12 @@
 
         </div>
         <div class="col-8 mx-5">
-            <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="jobpostList" runat="server" AutoGenerateColumns="False" DataKeyNames="jpID, jpseekers" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView CssClass="col-12 text-center p-0 my-2" ID="jobpostList" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:BoundField DataField="jptitle" HeaderText="Job Title" />
-                    <asp:BoundField DataField="jptype" HeaderText="Job Type" />
-                    <asp:BoundField DataField="jpshift" HeaderText="Time" />
-                    <asp:BoundField DataField="jplocation" HeaderText="Location" />
-                    <asp:BoundField DataField="jpsalary" HeaderText="Salary" />
-                    <asp:HyperLinkField Text="Job Info" DataNavigateUrlFormatString="~/EmployeePost/{0}" DataNavigateUrlFields="jpID" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Button Text="Unapply" CssClass="btn apply btn-primary" runat="server" OnClick="jobpostList_Button_Click" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    <asp:BoundField DataField="jobtitle" HeaderText="Job Title" />
+                    <asp:BoundField DataField="companyName" HeaderText="Company Name" />
+                    <asp:BoundField DataField="status" HeaderText="Status" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

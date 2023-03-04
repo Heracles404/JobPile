@@ -242,5 +242,10 @@ namespace JobPile
         {
             Response.Redirect("~/AppliedJobList");
         }
+
+        protected void historybtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AppliedHistory");
+        }
     }
 }
